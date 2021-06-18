@@ -1,0 +1,40 @@
+{
+  "name": "ringring",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "@vee-validate/i18n": "^4.1.20",
+    "@vee-validate/rules": "^4.1.20",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
+    "core-js": "^3.6.5",
+    "mitt": "^2.1.0",
+    "popper.js": "^1.16.1",
+    "swiper": "^6.7.0",
+    "vee-validate": "^4.4.5",
+    "vue": "^3.0.0",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-axios": "^3.2.4",
+    "vue-router": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2"
+  }
+}

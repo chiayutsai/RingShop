@@ -1,0 +1,35 @@
+.card{
+  overflow: hidden;
+}
+
+.card-img{
+  cursor: pointer;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  height: 320px;
+  margin-bottom: 16px;
+  img{
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: all 1s;
+    &.show-card-img{
+      opacity: 1;
+    }
+  }
+}
+.card-small-img{
+  height: 180px;
+}
+.card-title{
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.card-img-rotate{
+  &:hover{
+    transform: rotate(2deg);
+  }
+}

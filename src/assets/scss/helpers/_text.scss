@@ -1,0 +1,15 @@
+
+    @each $size, $value in $font-size {
+          .text-#{$size} {
+            @include font-size($value)
+          }
+    }
+  
+.font-design {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-abril {
+  letter-spacing: 1px;
+  font-family: 'Abril Fatface', cursive;
+}

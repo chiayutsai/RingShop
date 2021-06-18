@@ -1,0 +1,50 @@
+
+.z-0{
+    z-index: 0 !important;
+}
+.bg-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background: url(~@/assets/images/bg.jpg) no-repeat center;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+.bg-transparent{
+    background: transparent;
+}
+
+.opacity-3{
+    opacity: 0.3;
+}
+.opacity-5{
+    opacity: 0.5;
+}
+.opacity-8{
+    opacity: 0.8;
+}
+
+.bg-all{
+    background: url(~@/assets/images/bg-all.png) no-repeat ;
+    background-size: cover;
+    background-position: bottom;
+}
+.bg-login{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(~@/assets/images/login-bg.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bg-login-form{
+   background-color: rgba(0,0,0,0.7); 
+    
+}
+
+.bg-linear{
+    background: linear-gradient(to right,rgba(#9d7c5e,0.8) 0%,rgba(#9f7c5b,0.3) 100%);
+    
+}

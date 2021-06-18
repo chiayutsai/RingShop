@@ -1,0 +1,28 @@
+.secondary-hover{
+  border: 0;
+  &:hover{
+    border:0;
+    background-color: darken($secondary,5%);
+    color: #fff;
+    box-shadow: inset 2px 2px 2px rgba(#000,0.5) !important;
+  }
+}
+.white-hover{
+  &:hover{
+    
+    color: #fff;
+  }
+}
+
+.dashboard-link{
+  color:$dark;
+  border-bottom:1px solid $secondary;
+  &:hover{
+    text-shadow: none;
+    background-color: $primary;
+    color:$dark;
+  }
+  &.router-link-active{
+    background-color: $primary;
+  }
+}

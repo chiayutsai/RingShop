@@ -1,0 +1,39 @@
+.title{
+  position: relative;
+  margin-right: 60px;
+  &::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    height: 30px;
+    right: -15px;
+    top: 50%;
+    width: 1px;
+    border-left: 1px solid #fff;
+    transform: translateY(-50%) skewX(-45deg);
+    transform-origin: left bottom;
+  }
+}
+
+.cate-active{
+  color: #c3ac9b;
+  text-shadow: 1px 1px 1px rgba(#000,0.7);
+}
+
+
+.img-overlay{
+  position: absolute;
+  z-index: -1;
+  top: 30%;
+  left: 0;
+  width: 54%;
+  height: 40%;
+  background: linear-gradient(to right,rgba(#91775e,0.8) 0%,rgba(#91775e,0.3) 100%);
+  
+  filter: blur(1px);
+}
+.btn-outline-info{
+  &:hover{
+    text-shadow:none;
+  }
+}
