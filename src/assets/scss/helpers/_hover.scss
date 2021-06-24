@@ -13,16 +13,40 @@
     color: #fff;
   }
 }
-
-.dashboard-link{
-  color:$dark;
-  border-bottom:1px solid $secondary;
+.btn-primary{
   &:hover{
-    text-shadow: none;
-    background-color: $primary;
-    color:$dark;
+    text-shadow:none;
   }
-  &.router-link-active{
-    background-color: $primary;
+}
+// .dashboard-link{
+//   color:$dark;
+//   border-bottom:1px solid $secondary;
+//   &:hover{
+//     text-shadow: none;
+//     background-color: $primary;
+//     color:$dark;
+//   }
+//   &.router-link-active{
+//     background-color: darken($secondary,10%);
+//     color:#fff
+//   }
+// }
+
+.dashboard-hover{
+  &:hover{
+    background-color: darken($secondary,10%);
+    color:#fff;
+    text-shadow:none !important;
+  }
+}
+.table-hover{
+  &:hover{
+    background-color:rgb(252, 248, 245);
+  }
+}
+.eye-hover{
+  &:hover{
+   color: darken($secondary,10%) !important;
+    transform: scale(1.2);
   }
 }

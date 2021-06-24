@@ -1,16 +1,37 @@
 <template>
-  <div class="collapse p-8" :id="`collapseExample${num}`" ref="collapse">
-    <p class="text-sm  mb-3">產品單位 : {{ product.unit }}</p>
-    <p class="text-sm  mb-3">產品描述 :{{ product.description }}</p>
-    <p class="text-sm  mb-3">說明內容 :{{ product.content }}</p>
-    <p class="text-sm  mb-3">輪播圖片 :</p>
-    <div class="d-flex flex-wrap">
-      <img
-        class="w-15 m-4 small-size"
-        v-for="(img, i) in product.imagesUrl"
-        :src="img"
-        :key="'img' + i"
-      />
+  <div class="collapse text-sm p-8" :id="`collapseExample${num}`" ref="collapse">
+    <div class="d-flex mb-5">
+      <div class="me-2 flex-shrink-0">產品單位 :</div>
+      <div class="">{{ product.unit }}</div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-2 flex-shrink-0">產品規格 :</div>
+      <div class="">
+        <p v-for="(item, key) in product.formats" :key="key" class="mb-3">
+          {{ item.format }} : {{ item.content }}
+        </p>
+      </div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-2 flex-shrink-0">產品描述 :</div>
+      <div class="">{{ product.description }}</div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-2 flex-shrink-0">說明內容 :</div>
+      <div class="">{{ product.content }}</div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-2 flex-shrink-0">輪播圖片 :</div>
+      <div class="">
+        <div class="d-flex flex-wrap">
+          <img
+            class="w-15 small-size me-3"
+            v-for="(img, i) in product.imagesUrl"
+            :src="img"
+            :key="'img' + i"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +47,6 @@ export default {
   data() {
     return {
       collapse: [],
-
     };
   },
   methods: {
@@ -42,6 +62,5 @@ export default {
       });
     },
   },
-
 };
 </script>

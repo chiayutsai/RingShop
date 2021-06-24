@@ -1,6 +1,9 @@
 .vh-70{
   height: 70vh;
 }
+.w-10{
+  width: 10%;
+}
 .w-15{
   width: 15%;
 }
@@ -13,6 +16,13 @@
 .w-40{
   width: 40%;
 }
+.w-90{
+  width: 90%;
+}
 .small-size{
   height: 120px;
+}
+.h-dashboard{
+  min-height: calc(100vh - 48px);
+  margin-top: 48px;
 }

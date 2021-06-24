@@ -1,5 +1,14 @@
 <template>
-  <div class="bg-white rounded overflow-hidden">
+  <Loading :isLoading="isLoading"></Loading>
+
+  <div class="d-flex align-items-center justify-content-between mb-5 ">
+    <h2 class="text-dark">產品列表</h2>
+    <router-link :to="`/dashboard/newProduct`" class="btn btn-secondary text-white shadow-none "
+      >新增產品</router-link
+    >
+  </div>
+
+  <div class="bg-white rounded overflow-hidden border border-secondary  ">
     <table class="table table-borderless mb-0">
       <thead class="bg-secondary text-white">
         <tr>
@@ -31,6 +40,7 @@
                   v-model="item.is_enabled"
                   :true-value="1"
                   :false-value="0"
+                  @change="changeStatus(item)"
                 />
 
                 <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key"
@@ -40,7 +50,11 @@
               </div>
             </td>
             <td>
-              <button type="button" class="btn btn-sm btn-secondary text-white">
+              <button
+                type="button"
+                class="btn btn-sm btn-secondary text-white"
+                @click="openModal('edit', item)"
+              >
                 編輯
               </button>
               <button
@@ -64,7 +78,7 @@
             </td>
           </tr>
           <tr :class="{ 'table-primary': item.is_enabled }">
-            <td colspan="8" class="p-0 border-bottom">
+            <td colspan="8" class="p-0 border-bottom border-secondary">
               <ProductCollapse ref="ProductCollapse" :product="item" :num="key" />
             </td>
           </tr>
@@ -76,29 +90,40 @@
       <Pagination :pagination="pagination" @emit-page="getData" />
     </div>
   </div>
+  <ProductModal :product="tempProduct" ref="updateModal" @update="updateProduct" />
+
+  <DeleteModal :item="tempProduct" :type="'normal'" ref="delModal" @delete="deleteProduct" />
 </template>
 
 <script>
 import Pagination from '@/components/Pagination.vue';
 import ProductCollapse from '@/components/Collapse.vue';
+import DeleteModal from '@/components/Modal/DeleteModal.vue';
+import ProductModal from '@/components/Modal/ProductModal.vue';
 
 export default {
   data() {
     return {
+      isLoading: false,
       products: [],
       pagination: {},
       totalAmount: 0,
       productsCategory: [],
+      tempProduct: {},
       isOpen: {
         id: null,
         open: false,
       },
     };
   },
+  inject: ['emitter'],
   components: {
     Pagination,
     ProductCollapse,
+    DeleteModal,
+    ProductModal,
   },
+
   methods: {
     getData(page = 1) {
       this.isLoading = true;
@@ -111,8 +136,10 @@ export default {
           if (res.data.success) {
             this.products = res.data.products;
             this.pagination = res.data.pagination;
+            this.isLoading = false;
           } else {
-            alert(res.data.messages);
+            console.log(res.data.messages);
+            this.isLoading = false;
           }
         })
         .catch((err) => {
@@ -143,6 +170,93 @@ export default {
         this.isOpen.open = true;
       }
       this.$refs.ProductCollapse.showCollapse(id);
+    },
+    openModal(type, item) {
+      if (type === 'edit') {
+        this.tempProduct = {
+          ...item,
+          formats:
+            item.formats === undefined
+              ? [
+                {
+                  format: '',
+                  content: '',
+                },
+              ]
+              : JSON.parse(JSON.stringify(item.formats)),
+          imagesUrl: item.imagesUrl === undefined ? [] : [...item.imagesUrl],
+        };
+        this.$refs.updateModal.openModal();
+      } else if (type === 'delete') {
+        this.tempProduct = { ...item };
+        this.$refs.delModal.openModal();
+      }
+    },
+    updateProduct(item) {
+      this.isLoading = true;
+      const data = {
+        data: item,
+      };
+      this.$http
+        .put(
+          `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`,
+          data,
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.data.success) {
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+            this.$refs.updateModal.hideModal();
+            this.getData(this.pagination.current_page);
+            this.isLoading = false;
+          } else {
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
+            this.isLoading = false;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    changeStatus(item) {
+      this.tempProduct = {
+        ...item,
+      };
+      this.updateProduct(this.tempProduct);
+    },
+    deleteProduct() {
+      this.isLoading = true;
+      this.$http
+        .delete(
+          `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`,
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.data.success) {
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+            this.$refs.delModal.hideModal();
+            this.getData(this.pagination.current_page);
+            this.isLoading = false;
+          } else {
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
+            this.isLoading = false;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   mounted() {

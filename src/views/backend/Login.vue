@@ -1,4 +1,6 @@
 <template>
+<Loading :isLoading="isLoading" ></Loading>
+<Noty  />
 <div class="position-relative bg-login w-100 min-vh-100">
     <div class="bg-overlay opacity-5 z-0"></div>
   <div class="position-relative d-flex justify-content-center align-items-center vh-100">
@@ -48,6 +50,9 @@
 </template>
 
 <script>
+import Noty from '@/components/Noty.vue';
+import emitter from '@/methods/eventBus';
+
 export default {
   data() {
     return {
@@ -55,10 +60,20 @@ export default {
         username: '',
         password: '',
       },
+      isLoading: false,
     };
+  },
+  provide() {
+    return {
+      emitter,
+    };
+  },
+  components: {
+    Noty,
   },
   methods: {
     login() {
+      this.isLoading = true;
       this.$http
         .post(`${process.env.VUE_APP_API}admin/signin`, this.user)
         .then((res) => {
@@ -68,8 +83,16 @@ export default {
             document.cookie = `chiayuToken=${token}; expires=${new Date(expired)}`;
             this.$refs.form.resetForm();
             this.$router.push('/dashboard/admin');
+            emitter.emit('push-message', {
+              type: 'success',
+              message: '登入成功 ',
+            });
           } else {
-            alert(`登入失敗: ${res.data.error.message}`);
+            this.isLoading = false;
+            emitter.emit('push-message', {
+              type: 'error',
+              message: `登入失敗 : ${res.data.error.message}`,
+            });
           }
         })
         .catch((err) => {

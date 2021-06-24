@@ -1,0 +1,46 @@
+.page-active{
+  background: darken($secondary,12%);
+  &:hover{
+    text-shadow: none;
+    color:#fff;
+  }
+}
+.dropdown{
+  &:hover{
+    background: darken($secondary,12%);
+    text-shadow: none;
+    color:#fff;
+  }
+}
+.dropdown-menu{
+  height: 0;
+  overflow: hidden;
+  background-color: darken($primary,10%);
+  
+  a{
+    color:darken($secondary,12%);
+    &:hover{
+      text-shadow: none;
+    }
+  }
+  &.show{
+    height: 100%;
+  }
+  a{
+    &:hover{
+      font-weight: 500;
+    }
+  }
+  .router-link-active{
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    &::after{
+      content:"◀";
+      position: absolute;
+      right: -2px;
+      color:#fff;
+      font-size: 14px;
+    }
+  }
+}

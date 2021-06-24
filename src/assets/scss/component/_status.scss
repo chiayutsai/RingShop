@@ -1,0 +1,47 @@
+.status{
+  border-radius:4px;
+  padding: 8px;
+  float: left;
+  cursor: pointer;
+  &.pointer-none{
+    pointer-events: none;
+  }
+}
+.status-wait{
+  background-color:#f8dda7;
+  color:#94660c;
+  transition: all 0.5s;
+  &:hover{
+    background-color: darken(#f8dda7,5%);
+  }
+ 
+}
+.status-handle{
+  background-color:#c6e1c6;
+  color:#5b841b;
+  transition: all 0.5s;
+  &:hover{
+    background-color: darken(#c6e1c6,5%);
+  }
+ 
+}
+
+.status-finish{
+  background-color:#c8d7e1;
+  color:#2e4453;
+  transition: all 0.5s;
+  &:hover{
+    background-color: darken(#c8d7e1,5%);
+  }
+  
+}
+
+.status-cancel{
+  background-color:#e5e5e5;
+  color:#777;
+  transition: all 0.5s;
+  &:hover{
+    background-color: darken(#e5e5e5,5%);
+  }
+  
+}

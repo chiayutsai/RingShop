@@ -52,6 +52,7 @@ const routes = [
         name: 'final',
         component: () => import('../views/Final.vue'),
       },
+
     ],
   },
   {
@@ -80,9 +81,19 @@ const routes = [
         component: () => import('../views/backend/Order.vue'),
       },
       {
+        path: 'editOrder/:id',
+        name: 'editOrder',
+        component: () => import('../views/backend/EditOrder.vue'),
+      },
+      {
         path: 'coupons',
         name: 'coupons',
         component: () => import('../views/backend/Coupons.vue'),
+      },
+      {
+        path: 'newCoupon',
+        name: 'newCoupon',
+        component: () => import('../views/backend/NewCoupon.vue'),
       },
     ],
   },

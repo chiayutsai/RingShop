@@ -2,6 +2,9 @@
 .z-0{
     z-index: 0 !important;
 }
+.z-1{
+    z-index: 1 !important;
+}
 .bg-overlay{
     position: fixed;
     width: 100%;
@@ -47,4 +50,7 @@
 .bg-linear{
     background: linear-gradient(to right,rgba(#9d7c5e,0.8) 0%,rgba(#9f7c5b,0.3) 100%);
     
+}
+.bg-dashboard{
+    background-color: lighten($primary,5%);
 }

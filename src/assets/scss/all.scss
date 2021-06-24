@@ -4,8 +4,9 @@
 @import '../../../node_modules/bootstrap/scss/mixins';
 
 @import '../../../node_modules/bootstrap/scss/reboot';
-
-
+@import '../../../node_modules/bootstrap/scss/spinners';
+@import '../../../node_modules/bootstrap/scss/modal';
+@import '../../../node_modules/bootstrap/scss/close';
 @import 'base/base';
 
 
@@ -24,9 +25,13 @@
 @import 'helpers/decoration';
 @import 'helpers/hover';
 
+
 @import 'component/navbar';
 @import 'component/card';
 @import 'component/pagination';
 @import 'component/swiper';
 @import 'component/form';
 @import 'component/progress';
+@import 'component/dropdown';
+@import 'component/status';
+@import 'component/loading';

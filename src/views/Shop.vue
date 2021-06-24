@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-center align-items-center position-relative vh-70 bg-all">
     <RingCircle top="38%" right="34%" />
-    <h2 class="text-large font-abril">{{activeCategory}}</h2>
+    <h2 class="text-large ">{{activeCategory}}</h2>
   </div>
   <div class="container py-17">
     <div class="row">
