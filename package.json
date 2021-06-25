@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^26.0.0",
+    "@ckeditor/ckeditor5-vue": "^2.0.1",
     "@mojs/core": "^1.1.0",
     "@popperjs/core": "^2.9.2",
     "@vee-validate/i18n": "^4.1.20",

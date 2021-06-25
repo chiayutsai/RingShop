@@ -95,6 +95,16 @@ const routes = [
         name: 'newCoupon',
         component: () => import('../views/backend/NewCoupon.vue'),
       },
+      {
+        path: 'articles',
+        name: 'articles',
+        component: () => import('../views/backend/Articles.vue'),
+      },
+      {
+        path: 'newArticle',
+        name: 'newArticle',
+        component: () => import('../views/backend/NewArticle.vue'),
+      },
     ],
   },
   {

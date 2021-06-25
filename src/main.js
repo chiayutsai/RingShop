@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'bootstrap';
-
+import CKEditor from '@ckeditor/ckeditor5-vue';
 import {
   Field, Form, ErrorMessage, defineRule, configure,
 } from 'vee-validate';
@@ -32,6 +32,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(VueAxios, axios);
+app.use(CKEditor);
 app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);

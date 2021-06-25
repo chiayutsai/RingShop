@@ -68,6 +68,19 @@
         >
         <router-link :to="`/dashboard/newCoupon`" class="p-4">新增優惠券</router-link>
       </ul>
+       <a
+        href=""
+        class="p-4 dropdown"
+        :class="{ 'page-active': nowPage == 'articles' }"
+        @click.prevent="changeDropdown('articles')"
+        >文章</a
+      >
+      <ul class="dropdown-menu" :class="{ show: nowPage == 'articles' }" ref="article">
+        <router-link :to="`/dashboard/articles`" class="p-4 border-bottom border-secondary"
+          >文章列表</router-link
+        >
+        <router-link :to="`/dashboard/newArticle`" class="p-4">新增文章</router-link>
+      </ul>
     </div>
 
     <div class="w-90 float-end py-15 px-8 bg-dashboard min-vh-100">
@@ -155,6 +168,9 @@ export default {
       } else if (page === 'coupons') {
         this.$refs.coupon.classList.add('show');
         this.$router.push('/dashboard/coupons');
+      } else if (page === 'articles') {
+        this.$refs.article.classList.add('show');
+        this.$router.push('/dashboard/articles');
       }
     },
     pageCheck() {
@@ -164,6 +180,8 @@ export default {
         this.nowPage = 'order';
       } else if (this.$route.name === 'coupons' || this.$route.name === 'newCoupon') {
         this.nowPage = 'coupons';
+      } else if (this.$route.name === 'articles' || this.$route.name === 'newArticle') {
+        this.nowPage = 'articles';
       }
     },
   },

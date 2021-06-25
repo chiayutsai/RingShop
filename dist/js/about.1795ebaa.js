@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{9703:function(n,e,t){"use strict";t.r(e);var c=t("7a23"),a=Object(c["h"])("div",{class:"bg-overlay"},null,-1),o=Object(c["g"])(" 找不到頁面 ");function u(n,e){return Object(c["v"])(),Object(c["d"])(c["a"],null,[a,o],64)}const b={};b.render=u;e["default"]=b}}]);
-//# sourceMappingURL=about.1795ebaa.js.map
