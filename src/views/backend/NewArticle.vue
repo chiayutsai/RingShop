@@ -1,23 +1,18 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
 
-   <div class="d-flex align-items-center justify-content-between mb-5 ">
+  <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">新增文章</h2>
-
   </div>
 
   <div class="bg-white rounded overflow-hidden border border-secondary ">
     <div class="container-fluid py-6">
-      <ArticleForm :isAdd="true" ref="articleForm"/>
+      <ArticleForm :isAdd="true" ref="articleForm" />
       <div class="d-flex justify-content-end border-top pt-6">
         <button type="button" class="btn btn-outline-secondary white-hover me-4" @click="clean">
           重填文章資訊
         </button>
-        <button
-          type="submit"
-          class="btn btn-secondary text-white px-12"
-          @click.prevent="add"
-        >
+        <button type="submit" class="btn btn-secondary text-white px-12" @click.prevent="add">
           新增文章
         </button>
       </div>
@@ -44,11 +39,17 @@ export default {
       articleForm.$refs.addForm.validate().then((success) => {
         if (success.valid) {
           this.isLoading = true;
+          const publicDate = Math.round(new Date().getTime() / 1000);
           const data = {
-            data: articleForm.tempProduct,
+            data: {
+              create_at: publicDate,
+              ...articleForm.tempArticle,
+            },
           };
+          console.log(data);
           this.$http
-            .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`, data)
+            .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article`,
+              data)
             .then((res) => {
               console.log(res);
               if (res.data.success) {
@@ -77,6 +78,5 @@ export default {
       articleForm.cleanForm();
     },
   },
-
 };
 </script>

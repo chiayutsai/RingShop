@@ -26,7 +26,7 @@
           placeholder="輸入作者"
           rules="required"
           :class="{ 'is-backend-invalid': errors['作者'] }"
-          v-model.number="tempArticle.author"
+          v-model.string="tempArticle.author"
         ></Field>
         <error-message name="作者" class="backend-invalid-feedback"></error-message>
       </div>
@@ -87,38 +87,44 @@
       </div>
 
       <div class="col-12 mb-8">
-        <p class="mb-3">文章標籤</p>
+        <p class="mb-4">文章標籤</p>
         <div class="row row-cols-6 align-items-end">
-          <div v-for="(item, key) in tempArticle.tag" class="col mb-8" :key="key">
-            <p>{{ item }}</p>
-
-            <input
-              type="text"
-              class="form-control"
-              placeholder="標籤"
-              v-model="tempArticle.tag[key]"
-            />
-            <button type="button" class="btn-close" @click="deleteTag(key)"></button>
+          <div v-for="(item, key) in tempArticle.tag" class="col mb-4" :key="key">
+            <div class="position-relative d-flex align-items-center">
+              <input
+                type="text"
+                class="form-control form-circle"
+                placeholder="標籤"
+                v-model="tempArticle.tag[key]"
+              />
+              <button type="button" class="btn-close  tag-close" @click="deleteTag(key)"></button>
+            </div>
           </div>
         </div>
         <div class="btn btn-secondary text-white text-sm" @click="createTag">新增標籤</div>
       </div>
       <div class="col-12 mb-8">
-        <label for="articleDescription" class="form-label">文章描述</label>
-        <textarea
+        <label for="articleDescription" class="form-label"
+          >文章描述<span>最多50字</span></label
+        >
+        <Field
           type="text"
-          rows="5"
+          rows="3"
           name="文章描述"
           class="form-control"
           id="articleDescription"
           placeholder="輸入文章描述"
+          as="textarea"
+          rules="max:50"
           v-model="tempArticle.description"
-        ></textarea>
+        ></Field>
+         <error-message name="文章描述" class="backend-invalid-feedback"></error-message>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12 mb-8">
+        <p class="form-label">文章內容<span v-if="isAdd">必填</span></p>
         <ckeditor :editor="editor" :config="editorConfig" v-model="tempArticle.content"></ckeditor>
       </div>
     </div>
@@ -136,10 +142,6 @@ export default {
         return {
           tag: [],
           isPublic: false,
-          editor: ClassicEditor,
-          editorConfig: {
-            toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link'],
-          },
         };
       },
     },
@@ -149,6 +151,8 @@ export default {
     return {
       tempArticle: {},
       isUpload: false,
+      editor: ClassicEditor,
+      editorConfig: {},
     };
   },
   watch: {
@@ -185,16 +189,11 @@ export default {
 
     cleanForm() {
       this.$refs.addForm.resetForm();
+      this.tempArticle.isPublic = false;
       this.tempArticle.description = '';
       this.tempArticle.content = '';
       this.tempArticle.imageUrl = '';
-      this.tempArticle.formats = [
-        {
-          format: '',
-          content: '',
-        },
-      ];
-      this.tempArticle.imagesUrl = [];
+      this.tempArticle.tag = [];
     },
   },
   created() {
