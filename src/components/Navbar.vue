@@ -11,9 +11,9 @@
           <span class="material-icons text-3xl "> favorite </span>
         </a>
         <router-link :to="`/cart`" class="position-relative  scale-hover me-7">
-         <span v-if="carts.length" class="nav-num">
-          {{carts.length}}
-        </span>
+          <span v-if="carts.length" class="nav-num">
+            {{ carts.length }}
+          </span>
           <span class="material-icons text-3xl "> shopping_cart </span>
         </router-link>
       </div>
@@ -22,8 +22,11 @@
       </div>
     </div>
     <div class="navbar-collapse " ref="navbar">
-      <div class="d-flex align-items-center w-100">
-        <div class="w-50">
+      <div class="d-flex flex-column-reverse  flex-ipad-row align-items-center w-100">
+        <div
+          class="d-flex justify-content-start justify-content-sm-center
+          justify-content-md-start w-100 w-md-50 "
+        >
           <ul class="float-start">
             <li class="nav-item">
               <router-link
@@ -79,7 +82,7 @@
             </li>
           </ul>
         </div>
-        <div class="w-40 nav-circle rounded-pill">
+        <div class="d-none d-sm-block w-40 nav-circle rounded-pill mb-7 mb-ipad-0">
           <img
             :class="{
               show: nowPage === '',

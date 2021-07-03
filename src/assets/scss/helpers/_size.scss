@@ -16,8 +16,10 @@
 .w-40{
   width: 40%;
 }
-.w-40{
-  width: 40%;
+.w-md-50{
+  @include media-breakpoint-up(md) {
+    width: 50% !important;
+  }
 }
 .w-90{
   width: 90%;
