@@ -13,6 +13,13 @@
     width: 25%;
   }
 }
+
+@media screen and (max-width: 1536px) and (max-height: 2048px) and(min-width: 1530px){
+  .home-banner{
+    width: 30%;
+  }
+}
+
 .home-secondary-banner {
   pointer-events: none;
   position: absolute;
