@@ -17,16 +17,22 @@
 @import '../../../node_modules/bootstrap/scss/forms.scss';
 @import '../../../node_modules/bootstrap/scss/transitions';
 @import '../../../node_modules/bootstrap/scss/tables';
+@import '../../../node_modules/bootstrap/scss/offcanvas';
 @import '../../../node_modules/bootstrap/scss/modal';
+@import '../../../node_modules/bootstrap/scss/spinners';
+
 @import 'helpers/background';
 @import 'helpers/text';
 @import 'helpers/size';
 @import 'helpers/animation';
 @import 'helpers/decoration';
 @import 'helpers/hover';
+@import 'helpers/position';
 
 
 @import 'component/navbar';
+@import 'component/banner';
+
 @import 'component/card';
 @import 'component/pagination';
 @import 'component/swiper';
@@ -35,3 +41,5 @@
 @import 'component/dropdown';
 @import 'component/status';
 @import 'component/loading';
+@import 'component/tooltip';
+@import 'component/sideBtn';

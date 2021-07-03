@@ -16,6 +16,9 @@
 .w-40{
   width: 40%;
 }
+.w-40{
+  width: 40%;
+}
 .w-90{
   width: 90%;
 }
@@ -25,4 +28,25 @@
 .h-dashboard{
   min-height: calc(100vh - 48px);
   margin-top: 48px;
+}
+
+.social-icon{
+  img{
+    width: 30px;
+    height: 30px;
+  }
+}
+.vh-50{
+  height: 50vh;
+}
+.vh-sm-60{
+  @include media-breakpoint-up(sm) {
+    height: 60vh;
+  }
+  
+}
+.vh-md-100{
+  @include media-breakpoint-up(md) {
+    height: 100vh;
+  }
 }

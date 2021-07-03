@@ -5,10 +5,13 @@
 .z-1{
     z-index: 1 !important;
 }
+.z-2{
+    z-index: 2 !important;
+}
 .bg-overlay{
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: -1;
     background: url(~@/assets/images/bg.jpg) no-repeat center;
     background-size: cover;
@@ -24,6 +27,9 @@
 }
 .opacity-5{
     opacity: 0.5;
+}
+.opacity-6{
+    opacity: 0.6;
 }
 .opacity-8{
     opacity: 0.8;
@@ -54,3 +60,91 @@
 .bg-dashboard{
     background-color: lighten($primary,5%);
 }
+
+.bg-ring{
+    background-image: url(~@/assets/images/ring.jpg);
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: center;
+
+}
+.bg-earring{
+    background-image: url(~@/assets/images/earrings.jpg);
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: center;
+
+}
+.bg-bracelet{
+    background-image: url(~@/assets/images/bracelet.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.bg-mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px);
+}
+
+.bg-topic{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    border-radius: 8px;
+    padding-top: 75%;
+    overflow: hidden;
+    p{
+        bottom: 28px;
+        right: 60px;
+        letter-spacing: 2px;
+        opacity: 0;
+        transition: all 0.5s;
+    }
+    img{
+        transition: all 0.5s;
+       
+    }
+    &:hover{
+        
+        .bg-topic-mask{
+            width: calc(100% - 16px);
+            height: calc(100% - 16px);
+            margin: 8px;
+            background-color: rgba(0,0,0,0.3);
+        }
+        p{
+            bottom: 28px;
+            right: 36px;
+            opacity: 1;
+            color:#fff;
+        }
+        img{
+            transform: scale(1.05);
+        }
+ 
+    }
+}
+
+.bg-topic-necklace{
+    padding-top: calc(150% + 24px);
+}
+
+.bg-topic-mask{
+    position: absolute;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background-color: rgba(0,0,0,0.1);
+    top: 0;
+    left: 0;
+    border:1px solid rgba(#fff,0.7);
+    margin: 5px;
+    transition: all 0.5s ;
+}
+

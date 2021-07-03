@@ -2,7 +2,7 @@
   <swiper
     :loop="false"
     :spaceBetween="10"
-    :navigation="true"
+    :navigation="false"
     :thumbs="{ swiper: thumbsSwiper }"
     class="mySwiper2"
   >
@@ -28,7 +28,7 @@
   </swiper>
 </template>
 <script>
-// Import Swiper Vue.js components
+
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles

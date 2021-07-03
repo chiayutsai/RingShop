@@ -47,7 +47,7 @@
         <div class="d-flex">
           <a href="" class="me-2"> <span class="material-icons"> favorite_border </span></a>
           <a href="" @click.prevent="addCart(product.id)">
-            <span class="material-icons" > shopping_cart </span></a
+            <span class="material-icons"> shopping_cart </span></a
           >
         </div>
       </div>
@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import emitter from '@/methods/eventBus';
+
 export default {
   props: {
     product: Object,
@@ -85,6 +87,7 @@ export default {
           console.log(res);
           if (res.data.success) {
             alert(res.data.message);
+            emitter.emit('update-cart');
           } else {
             alert(res.data.message);
           }

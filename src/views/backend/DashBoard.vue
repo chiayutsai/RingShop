@@ -13,7 +13,7 @@
         後台管理
       </p>
       <div class="d-flex">
-        <router-link :to="`/home`" class="p-4 dashboard-hover">
+        <router-link :to="`/`" class="p-4 dashboard-hover">
           <span class="material-icons">
             home
           </span>

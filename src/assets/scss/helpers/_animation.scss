@@ -1,13 +1,8 @@
-.rotate-circle{
-  position: absolute;
-  opacity: 0.3;
-  right: 34%;
-  top: 38%;
-  
-}
 
 
 .rotate{
+  
+  z-index: 10;
   animation: rotate 10s linear infinite;
 }
 .arrow-rotate{
@@ -20,5 +15,17 @@
   }
   to{
     transform: rotate(360deg);
+  }
+}
+
+@keyframes scale {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
   }
 }

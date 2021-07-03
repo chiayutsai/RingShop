@@ -1,0 +1,41 @@
+.tooltip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  &:hover{
+    .tooltip-title{
+      opacity: 0.9;
+      margin-left: 0.8rem;
+    }
+  }
+}
+
+.tooltip-title {
+  max-width: $tooltip-max-width;
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  color: $tooltip-color;
+  text-align: center;
+  background-color: $tooltip-bg;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: all 0.5s;
+  @include border-radius($tooltip-border-radius);
+
+  &::before {
+    position: absolute;
+
+    display: block;
+    width: $tooltip-arrow-width;
+    height: $tooltip-arrow-height;
+    content: '';
+    border-color: transparent;
+    border-style: solid;
+    left: -0.8rem;
+   
+    border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+    border-right-color: $tooltip-arrow-color;
+  }
+}

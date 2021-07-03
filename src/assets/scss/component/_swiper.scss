@@ -4,21 +4,21 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+
+  // /* Center slide text vertically */
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  // display: -webkit-flex;
+  // display: flex;
+  // -webkit-box-pack: center;
+  // -ms-flex-pack: center;
+  // -webkit-justify-content: center;
+  // justify-content: center;
+  // -webkit-box-align: center;
+  // -ms-flex-align: center;
+  // -webkit-align-items: center;
+  // align-items: center;
 }
 
 .swiper-slide img {
@@ -36,12 +36,16 @@
   margin-left: auto;
   margin-right: auto;
 }
-
+.sale-container{
+  height: auto;
+}
 .swiper-slide {
   background-size: cover;
   background-position: center;
 }
-
+.sale-wrapper{
+  padding: 15px 0;
+}
 .mySwiper2 {
   
   width: 100%;
@@ -79,6 +83,55 @@
 }
 
 .swiper-button-prev,.swiper-button-next{
+  color: #fff !important;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 36px !important;
+  height: 36px !important;
+  &::after{
+    font-size: 16px !important;
+  }
+  @include media-breakpoint-up(md) {
+    width: 48px !important;
+    height: 48px !important;
+  &::after{
+    font-size: 20px !important;
+  }
+  }
+}
+.swiper-button-prev{
+  left: -200px !important;
+} 
+.swiper-button-next{
+  right: -100px !important;
+  transition: all 0.5s;
   display: none !important;
+  @include media-breakpoint-up(sm) {
+    
+    display: flex !important;
+  }
+  @include media-breakpoint-up(md) {
+    right: -120px !important;
+  }
+  @include media-breakpoint-up(lg) {
+    right: -150px !important;
+  }
+  @include media-breakpoint-up(xl) {
+    right: -200px !important;
+  }
+ 
+
+  &:hover{
+   
+    transform: scale(0.9);
+  }
 }
 
+.swiper-pagination{
+  position: relative !important;
+}
+
+.swiper-pagination-bullet{
+  background-color: rgba(#fff,0.8) !important;
+  margin: 0 8px;
+}

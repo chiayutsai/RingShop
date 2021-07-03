@@ -1,0 +1,353 @@
+.home-banner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  @include media-breakpoint-up(sm) {
+    width: 35%;
+    height: 75%;
+  }
+  @include media-breakpoint-up(md) {
+    width: 30%;
+  }
+  @include media-breakpoint-up(xxl) {
+    width: 25%;
+  }
+}
+.home-secondary-banner {
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  width: 25%;
+  height: 75%;
+  transform: scale(0.8) translateX(30%);
+  transform-origin: center right;
+  display: none;
+  @include media-breakpoint-up(sm) {
+    
+    display: block;
+  }
+}
+.banner {
+  pointer-events: none;
+}
+.bannerSwiper {
+  height: 100% !important;
+  .swiper-slide {
+    background: transparent;
+  }
+}
+.banner-text {
+  position: absolute;
+  right: -48px;
+  font-size: 100px;
+  opacity: 0.8;
+  top: 5%;
+  display: none;
+  @include media-breakpoint-up(sm) {
+    
+    display: block;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 120px;
+    display: block;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 140px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 160px;
+  }
+}
+.banner-shop {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+  @include media-breakpoint-up(lg) {
+    left: 20%;
+  }
+  @include media-breakpoint-up(xxl) {
+    left: 24%;
+  }
+
+ 
+}
+.banner-ring{
+  top: 12%;
+  right: 24%;
+  display: none;
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+  @include media-breakpoint-up(xl) {
+    top: 15%;
+  right: 25%;
+  }
+  @include media-breakpoint-up(xxl) {
+    right: 30%;
+  }
+
+
+}
+.banner-title {
+  margin-left:16px;
+  margin-bottom: 24px;
+  pointer-events: all;
+  letter-spacing: 1px;
+  overflow: hidden;
+  @include media-breakpoint-up(sm) {
+    margin-left: 15%;
+    margin-bottom: 0;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-left: 20%;
+  }
+  @include media-breakpoint-up(xxl) {
+    margin-left: 24%;
+  }
+ 
+  span {
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+  
+    @include media-breakpoint-up(md) {
+      font-size: 20px;
+
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 24px;
+    }
+  
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: -100%;
+      opacity: 1;
+      background: #fff;
+    }
+  }
+  h2 {
+    position: relative;
+    font-size: 24px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    
+    @include media-breakpoint-up(md) {
+      font-size: 28px;
+
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 36px;
+    }
+ 
+    &:before {
+      content: '';
+      width: 48px;
+      height: 2px;
+      background-color: #fff;
+      box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+      margin-right: 12px;
+      display: none;
+      @include media-breakpoint-up(sm) {
+        display: block;
+      }
+      @include media-breakpoint-up(md) {
+        width: 80px;
+  
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: -100%;
+      background: #fff;
+    }
+  }
+}
+
+.banner-description {
+  position: absolute;
+  line-height: 1.5;
+  font-size: 14px;
+  opacity: 0.8;
+  bottom: 10%;
+  left: 60%;
+  display: none;
+  @include media-breakpoint-up(sm) {
+    
+    display: block;
+  }
+  @include media-breakpoint-up(lg) {
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  @include media-breakpoint-up(xxl) {
+    bottom: 12%;
+  }
+
+}
+
+.banner-ellipse {
+  opacity: 0.4;
+  position: absolute;
+  left: 10%;
+  top: calc(50% - 80px);
+  transform: scale(0.6);
+  display: none;
+  @include media-breakpoint-up(sm) {
+    
+    display: block;
+  }
+  @include media-breakpoint-up(md) {
+    transform: scale(0.8);
+    top: calc(50% - 80px);
+    left: 15%;
+  }
+  @include media-breakpoint-up(lg) {
+    left: 22%;
+  }
+  @include media-breakpoint-up(xl) {
+    left: 24%;
+    transform: scale(1);
+    top: calc(50% - 40px);
+  }
+  @include media-breakpoint-up(xxl) {
+    left: 25%;
+  }
+}
+
+.banner-icon {
+  pointer-events: all;
+  position: absolute;
+  left: 36px;
+  display: none;
+  @include media-breakpoint-up(sm) {
+    
+    display: block;
+  }
+  @include media-breakpoint-up(lg) {
+    left: 72px;
+  }
+  a {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+      @include media-breakpoint-up(xl) {
+        margin-bottom: 48px;
+      }
+    }
+  }
+}
+.scroll-down {
+  position: absolute;
+  left: 48px;
+  top: 80%;
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+  @include media-breakpoint-up(lg) {
+    left: 83px;
+  }
+ 
+}
+.arrow {
+  width: 0;
+  height: 60px;
+  opacity: 0.6;
+  border: 1px solid #fff;
+  position: relative;
+  animation: scroll 2s infinite;
+  transform-origin: center;
+ 
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -5px;
+    width: 1px;
+    height: 10px;
+
+    // triangle
+    border-top: 10px solid #fff;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    height: 60px;
+  
+  }
+  30% {
+    height: 100px;
+   
+  }
+  60% {
+    height: 60px;
+  
+  }
+}
+
+.blurAnimation {
+  animation: blur 1.8s forwards;
+}
+.titleAnimation {
+  span {
+    &::before {
+      animation: title 2s forwards;
+    }
+  }
+  h2 {
+    &::after {
+      animation: title 1.5s forwards 0.1s;
+    }
+  }
+}
+@keyframes blur {
+  0% {
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  40% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateX(50px);
+  }
+  70% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 0.8;
+    filter: blur(0);
+    transform: translateX(0px);
+  }
+}
+
+@keyframes title {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
