@@ -3,10 +3,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
 body {
   color: #fff;
-  overflow-x: hidden;
+  width: 100vw;
+  overflow: hidden;
   font-family: 'Noto Sans TC', sans-serif;
 }
 
