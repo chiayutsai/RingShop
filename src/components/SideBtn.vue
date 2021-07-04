@@ -72,13 +72,13 @@
               </div>
 
               <div class="sideCart d-flex me-4">
-                <input
+                <button
                   :disabled="item.qty <= 1"
                   class="quantity-btn remove text-dark border-dark"
-                  value="-"
+
                   type="button"
                   @click="minusCartQty(index)"
-                />
+                >-</button>
                 <input
                   class="text-center quantity w-100 border-start-0
               border-end-0 border-dark bg-transparent"
@@ -87,13 +87,13 @@
                   min="1"
                   @change="updateCart(index, item.id, item.qty)"
                 />
-                <input
+                <button
                   type="button"
                   class="quantity-btn plus text-dark
             border-dark"
-                  value="+"
+
                   @click="addCartQty(index)"
-                />
+                >+</button>
               </div>
 
               <a @click.prevent="deleteCart(item.id)" href="" class="text-dark"

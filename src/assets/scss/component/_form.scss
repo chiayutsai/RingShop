@@ -83,6 +83,7 @@ textarea {
   height: 36px;
   border: 1px solid rgba(#fff, 0.8);
   background: rgba(#fff, 0.8);
+  border-radius: 0px !important;
 }
 
 input.quantity[type='number']::-webkit-inner-spin-button {
