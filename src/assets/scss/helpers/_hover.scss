@@ -46,52 +46,95 @@
 }
 
 .icon-hover {
- 
   &:hover {
     background-color: #fff;
     color: $dark;
   }
 }
 
-.scale-hover{
-  &:hover{
+.scale-hover {
+  &:hover {
     animation: scale 1s infinite;
   }
 }
 
-.translate-left-hover{
-  transition: all 0.5s ;
-  &:hover{
+.translate-left-hover {
+  transition: all 0.5s;
+  &:hover {
     @include media-breakpoint-up(lg) {
-      transform: translateX(-30px)
+      transform: translateX(-30px);
     }
-    
   }
 }
 
-.translate-right-hover{
-  transition: all 0.5s ;
-  &:hover{
+.translate-right-hover {
+  transition: all 0.5s;
+  &:hover {
     @include media-breakpoint-up(lg) {
-      transform: translateX(30px)
+      transform: translateX(30px);
     }
-    
   }
 }
 
-.footer-link{
-  span{
-    transition: all 0.5s ;
+.footer-link {
+  span {
+    transition: all 0.5s;
   }
-  a{
+  a {
     transform-origin: left top;
-    &:hover{
-       text-shadow: 1px 1px 2px rgba($dark,0.6);
-       transform: scale(1.05);
-       span{
-         color:#fff !important;
-       }
+    &:hover {
+      text-shadow: 1px 1px 2px rgba($dark, 0.6);
+      transform: scale(1.05);
+      span {
+        color: #fff !important;
+      }
     }
+  }
+}
+
+.category-link {
+  &:last-child{
+    a{
+      margin-right: 0 !important;
+    }
+  }
+  a:not(.cate-active) {
+    transform-origin: left top;
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+    padding: 8px 12px;
+    border-radius: 50rem;
    
+    @include media-breakpoint-up(md) {
+      margin-right: 48px;
+    }
+    @include media-breakpoint-up(xl) {
+      padding: 0px;
+      border-radius: 50rem;
+    }
+    span {
+      position: relative;
+      transition: all 0.5s;
+      opacity: 0;
+      left: 0;
+    }
+    &:hover {
+      background: #fff;
+      color: $dark;
+      @include media-breakpoint-up(xl) {
+        text-shadow: 1px 1px 2px rgba($dark, 0.6);
+        transform: scale(1.05);
+        background-color: transparent;
+        color: #fff;
+      }
+      span {
+        opacity: 1;
+        left: 4px;
+        @include media-breakpoint-up(xl) {
+          left: 12px;
+        }
+      }
+    }
   }
 }

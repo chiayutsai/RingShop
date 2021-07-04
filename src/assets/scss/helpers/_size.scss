@@ -1,5 +1,5 @@
-.vh-70{
-  height: 70vh;
+.vh-60{
+  height: 60vh;
 }
 .w-10{
   width: 10%;
@@ -19,6 +19,11 @@
 .w-md-50{
   @include media-breakpoint-up(md) {
     width: 50% !important;
+  }
+}
+.w-xl-90{
+  @include media-breakpoint-up(xl) {
+    width: 90% !important;
   }
 }
 .w-80{
@@ -50,8 +55,17 @@
 .vh-50{
   height: 50vh ;
 }
-.vh-sm-60{
+.vh-40{
+  height: 40vh ;
+}
+.vh-sm-40{
   @include media-breakpoint-up(sm) {
+    height: 60vh;
+  }
+  
+}
+.vh-lg-60{
+  @include media-breakpoint-up(lg) {
     height: 60vh;
   }
   

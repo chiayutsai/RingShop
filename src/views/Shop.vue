@@ -1,56 +1,102 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center position-relative vh-70 bg-all">
-    <RingCircle top="38%" right="34%" />
-    <h2 class="text-large ">{{activeCategory}}</h2>
-  </div>
-  <div class="container py-17">
+  <div class="vh-40 vh-lg-60 bg-all"></div>
+  <div class="container border-bottom border-light py-15 mb-15">
     <div class="row">
-      <div class="col-3 mt-16">
-        <p class="d-flex text-xl mb-6">
-          <span class="w-bar bg-white me-1"></span>
-          <span class="w-bar bg-white me-2"></span>
-          全部商品
-          <span class="font-abril text-lg opacity-8 align-self-end">All Products</span>
-          <span class="w-bar bg-white ms-2"></span>
-          <span class="w-bar bg-white ms-1"></span>
-        </p>
-        <ul class="mb-10">
-          <li>
-            <a
-              href=""
-              @click.prevent="getCategoryProduct('全部商品')"
-              :class="{ 'cate-active': activeCategory === '全部商品' }"
-              >全部商品</a
-            >
-          </li>
-        </ul>
-        <p class="d-flex text-xl mb-6">
-          <span class="w-bar bg-white me-1"></span><span class="w-bar bg-white me-2"></span>商品分類
-          <span class="font-abril text-lg  opacity-8  align-self-end">Category</span
-          ><span class="w-bar bg-white ms-2"></span><span class="w-bar bg-white ms-1"></span>
-        </p>
-        <ul>
-          <li v-for="category in productsCategory" class="mb-4" :key="category">
-            <a
-              href=""
-              @click.prevent="getCategoryProduct(category)"
-              :class="{ 'cate-active': activeCategory === category }"
-              >{{ category }}</a
-            >
-          </li>
-        </ul>
+      <div class="col-12 col-xl-3 mt-xl-14 mb-10 mb-sm-14 mb-xl-0">
+
+          <div class="d-none d-xl-block w-xl-90">
+            <div class="d-none d-xl-flex justify-content-between text-xl mb-6">
+              <div class="d-flex">
+                <span class="w-bar bg-white me-1"></span>
+                <span class="w-bar bg-white me-2"></span>
+              </div>
+              <p>
+                全部商品 <span
+                  class="font-abril text-lg
+          opacity-8 align-self-end"
+                  >All Products</span
+                >
+              </p>
+              <div class="d-flex">
+                <span class="w-bar bg-white ms-2"></span>
+                <span class="w-bar bg-white ms-1"></span>
+              </div>
+            </div>
+            <ul class="mb-xl-10">
+              <li class="category-link">
+                <a
+                  href=""
+                  @click.prevent="getCategoryProduct('全部商品')"
+                  :class="{ 'cate-active': activeCategory === '全部商品' }"
+                  >全部商品
+                  <span class="text-base material-icons">
+                    double_arrow
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="w-xl-90">
+            <div class="d-none d-xl-flex justify-content-between text-xl mb-6">
+              <div class="d-flex">
+                <span class="w-bar bg-white me-1"></span><span class="w-bar bg-white me-2"></span>
+              </div>
+              <p>
+                商品分類 <span class="font-abril text-lg  opacity-8  align-self-end">Category</span>
+              </p>
+              <div class="d-flex">
+                <span class="w-bar bg-white ms-2"></span><span class="w-bar bg-white ms-1"></span>
+              </div>
+            </div>
+            <ul class="d-flex flex-wrap flex-md-nowrap d-xl-block justify-content-md-center">
+               <li class="d-block d-xl-none category-link mb-5 mb-md-0">
+                <a
+                  href=""
+                  @click.prevent="getCategoryProduct('全部商品')"
+                  :class="{ 'cate-active': activeCategory === '全部商品' }"
+                  >全部商品
+                  <span class="text-base material-icons">
+                    double_arrow
+                  </span>
+                </a>
+              </li>
+              <li
+                v-for="category in productsCategory"
+                class="category-link
+           mb-xl-4 "
+                :key="category"
+              >
+                <a
+                  href=""
+                  @click.prevent="getCategoryProduct(category)"
+                  :class="{ 'cate-active': activeCategory === category }"
+                  >{{ category }}
+                  <span class="text-base material-icons">
+                    double_arrow
+                  </span></a
+                >
+              </li>
+            </ul>
+          </div>
+
       </div>
-      <div class="col-9">
-        <div class="d-flex mb-13">
-          <h1 class="title">{{activeCategory}}</h1>
-         <!-- <p class="font-abril text-3xl opacity-8 align-self-end">All Products</p> -->
+      <div class="col-12 col-xl-9">
+        <div class="d-flex mb-10">
+          <h1 class="title text-4xl">{{ activeCategory }}</h1>
+          <!-- <p class="font-abril text-3xl opacity-8 align-self-end">All Products</p> -->
         </div>
 
-        <ul class="row row-cols-3 g-5 mb-13">
-          <Card v-for="item in products" :key="item.id" :product="item" />
+        <ul class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-5 mb-13">
+          <li class="col" v-for="item in products" :key="item.id">
+            <Card :product="item" />
+          </li>
         </ul>
 
-        <Pagination v-if="activeCategory==='全部商品'" :pagination="pagination" @emit-page="getData"/>
+        <Pagination
+          v-if="activeCategory === '全部商品'"
+          :pagination="pagination"
+          @emit-page="getData"
+        />
       </div>
     </div>
   </div>
@@ -58,7 +104,6 @@
 
 <script>
 // @ is an alias to /src
-import RingCircle from '@/components/RingCircle.vue';
 import Card from '@/components/Card.vue';
 import Pagination from '@/components/Pagination.vue';
 
@@ -73,7 +118,6 @@ export default {
     };
   },
   components: {
-    RingCircle,
     Card,
     Pagination,
   },
@@ -121,7 +165,6 @@ export default {
         this.getData();
       }
     },
-
   },
   mounted() {
     this.getData();

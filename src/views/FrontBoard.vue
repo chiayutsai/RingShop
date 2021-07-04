@@ -1,4 +1,5 @@
 <template>
+<Noty />
   <Nabvar />
   <SideBtn />
   <div class="bg-overlay"></div>
@@ -7,17 +8,24 @@
 </template>
 
 <script>
+import Noty from '@/components/Noty.vue';
 
 import Nabvar from '@/components/Navbar.vue';
 import SideBtn from '@/components/SideBtn.vue';
 import Footer from '@/components/Footer.vue';
+import emitter from '@/methods/eventBus';
 
 export default {
   components: {
     Nabvar,
     SideBtn,
     Footer,
+    Noty,
   },
-
+  provide() {
+    return {
+      emitter,
+    };
+  },
 };
 </script>

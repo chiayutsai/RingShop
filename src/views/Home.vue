@@ -17,7 +17,7 @@
         <a href="" class="btn btn-dashed"><span>前往</span></a>
       </div>
       <div class="col-12 col-lg-5 offset-lg-3">
-        <div class="position-relative  bg-ring  py-lg-11 mb-14 mb-lg-0">
+        <div class="position-relative  bg-ring  py-lg-11 mb-15 mb-lg-0">
           <div class="bg-mask "></div>
 
           <img
@@ -31,7 +31,7 @@
     </div>
     <div class="row align-items-center flex-column flex-lg-row pb-15">
       <div class="col-12  col-lg-5 ">
-        <div class="position-relative bg-crystal py-lg-11 mb-14 mb-lg-0">
+        <div class="position-relative bg-crystal py-lg-11 mb-15 mb-lg-0">
           <div class="bg-mask "></div>
 
           <img
@@ -71,7 +71,7 @@
         <a href="" class="btn btn-dashed"><span>前往</span></a>
       </div>
       <div class="col-12 col-lg-5 offset-lg-3">
-        <div class="position-relative bg-earring py-lg-11 mb-14 mb-lg-0">
+        <div class="position-relative bg-earring py-lg-11 mb-15 mb-lg-0">
           <div class="bg-mask "></div>
 
           <img

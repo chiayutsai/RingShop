@@ -21,8 +21,43 @@
   }
 }
 .cate-active {
-  color: #c3ac9b;
-  text-shadow: 1px 1px 1px rgba(#000, 0.7);
+  
+  display: inline-block;
+  position: relative;
+  margin-right: 48px;
+ color:$dark;
+ background-color: #fff;
+ border-radius: 50rem;
+ padding:8px  12px;
+  span {
+    display: none;
+  }
+ &:hover{
+   color:$dark;
+   @include media-breakpoint-up(xl) {
+     color:#fff;
+   }
+ }
+ @include media-breakpoint-up(md) {
+  margin-right: 64px;
+}
+  @include media-breakpoint-up(xl) {
+    padding: 0;
+    border-radius: 0;
+    color: #fff;
+    background-color: transparent;
+    text-shadow: 1px 1px 2px rgba($dark, 0.6);
+    &::before {
+      content: '';
+      width: 100%;
+      height: 4px;
+      display: block;
+      position: absolute;
+      bottom: 1px;
+      background-color: $secondary;
+      z-index: -1;
+    }
+  }
 }
 
 .img-overlay {
@@ -113,11 +148,9 @@
   display: none;
   @include media-breakpoint-up(lg) {
     display: block;
-  
   }
   @include media-breakpoint-up(xl) {
     left: 30%;
-  
   }
 }
 
@@ -125,10 +158,10 @@
   position: relative;
   overflow: hidden;
 }
-.about-img{
+.about-img {
   display: none;
   @include media-breakpoint-up(lg) {
-   display: block;
+    display: block;
   }
   @include media-breakpoint-up(xl) {
     height: auto;
@@ -180,3 +213,4 @@
     stroke-dashoffset: 50;
   }
 }
+
