@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-17">
+  <div class="container pt-15">
     <div class="img-overlay"></div>
     <div class="row g-5">
       <div class="col-6">
@@ -10,28 +10,28 @@
         </div> -->
       </div>
       <div class="col-5 offset-1">
-        <p class="text-light mb-2">{{ product.category }}</p>
+        <p class="text-light mb-3">{{ product.category }}</p>
 
-        <h1 class="text-3xl mb-6">{{ product.title }}</h1>
-        <ul class="mb-6 ms-2 text-sm text-light point">
+        <h1 class="text-3xl mb-7">{{ product.title }}</h1>
+        <ul class="mb-7 text-sm text-light point">
           <li class="mb-2">商品材質：鋯石 / 銅 (保色電鍍)</li>
           <li>SIZE長寬約：7 cm x 0.9 cm</li>
         </ul>
 
-        <p class="fw-bold text-xl mb-8">
+        <p class="fw-bold text-xl mb-7">
           NT${{ product.price
           }}<span class="text-light text-lg fw-normal text-decoration-line-through ms-4"
             >NT${{ product.origin_price }}</span
           >
         </p>
-        <div class="d-flex w-75 mb-3" :class="{ 'mb-6': !failQty }">
-          <input
+        <div class="d-flex w-75 mb-3" :class="{ 'mb-7': !failQty }">
+          <button
             class="quantity-btn remove text-xl"
-            value="-"
+
             type="button"
             @click="minusQty"
             :disabled="qty <= 1"
-          />
+          >-</button>
           <input
             class="text-center quantity w-100 text-lg"
             type="number"
@@ -39,10 +39,10 @@
             v-model="qty"
             @change="checkQty"
           />
-          <input type="button" class="quantity-btn plus text-xl" value="+" @click="addQty" />
+          <button type="button" class="quantity-btn plus text-xl" @click="addQty" >+</button>
         </div>
-        <p v-if="failQty" class="text-sm text-primary opacity-5 mb-6">商品數量最少為一件!</p>
-        <div class="w-75 btn btn-secondary text-white shadow secondary-hover mb-5">
+        <p v-if="failQty" class="text-sm text-primary opacity-5 mb-7">商品數量最少為一件!</p>
+        <div class="w-75 btn btn-secondary text-white shadow secondary-hover mb-7">
           <a
             href=""
             class="d-flex justify-content-center white-hover"
@@ -51,7 +51,7 @@
             <span class="material-icons"> shopping_cart </span>加入購物車</a
           >
         </div>
-        <a href="" class="d-flex mb-8">
+        <a href="" class="d-flex mb-7">
           <span class="material-icons me-3"> favorite_border </span>加入收藏清單</a
         >
         <ul class="border-start border-3 border-secondary text-sm ps-5">
