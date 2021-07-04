@@ -57,15 +57,27 @@
   box-sizing: border-box;
   padding: 10px 0;
 }
-
+.mySwiper2 {
+  height: 300px !important;
+  @include media-breakpoint-up(sm) {
+    height: 360px!important;
+  }
+  @include media-breakpoint-up(md) {
+    height: 500px !important;
+  }
+  
+}
 .mySwiper .swiper-slide {
   cursor: pointer;
-  width: 100px !important;
-  height: 100px !important;
+  width: 80px !important;
+  height: 80px !important;
   opacity: 0.4;
   border-radius: 5px;
   transition: all 0.5s;
-  
+  @include media-breakpoint-up(md) {
+    width: 100px !important;
+    height: 100px !important;
+  }
   &:hover{
     opacity: 1;
   }

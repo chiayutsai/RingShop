@@ -1,5 +1,5 @@
 <template>
-   <div class="container my-17">
+   <div class="container pb-15">
         <ul class="nav nav-tabs mb-10" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
@@ -44,7 +44,7 @@
             </button>
           </li>
         </ul>
-        <div class="tab-content px-8" id="myTabContent">
+        <div class="tab-content px-lg-8" id="myTabContent">
           <div class="tab-pane fade show active"
           id="home" role="tabpanel" aria-labelledby="home-tab">
             <p class="mb-8">{{product.description}}</p>
@@ -54,22 +54,22 @@
           </div>
 
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <ul class="d-flex flex-wrap w-50 mx-auto
+            <ul class="d-flex flex-wrap w-100 w-md-75 w-lg-50 mx-auto
             text-center border-bottom border-light mb-4 pb-2">
               <li class="w-50 fw-bold">商品材質：</li>
               <li class="w-50">鋯石 / 銅 (保色電鍍)</li>
             </ul>
-            <ul class="d-flex flex-wrap w-50 mx-auto
+            <ul class="d-flex flex-wrap  w-100 w-md-75 w-lg-50 mx-auto
             text-center border-bottom border-light mb-4 pb-2">
               <li class="w-50 fw-bold">商品尺寸：</li>
               <li class="w-50">長寬約：7 cm x 0.9 cm</li>
             </ul>
-            <ul class="d-flex flex-wrap w-50 mx-auto
+            <ul class="d-flex flex-wrap  w-100 w-md-75 w-lg-50 mx-auto
             text-center border-bottom border-light mb-4 pb-2">
               <li class="w-50 fw-bold">商品製造：</li>
               <li class="w-50">Made In Korea</li>
             </ul>
-            <ul class="d-flex flex-wrap w-50 mx-auto text-center">
+            <ul class="d-flex flex-wrap  w-100 w-md-75 w-lg-50 mx-auto text-center">
 
               <li class="w-50 fw-bold">販售形式：</li>
               <li class="w-50">單件販售</li>

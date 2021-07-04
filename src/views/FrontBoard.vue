@@ -1,6 +1,6 @@
 <template>
 <Noty />
-  <Nabvar />
+  <Nabvar :page="page"/>
   <SideBtn />
   <div class="bg-overlay"></div>
   <router-view/>
@@ -22,10 +22,18 @@ export default {
     Footer,
     Noty,
   },
+  data() {
+    return {
+      page: '',
+    };
+  },
   provide() {
     return {
       emitter,
     };
+  },
+  updated() {
+    this.page = this.$route.name;
   },
 };
 </script>

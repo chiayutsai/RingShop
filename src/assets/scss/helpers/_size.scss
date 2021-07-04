@@ -21,6 +21,11 @@
     width: 50% !important;
   }
 }
+.w-md-75{
+  @include media-breakpoint-up(md) {
+    width: 75% !important;
+  }
+}
 .w-xl-90{
   @include media-breakpoint-up(xl) {
     width: 90% !important;
@@ -32,7 +37,11 @@
 .w-90{
   width: 90%;
 }
-
+.w-lg-50{
+  @include media-breakpoint-up(lg) {
+    width: 50% !important;
+  }
+}
 .w-lg-100{
   @include media-breakpoint-up(lg) {
     width: 100% !important;

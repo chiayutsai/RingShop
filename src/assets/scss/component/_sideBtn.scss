@@ -1,8 +1,11 @@
 .sideBtn{
   position: fixed;
-  right: 24px;
+  right: 12px;
   bottom: 48px;
   z-index: 10;
+  @include media-breakpoint-up(sm) {
+    right: 24px;
+  }
   @include media-breakpoint-up(xl) {
     right: 30px;
   }

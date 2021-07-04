@@ -63,13 +63,23 @@
 .img-overlay {
   position: absolute;
   z-index: -1;
-  top: 12%;
+  top: 35%;
   left: 0;
-  width: 54%;
-  height: 360px;
+  width: 72%;
+  height: 240px;
   background: linear-gradient(to right, rgba(#91775e, 0.8) 0%, rgba(#91775e, 0.3) 100%);
-
   filter: blur(1px);
+  display: none;
+  @include media-breakpoint-up(sm) {
+    display: block;
+  }
+  @include media-breakpoint-up(md) {
+    height: 360px;
+  }
+  @include media-breakpoint-up(lg) {
+    
+    width: 54%;
+  }
 }
 .btn-outline-info {
   &:hover {
@@ -214,3 +224,20 @@
   }
 }
 
+.product-img{
+  height: 300px;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    height: 360px;
+  }
+  @include media-breakpoint-up(md) {
+    height: 500px;
+  }
+}
+
+.no-allow{
+  cursor:not-allowed !important;
+}
+.btn-secondary:focus{
+  background-color: $secondary;
+}

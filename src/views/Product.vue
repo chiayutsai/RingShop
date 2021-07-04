@@ -1,15 +1,19 @@
 <template>
-  <div class="container pt-15">
+  <div class="w-100 vh-100 position-absolute -z-1">
     <div class="img-overlay"></div>
+  </div>
+  <div class="container pt-15">
     <div class="row g-5">
-      <div class="col-6">
-        <img v-if="!product.imagesUrl" class="rounded shadow" :src="product.imageUrl" alt="" />
-        <SwiperComponent v-else :product="product"/>
-        <!-- <div class="swiper" >
-
-        </div> -->
+      <div class="col-12 col-lg-6">
+        <img
+          v-if="!product.imagesUrl"
+          class="rounded shadow product-img"
+          :src="product.imageUrl"
+          alt=""
+        />
+        <SwiperComponent v-else :product="product" />
       </div>
-      <div class="col-5 offset-1">
+      <div class="col-12 col-lg-5 offset-lg-1">
         <p class="text-light mb-3">{{ product.category }}</p>
 
         <h1 class="text-3xl mb-7">{{ product.title }}</h1>
@@ -24,14 +28,16 @@
             >NT${{ product.origin_price }}</span
           >
         </p>
-        <div class="d-flex w-75 mb-3" :class="{ 'mb-7': !failQty }">
+
+        <div class="d-flex w-100 w-lg-75 mb-3" :class="{ 'mb-7': !failQty }">
           <button
             class="quantity-btn remove text-xl"
-
             type="button"
             @click="minusQty"
             :disabled="qty <= 1"
-          >-</button>
+          >
+            -
+          </button>
           <input
             class="text-center quantity w-100 text-lg"
             type="number"
@@ -39,19 +45,33 @@
             v-model="qty"
             @change="checkQty"
           />
-          <button type="button" class="quantity-btn plus text-xl" @click="addQty" >+</button>
+          <button type="button" class="quantity-btn plus text-xl" @click="addQty">+</button>
         </div>
         <p v-if="failQty" class="text-sm text-primary opacity-5 mb-7">商品數量最少為一件!</p>
-        <div class="w-75 btn btn-secondary text-white shadow secondary-hover mb-7">
-          <a
-            href=""
-            class="d-flex justify-content-center white-hover"
-            @click.prevent="addCart(product.id, qty)"
+
+        <div
+          class="position-relative w-100 w-lg-75
+           "
+        >
+          <button
+
+            class="w-100 d-flex justify-content-center white-hover
+            btn btn-secondary text-white shadow secondary-hover"
+            @click="addCart(product.id, qty)"
           >
-            <span class="material-icons"> shopping_cart </span>加入購物車</a
+            <span class="material-icons"> shopping_cart </span>加入購物車</button
           >
+          <button v-if="addLoading"
+            class=" btn d-flex justify-content-center align-items-center position-absolute no-allow
+               w-100 h-100 top-0 start-0 bg-light"
+          >
+            <div class="spinner-border spinner-border-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
         </div>
-        <a href="" class="d-flex mb-7">
+
+        <a href="" class="d-flex my-7">
           <span class="material-icons me-3"> favorite_border </span>加入收藏清單</a
         >
         <ul class="border-start border-3 border-secondary text-sm ps-5">
@@ -65,16 +85,18 @@
       </div>
     </div>
   </div>
-  <Tab :product="product" />
-  <div v-if="relativeProduct.length > 0" class="container mb-17">
-    <p class="text-3xl text-center border-bottom border-light pb-4 mb-8">相關產品</p>
-    <ul class="row row-cols-4 g-5">
-      <Card v-for="item in relativeProduct" :key="item.id" :product="item" />
-    </ul>
+  <div class="container border-bottom border-light pt-15 mb-15">
+    <Tab :product="product" />
+
+    <div v-if="relativeProduct.length > 0" class="container mb-15">
+      <p class="text-3xl text-center border-bottom border-light pb-4 mb-8">相關產品</p>
+      <ul class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5">
+        <Card v-for="item in relativeProduct" :key="item.id" :product="item" />
+      </ul>
+    </div>
   </div>
 </template>
 <script>
-
 import Card from '@/components/Card.vue';
 import SwiperComponent from '@/components/SwiperComponent.vue';
 
@@ -95,8 +117,10 @@ export default {
       failQty: false,
       relativeProduct: [],
       routeID: '',
+      addLoading: false,
     };
   },
+  inject: ['emitter'],
   methods: {
     setThumbsSwiper(swiper) {
       this.thumbsSwiper = swiper;
@@ -159,6 +183,7 @@ export default {
       });
     },
     addCart(id, qty) {
+      this.addLoading = true;
       const data = {
         data: { product_id: id, qty },
       };
@@ -167,9 +192,19 @@ export default {
         .then((res) => {
           console.log(res);
           if (res.data.success) {
-            alert(res.data.message);
+            this.qty = 1;
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+            this.addLoading = false;
+            this.emitter.emit('update-cart');
           } else {
-            alert(res.data.message);
+            this.addLoading = false;
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
           }
         })
         .catch((err) => {

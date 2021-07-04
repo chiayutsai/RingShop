@@ -2,7 +2,7 @@
   <div class="navbar" :class="{ 'navbar-bg': scrollDown }">
     <router-link class="logo" :to="`/`" @click="changePage">RingRing</router-link>
     <div class="navbar-nav">
-      <div v-if="scrollDown" class="d-flex">
+      <div v-if="scrollDown || showIcon " class="d-flex">
         <router-link class="me-7  scale-hover" :to="`/shop`">
           <span class="material-icons text-3xl"> storefront </span>
         </router-link>
@@ -33,7 +33,7 @@
                 :to="`/`"
                 class="nav-link"
                 @click="changePage"
-                @mouseenter="changeImg('')"
+                @mouseenter="changeImg('home')"
                 @mouseleave="clear"
               >
                 <p class="nav-number">01</p>
@@ -86,7 +86,7 @@
           <img
             :class="{
               show: nowPage === '',
-              hoverImg: hoverPage === '' && nowPage !== ''
+              hoverImg: hoverPage === 'home' && nowPage !== ''
             }"
             class="w-100  rounded-pill"
             src="@/assets/images/home-link.jpg"
@@ -129,12 +129,19 @@
 import emitter from '@/methods/eventBus';
 
 export default {
+  props: {
+    page: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       scrollDown: false,
       nowPage: '',
       hoverPage: '',
       carts: [],
+      showIcon: '',
     };
   },
   methods: {
@@ -179,12 +186,19 @@ export default {
         });
     },
   },
+  watch: {
+    page() {
+      this.showIcon = this.page === 'product';
+    },
+  },
   mounted() {
     this.getcart();
+
     emitter.on('update-cart', () => {
       this.getcart();
     });
   },
+
   created() {
     window.addEventListener('scroll', this.handleScroll);
   },

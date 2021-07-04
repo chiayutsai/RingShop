@@ -142,6 +142,7 @@ export default {
     },
     openOffcanvas() {
       this.offcanvas.show();
+      document.querySelector(':root').style.overflowY = 'hidden';
     },
     handleScroll() {
       if (window.scrollY > 200) {
@@ -227,10 +228,14 @@ export default {
     },
   },
   mounted() {
-    this.offcanvas = new Offcanvas(this.$refs.offcanvas);
+    this.offcanvas = new Offcanvas(this.$refs.offcanvas, { scroll: false });
     this.getcart();
     emitter.on('update-cart', () => {
       this.getcart();
+    });
+
+    this.$refs.offcanvas.addEventListener('hidden.bs.offcanvas', () => {
+      document.querySelector(':root').style.overflowY = 'auto';
     });
   },
   created() {
