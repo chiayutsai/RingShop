@@ -21,8 +21,17 @@
     width: 50% !important;
   }
 }
+.w-80{
+  width: 80%;
+}
 .w-90{
   width: 90%;
+}
+
+.w-lg-100{
+  @include media-breakpoint-up(lg) {
+    width: 100% !important;
+  }
 }
 .small-size{
   height: 120px;

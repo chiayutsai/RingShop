@@ -107,13 +107,13 @@
         <p class="text-dark text-lg mb-5">總計：NT${{ final_total }}</p>
         <router-link
           :to="`/shop`"
-          class="d-block btn-lg btn btn-dark btn-hover mb-5"
+          class="d-block  btn btn-dark btn-hover py-4 mb-5"
           data-bs-dismiss="offcanvas"
           ><span>繼續購物</span></router-link
         >
         <router-link
           :to="`/cart`"
-          class="d-block btn-lg btn btn-dark btn-hover"
+          class="d-block  btn btn-dark btn-hover py-4"
           data-bs-dismiss="offcanvas"
           ><span>前往購物車</span></router-link
         >

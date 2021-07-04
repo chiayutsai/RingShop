@@ -1,0 +1,17 @@
+.border-lg-end{
+  @include media-breakpoint-up(lg) {
+    border-right: 1px solid $light ;
+  }
+}
+
+.border-md-end{
+  @include media-breakpoint-up(md) {
+    border-right: 1px solid $light ;
+  }
+}
+
+.border-bottom-md-0{
+  @include media-breakpoint-up(md) {
+    border-bottom: 0px !important;
+}
+}

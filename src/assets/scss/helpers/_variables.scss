@@ -1,7 +1,7 @@
 
 $grid-breakpoints: (
   xs: 0,
-  sm: 640px,
+  sm: 641px,
   md: 769px,
   ipad: 821px,
   lg: 992px,
@@ -49,7 +49,7 @@ $spacers: (
   10: ($spacer * 2.25), //36
   11: ($spacer * 2.5), //40
   12: ($spacer * 3.75), //60 
-  13: ($spacer * 5), //80
+  13: ($spacer * 4.5), //72
   14: ($spacer * 6), //96
   15: ($spacer * 7), //112
   16: ($spacer * 7.5), //120 

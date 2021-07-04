@@ -62,24 +62,35 @@
 }
 
 .bg-ring{
-    background-image: url(~@/assets/images/ring.jpg);
+    background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625319903781.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=mzk1w6ZKrwnsx%2BLQrmWZX1sD4F8UjExVKwE4%2B2gF8wgsMxWrOlfHp4NP85hnXJTBXB8Nb6uiINoNiSyFMz%2Fdmh2MSY9lU5NnES5rpaPKwHfK8jCiJYb8jMQDjrjPHEMkCl7ZuNxb5VwWK%2Bsh5zKKBkuozzZHdaczYTl1LL6dhROv6%2FOpOpJkO%2Bo%2FwMjHbNY6CGR0D5KkxhvVBCHZww7WUcmrxGoqclQ2zHIkhnn4IExRoG9iM3zK%2BYhg6d0H3kkHj9kSu2HWuogEK9JJ71zSsbxoaukNS3brjn%2F4Tr9LusX9laVE8Dy434Aq38%2FKsYY4flZk6m650G4ZkKA45eZ0cA%3D%3D');
    background-size: cover;
    background-attachment: fixed;
    background-position: center;
+   height: 240px;
+   @include media-breakpoint-up(lg) {
+    height: auto;
+  }
 
 }
 .bg-earring{
-    background-image: url(~@/assets/images/earrings.jpg);
-   background-size: cover;
+    background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625322060288.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=fNvEeVRsBZ56b5cJvK5l16IPjpVK1H7G0UcVKqureR10yDoFMyHrBecxNtgLhCKIwq48Y4WdJTkrIlGrgFqFyGvOO%2FV%2BtR7YhP4cq4jYKJw9%2B5CVnQimk6ULbF5Y5U2g0oeghCY7gMlBnPeIr9xXWqRcJgmPfaWLc2ruZsBdyDgyo8tuTjKW%2FDXozC4qft6b%2FqGcAOV3l5l5jyodO66QJecyU%2BF55m8B4Ltolv89LETE2MXJB1EuftTAa0yUkU1iZGX8SBIN1T5HcJ4Epan%2Fe33FZnetnfUTTuOVC1bxG8frqtAJ%2BI7YxmvRqhXGbd5Tm94%2B67yyIZleCz1IIy1NAg%3D%3D');
+   background-size: contain;
    background-attachment: fixed;
-   background-position: center;
-
+   background-position: left;
+   height: 240px;
+   @include media-breakpoint-up(lg) {
+    height: auto;
+  }
 }
-.bg-bracelet{
-    background-image: url(~@/assets/images/bracelet.jpg);
-    background-size: cover;
+.bg-crystal{
+    background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625321205605.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=X4vC%2BGwGh%2Bfd8dbY9PdsyxK4RBbZVnbo9EXUTZ%2FH2es0WjjRHZGFEtHCdpZzoLinp81DE3iNFw7os6Vy8I0KOu%2Fq1G4iB%2FfgFIX4B2WEq%2FDgedT442BaZ8iWMwMYs06dRbRgMgwVBljuiS6rKablTc63amsb8wzFPkYrKZzg5OXr2lYaYCWQZ50padM4fNoNiwn8czJDzSiRIGZCmd2rEV4eFf7sPMiMnFoGVgML4HHJNDLyuXh%2FqdrENwgQWg4oyPh1QKmgi%2Fz%2B52x%2FwM3qW7LOX8N4UTokYuFIweOjhd2FQ9zhCYMhS8f5itBtGzkz7fHSiJujzGF7M0QFMQC2aQ%3D%3D');
+    background-size: contain;
     background-attachment: fixed;
-    background-position: center;
+    background-position: left;
+    height: 240px;
+    @include media-breakpoint-up(lg) {
+     height: auto;
+   }
 }
 .bg-mask{
     position: absolute;
@@ -98,8 +109,11 @@
     justify-content: center;
     transition: all 0.5s;
     border-radius: 8px;
-    padding-top: 75%;
+    padding-top: 45%;
     overflow: hidden;
+    @include media-breakpoint-up(lg) {
+        padding-top: 75%;
+      }
     p{
         bottom: 28px;
         right: 60px;
@@ -133,7 +147,13 @@
 }
 
 .bg-topic-necklace{
-    padding-top: calc(150% + 24px);
+    padding-top:45%;
+    img{
+        object-position: bottom;
+    }
+    @include media-breakpoint-up(lg) {
+        padding-top: calc(150% + 24px);
+    }
 }
 
 .bg-topic-mask{

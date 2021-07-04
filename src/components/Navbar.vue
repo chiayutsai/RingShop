@@ -8,7 +8,7 @@
         </router-link>
 
         <a href="" class="me-7 scale-hover">
-          <span class="material-icons text-3xl "> favorite </span>
+          <span class="material-icons text-base text-3xl "> favorite </span>
         </a>
         <router-link :to="`/cart`" class="position-relative  scale-hover me-7">
           <span v-if="carts.length" class="nav-num">

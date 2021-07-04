@@ -1,7 +1,21 @@
 
-.ms-offset-4{
-  margin-left: 38%;
+.ms-lg-offset-4{
+  margin: 0 auto;
+  @include media-breakpoint-up(lg) {
+    margin-left: 38%;
+  }
+  
 }
-.-ms-offset-4{
-  margin-left: -33.3%;
+.-ms-lg-offset-4{
+  margin: 0 auto;
+  @include media-breakpoint-up(lg) {
+    margin-left: -33.3%;
+  }
+  
+}
+.top-3{
+  top: 48px;
+  @include media-breakpoint-up(lg) {
+    top: 0;
+  }
 }
