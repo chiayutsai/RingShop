@@ -1,5 +1,5 @@
 <template>
-  <div class=" card">
+  <div class="card">
     <router-link
       class="card-img "
       :class="{ 'card-img-rotate': !cartCard, 'card-small-img': cartCard }"
@@ -17,27 +17,42 @@
 
     <div class="card-body">
       <div v-if="cartCard">
+        <h3 class="card-title mb-2">
+          <router-link
+            :to="`/product/${product.id}`"
+            :class="{ 'text-dark ': cartCard, 'text-base': cartCard }"
+            >{{ product.title }}</router-link
+          >
+        </h3>
         <p class="mb-2">
           NT${{ product.price
           }}<span class="text-dark text-sm opacity-5 text-decoration-line-through ms-2"
             >NT${{ product.origin_price }}</span
           >
         </p>
-        <div
-          class="btn btn-sm btn-secondary text-white secondary-hover"
-          @click="addCart(product.id)"
-        >
-          加入購物車
+        <div class="position-relative d-inline-block">
+          <div
+            class="btn btn-sm btn-secondary text-white secondary-hover"
+            @click="addCart(product.id)"
+          >
+            加入購物車
+          </div>
+          <button
+            v-if="loading"
+            class=" btn d-flex justify-content-center align-items-center
+                position-absolute no-allow
+                h-100 w-100 top-0 start-0 bg-light"
+          >
+            <div class="spinner-border spinner-border-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
         </div>
       </div>
       <div v-else class="d-flex align-items-center justify-content-between">
         <div>
           <h3 class="card-title mb-3">
-            <router-link
-              :to="`/product/${product.id}`"
-              :class="{ 'text-dark ': cartCard, 'text-base': cartCard }"
-              >{{ product.title }}</router-link
-            >
+            <router-link :to="`/product/${product.id}`">{{ product.title }}</router-link>
           </h3>
           <p>
             NT${{ product.price
@@ -78,7 +93,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     product: Object,
@@ -88,7 +102,6 @@ export default {
     return {
       showFirstImg: true,
       loading: false,
-
     };
   },
   inject: ['emitter'],

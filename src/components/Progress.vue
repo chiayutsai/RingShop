@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-around w-50 mx-auto mb-10">
+    <div class="d-flex justify-content-around w-md-75 w-100 w-lg-50 mx-auto mb-10">
       <div class="d-flex flex-column align-items-center">
         <div
           class="d-flex align-items-center justify-content-center circle rounded-circle border mb-2"

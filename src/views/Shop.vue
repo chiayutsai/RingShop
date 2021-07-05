@@ -1,4 +1,6 @@
 <template>
+  <Loading :isLoading="isLoading"></Loading>
+
   <div class="vh-40 vh-lg-60 bg-all"></div>
   <div class="container border-bottom border-light py-15 mb-15">
     <div class="row">
@@ -116,6 +118,7 @@ export default {
       productsCategory: [],
       activeCategory: '全部商品',
       pagination: {},
+      isLoading: false,
     };
   },
   components: {
@@ -124,6 +127,7 @@ export default {
   },
   methods: {
     getData(page = 1) {
+      this.isLoading = true;
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`)
         .then((res) => {
@@ -131,8 +135,10 @@ export default {
           if (res.data.success) {
             this.products = res.data.products;
             this.pagination = res.data.pagination;
+            this.isLoading = false;
           } else {
-            alert(res.data.message);
+            console.log(res.data.message);
+            this.isLoading = false;
           }
         })
         .catch((err) => {

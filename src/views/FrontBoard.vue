@@ -1,7 +1,8 @@
 <template>
+
 <Noty />
   <Nabvar :page="page"/>
-  <SideBtn />
+  <SideBtn :page="page"/>
   <div class="bg-overlay"></div>
   <router-view/>
   <Footer/>
@@ -33,6 +34,9 @@ export default {
     };
   },
   updated() {
+    this.page = this.$route.name;
+  },
+  mounted() {
     this.page = this.$route.name;
   },
 };

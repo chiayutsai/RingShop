@@ -1,9 +1,11 @@
 <template>
-  <div class="container pt-17">
+  <Loading :isLoading="isLoading"></Loading>
+
+  <div class="container pt-15">
     <Progress step="1" />
     <h3
       class="d-flex rounded-top align-items-center
-     bg-secondary p-4"
+     bg-secondary text-2xl p-4"
     >
       <span class="material-icons me-3"> shopping_cart </span>購物車
     </h3>
@@ -14,7 +16,8 @@
       </div>
     </div>
     <div v-else>
-      <div class="row g-0 p-4 border border-white border-bottom-0 bg-table text-dark">
+      <div class="d-none d-md-flex row g-0 p-4 border border-white
+       border-bottom-0 bg-table text-dark">
         <div class="col-4">商品資料</div>
         <div class="col-2">單件價格</div>
         <div class="col-3">數量</div>
@@ -28,28 +31,32 @@
           class="row g-0 p-4 border border-white align-items-center
         bg-table text-dark border-bottom-0"
         >
-          <div class="col-4">
+          <div class="col-11 col-md-4 mb-5 mb-md-0">
             <div class="d-flex align-items-center">
               <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
 
-              <h3 class="text-lg">{{ item.product.title }}</h3>
+              <h3 class="text-base">{{ item.product.title }}</h3>
             </div>
           </div>
-          <div class="col-2">
-            <p>NT${{ item.product.price }}</p>
+          <div class="col-6 col-md-2 order-4 order-md-0">
+            <div class="d-flex d-md-block align-items-end">
+            <p class="me-3 me-md-0">NT${{ item.product.price }}</p>
             <p class="text-dark opacity-5 text-sm text-decoration-line-through">
               NT${{ item.product.origin_price }}
             </p>
+            </div>
           </div>
-          <div class="col-3">
-            <div class="d-flex w-75" :class="{ 'mb-2': failQty }">
-              <input
+          <div class="col-12 col-md-3 order-3 order-md-0 mb-5 mb-md-0">
+            <div class="d-flex w-100  w-md-75 position-relative">
+
+              <button
                 :disabled="item.qty <= 1"
                 class="quantity-btn cart-remove text-dark border-dark"
-                value="-"
                 type="button"
                 @click="minusCartQty(index)"
-              />
+              >
+                -
+              </button>
               <input
                 class="text-center quantity w-100 border-start-0
               border-end-0 border-dark bg-transparent"
@@ -58,60 +65,79 @@
                 min="1"
                 @change="updateCart(index, item.id, item.qty)"
               />
-              <input
+              <button
                 type="button"
                 class="quantity-btn plus text-dark
             border-dark"
-                value="+"
                 @click="addCartQty(index)"
-              />
+              >
+                +
+              </button>
+
+              <button
+                v-if="updateLoading"
+                class=" btn d-flex justify-content-center align-items-center
+                position-absolute no-allow
+               w-100 h-100 top-0 start-0 bg-light"
+              >
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </button>
             </div>
           </div>
-          <div class="col-2">NT${{ item.final_total }}</div>
-          <div class="col-1">
-            <a @click.prevent="deleteCart(item.id)" href="" class="text-dark"
+          <div class="col-6 col-md-2 order-4 order-md-0 text-end text-md-start">
+            <span class="d-inline d-md-none">小計：</span>
+          NT${{ item.final_total }}</div>
+          <div class="col-1 order-2 order-md-0">
+            <a @click.prevent="openModal(item.id)" href="" class="text-dark scale-hover"
               ><span class="material-icons"> delete_forever </span></a
             >
           </div>
         </div>
       </div>
       <div
-        class="d-flex justify-content-between align-items-center
+        class="d-flex
+         justify-content-between align-items-end  align-items-sm-center
       rounded-bottom bg-table border border-white p-6"
       >
-        <a @click.prevent="deleteAll" class="btn btn-outline-dark">清空購物車</a>
+        <a @click.prevent="openModal()" class="btn btn-outline-dark">清空購物車</a>
 
-        <div class="d-flex align-items-center">
-          <p class="text-dark text-xl me-5">總計：NT${{ final_total }}</p>
-          <router-link  :to="`/shop`" class="btn btn-dark">繼續購物</router-link>
+        <div class="d-flex flex-column flex-sm-row align-items-center">
+          <p class="text-dark text-base text-md-xl mb-5 mb-sm-0 me-sm-5 ">
+            總計：NT${{ final_total }}</p>
+          <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7"
+            ><span>繼續購物</span></router-link
+          >
         </div>
       </div>
     </div>
   </div>
-  <div class="container mt-15 mb-17">
+  <div class="container border-bottom border-light mt-9 mt-lg-15 pb-15 mb-15">
     <div class="row g-5">
-      <div class="col-8">
+      <div class="col-12 col-lg-8">
         <p class="text-xl rounded-top bg-secondary p-4">超值加購</p>
         <div class="p-4 rounded-bottom border border-white bg-table text-dark">
-          <ul class="row row-cols-3">
-            <Card v-for="item in randomProduct" :key="item.id"
-             :cartCard="true" :product="item"/>
+          <ul class="row row-cols-2 row-cols-sm-3">
+            <li class="col mb-5 mb-sm-0" v-for="item in randomProduct" :key="item.id">
+            <Card  :cartCard="true" :product="item" />
+            </li>
           </ul>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-lg-4">
         <p class="text-xl rounded-top bg-secondary p-4">訂單資訊</p>
         <div class="row g-0 p-6 rounded-bottom border border-white bg-table text-dark">
           <div class="col-4 mb-4">
             <p>商品數量：</p>
           </div>
-          <div class="col-8 mb-4">
+          <div class="col-8 mb-4 text-end">
             <p>共 {{ allQty }} 件</p>
           </div>
-          <div class="col-4 mb-4">
+          <div class="col-4 mb-4 ">
             <p>小計：</p>
           </div>
-          <div class="col-8 mb-4">
+          <div class="col-8 mb-4 text-end">
             <p>NT${{ final_total }}</p>
           </div>
           <!-- <div class="col-4 mb-6">
@@ -126,7 +152,7 @@
           <div class="col-4 mb-4">
             <p class="fw-bold">總計：</p>
           </div>
-          <div class="col-8 mb-4">
+          <div class="col-8 mb-4 text-end">
             <p class="fw-bold">NT${{ final_total }}</p>
           </div>
           <div class="col-12">
@@ -141,11 +167,13 @@
       </div>
     </div>
   </div>
+  <FrontDelModal :item="tempCartID" ref="delModal" @delete="deleteCart" />
 </template>
 
 <script>
 import Progress from '@/components/Progress.vue';
 import Card from '@/components/Card.vue';
+import FrontDelModal from '@/components/Modal/FrontDelModal.vue';
 
 export default {
   data() {
@@ -153,15 +181,19 @@ export default {
       cart: [],
       final_total: 0,
       allQty: 0,
-      failQty: false,
+
       allProduct: [],
       randomProduct: [],
-
+      tempCartID: '',
+      isLoading: false,
+      updateLoading: false,
     };
   },
+  inject: ['emitter'],
   components: {
     Progress,
     Card,
+    FrontDelModal,
   },
   methods: {
     getAllData() {
@@ -192,6 +224,7 @@ export default {
     },
 
     getcart() {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
         .get(url)
@@ -204,8 +237,10 @@ export default {
             this.cart.forEach((item) => {
               this.allQty += item.qty;
             });
+            this.isLoading = false;
           } else {
-            alert(res.data.message);
+            console.log(res.data.message);
+            this.isLoading = false;
           }
         })
         .catch((err) => {
@@ -223,33 +258,59 @@ export default {
           qty,
         },
       };
+      this.updateLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.$http
         .put(url, data)
         .then((res) => {
           console.log(res);
           if (res.data.success) {
-            alert(res.data.message);
+            this.emitter.emit('update-cart');
+            this.updateLoading = false;
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
             this.getcart();
           } else {
-            alert(res.data.message);
+            this.updateLoading = false;
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
           }
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    deleteCart(id) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
+    deleteCart() {
+      let url = '';
+      if (this.tempCartID) {
+        url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${this.tempCartID}`;
+      } else {
+        url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
+      }
+      this.isLoading = true;
       this.$http
         .delete(url)
         .then((res) => {
           console.log(res);
           if (res.data.success) {
-            alert(res.data.message);
+            this.$refs.delModal.hideModal();
+            this.emitter.emit('update-cart');
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+            this.isLoading = false;
             this.getcart();
           } else {
-            alert(res.data.message);
+            this.isLoading = false;
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
           }
         })
         .catch((err) => {
@@ -257,32 +318,22 @@ export default {
         });
     },
 
-    deleteAll() {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
-      this.$http
-        .delete(url)
-        .then((res) => {
-          console.log(res);
-          if (res.data.success) {
-            alert(res.data.message);
-            this.getcart();
-          } else {
-            alert(res.data.message);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     goToPay() {
       if (this.cart.length === 0) {
-        alert('購物車是空的，快去新增商品吧');
+        this.emitter.emit('push-message', {
+          type: 'warning',
+          message: '購物車是空的，快去新增商品喔！',
+        });
         return;
       }
       this.$router.push('/checkout');
     },
+    openModal(id) {
+      this.tempCartID = id;
+      this.$refs.delModal.openModal();
+    },
     getRandom() {
-      const ran = Math.floor(Math.random() * (this.allProduct.length));
+      const ran = Math.floor(Math.random() * this.allProduct.length);
       const ranArr = [ran, ran + 1, ran + 2];
       const ranFinal = ranArr.map((item) => item % this.allProduct.length);
       ranFinal.forEach((item) => {
@@ -293,6 +344,9 @@ export default {
   mounted() {
     this.getcart();
     this.getAllData();
+    this.emitter.on('update-cart', () => {
+      this.getcart();
+    });
   },
 };
 </script>

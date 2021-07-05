@@ -1,12 +1,13 @@
 <template>
-  <div class="container pt-17">
+<Loading :isLoading="isLoading"></Loading>
+  <div class="container pt-15">
     <Progress step="2" />
   </div>
-  <div class="container mt-15 mb-17">
+  <div class="container mt-15 border-bottom border-light pb-15 mb-15">
     <router-link class="d-inline-flex align-items-center mb-4" :to="`/cart`"
       ><span class="material-icons me-3"> reply </span> 返回購物車</router-link
     >
-    <div class="row row-cols-2 gx-5">
+    <div class="row row-cols-1 row-cols-lg-2 flex-column-reverse flex-lg-row gx-5">
       <div class="col">
         <p class="text-xl rounded-top bg-secondary p-4">訂單資訊</p>
         <div class="bg-table px-8 rounded-bottom mb-8">
@@ -75,7 +76,7 @@
           </p>
         </div>
       </div>
-      <div class="col">
+      <div class="col mb-9 mb-lg-0" >
         <Form />
       </div>
     </div>
@@ -91,14 +92,17 @@ export default {
     return {
       cart: [],
       final_total: 0,
+      isLoading: false,
     };
   },
   components: {
     Progress,
     Form,
   },
+  inject: ['emitter'],
   methods: {
     getcart() {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
         .get(url)
@@ -107,8 +111,17 @@ export default {
           if (res.data.success) {
             this.cart = res.data.data.carts;
             this.final_total = res.data.data.final_total;
+            this.isLoading = false;
+            if (this.cart.length <= 0) {
+              this.emitter.emit('push-message', {
+                type: 'warning',
+                message: '訂單已送出，如有疑問請洽客服',
+              });
+              this.$router.push('/shop');
+            }
           } else {
-            alert(res.data.message);
+            console.log(res.data.message);
+            this.isLoading = false;
           }
         })
         .catch((err) => {
@@ -119,8 +132,6 @@ export default {
   mounted() {
     this.getcart();
   },
-  created() {
-    console.log(this.$route);
-  },
+
 };
 </script>

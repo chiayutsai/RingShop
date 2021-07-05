@@ -1,4 +1,5 @@
 <template>
+<Loading :isLoading="isLoading"></Loading>
   <p class="text-xl rounded-top bg-secondary p-4">顧客資訊</p>
   <Form
     v-slot="{ errors }"
@@ -106,7 +107,7 @@
 export default {
   data() {
     return {
-
+      isLoading: false,
       form: {
         user: {
           name: '',
@@ -118,7 +119,7 @@ export default {
       },
     };
   },
-
+  inject: ['emitter'],
   methods: {
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
@@ -135,17 +136,26 @@ export default {
       const data = {
         data: this.form,
       };
+      this.isLoading = true;
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`, data)
         .then((res) => {
           console.log(res);
           if (res.data.success) {
-            alert(res.data.message);
-            console.log(res.data.orderId);
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+            this.emitter.emit('update-cart');
             this.$refs.form.resetForm();
             this.$router.push({ name: 'check', params: { order: res.data.orderId } });
+            this.isLoading = false;
           } else {
-            alert(res.data.message);
+            this.isLoading = false;
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
           }
         })
         .catch((err) => {

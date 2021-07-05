@@ -1,6 +1,6 @@
 <template>
-  <ul v-if="scrollDown" class="sideBtn">
-    <li class="sideBtn-item">
+  <ul  v-if="scrollDown ||showIcon"  class="sideBtn">
+    <li  class="sideBtn-item" :class="{'d-none': !showCart}">
       <a href="" @click.prevent="openOffcanvas">
         <span v-if="cart.length" class="cart-num">
           {{ cart.length }}
@@ -10,7 +10,7 @@
         </span>
       </a>
     </li>
-    <li class="sideBtn-item">
+    <li v-if="scrollDown" class="sideBtn-item">
       <a href="" @click.prevent="goToTop">
         <span class="material-icons ">
           vertical_align_top
@@ -44,10 +44,10 @@
           v-if="cart.length <= 0"
           class="p-4 border border-white border-bottom-0 bg-table text-dark"
         >
-          <p class="text-center text-xl mb-6">購物車目前沒有商品<br />趕快加入商品到你的購物車吧</p>
+          <p class="text-center text-base mb-6">購物車目前沒有商品<br />趕快加入商品到你的購物車吧</p>
 
           <router-link
-            class="d-block btn-lg btn btn-dark btn-hover"
+            class="d-block  btn btn-dark btn-hover"
             :to="`/shop`"
             data-bs-dismiss="offcanvas"
           >
@@ -107,13 +107,13 @@
         <p class="text-dark text-lg mb-5">總計：NT${{ final_total }}</p>
         <router-link
           :to="`/shop`"
-          class="d-block  btn btn-dark btn-hover py-4 mb-5"
+          class="d-block  btn btn-dark btn-hover py-3 mb-5"
           data-bs-dismiss="offcanvas"
           ><span>繼續購物</span></router-link
         >
         <router-link
           :to="`/cart`"
-          class="d-block  btn btn-dark btn-hover py-4"
+          class="d-block  btn btn-dark btn-hover py-3"
           data-bs-dismiss="offcanvas"
           ><span>前往購物車</span></router-link
         >
@@ -126,7 +126,15 @@
 import { Offcanvas } from 'bootstrap';
 import emitter from '@/methods/eventBus';
 
+const showIconRoute = ['shop', 'product', 'cart', 'checkout', 'check', 'final'];
+const showCartRoute = ['', 'shop', 'product'];
 export default {
+  props: {
+    page: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       scrollDown: false,
@@ -134,7 +142,15 @@ export default {
       cart: [],
       final_total: 0,
       offcanvasLoading: false,
+      showIcon: false,
+      showCart: false,
     };
+  },
+  watch: {
+    page() {
+      this.showIcon = showIconRoute.includes(this.page);
+      this.showCart = showCartRoute.includes(this.page);
+    },
   },
   methods: {
     goToTop() {

@@ -1,4 +1,5 @@
 <template>
+ <Loading :isLoading="isLoading"></Loading>
   <div class="w-100 vh-100 position-absolute -z-1">
     <div class="img-overlay"></div>
   </div>
@@ -118,6 +119,7 @@ export default {
       relativeProduct: [],
       routeID: '',
       addLoading: false,
+      isLoading: false,
     };
   },
   inject: ['emitter'],
@@ -155,16 +157,18 @@ export default {
     },
     getProduct(id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
-
+      this.isLoading = true;
       this.$http
         .get(url)
         .then((res) => {
           console.log(res);
           if (res.data.success) {
             this.product = res.data.product;
+            this.isLoading = false;
             this.getRelativeProduct();
           } else {
-            alert(res.data.message);
+            console.log(res.data.message);
+            this.isLoading = false;
             this.$router.push('/shop');
           }
         })
