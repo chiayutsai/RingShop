@@ -1,5 +1,5 @@
 <template>
-  <div class="banner position-relative z-2 ">
+  <div class="banner position-relative z-2  wow animate__animated animate__zoomIn">
     <div class="d-flex align-items-end align-items-sm-center vh-50 vh-sm-60 vh-md-100">
       <p class="banner-text font-abril">New</p>
       <p class="banner-shop ">Fashion Shop<br />2021</p>
@@ -57,7 +57,8 @@
   </div>
   <div
     class="position-absolute d-flex justify-content-center align-items-center
-     w-100 vh-50 vh-sm-60 vh-md-100 top-0"
+     w-100 vh-50 vh-sm-60 vh-md-100 top-0
+     wow animate__animated animate__zoomIn"
   >
     <RingCircle class="banner-ring" />
     <div class="home-banner  ">

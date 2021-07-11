@@ -5,7 +5,8 @@
 
       <li class="breadcrumb-item active">聯絡我們</li>
     </ol>
-    <div class="py-12 border-bottom border-top border-light mb-12">
+    <div class="py-12 border-bottom border-top border-light mb-12
+     wow animate__animated animate__flipInX">
       <h3 class="text-3xl text-lg-4xl text-center ">美麗，從這裡出發</h3>
     </div>
 
@@ -13,7 +14,8 @@
       class="row align-items-center
      flex-column flex-md-row pb-15 border-bottom border-light mb-10"
     >
-      <div class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10">
+      <div class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10
+       wow animate__animated animate__fadeInLeft">
         <div class="d-flex align-items-center  mb-10">
           <p class="title text-3xl">聯絡我們</p>
           <p class="text-lg opacity-6">Contact Us</p>
@@ -24,7 +26,8 @@
           alt=""
         />
       </div>
-      <div class="col-12 col-md-6 col-lg-4 offset-lg-2  mb-10">
+      <div class="col-12 col-md-6 col-lg-4 offset-lg-2  mb-10
+       wow animate__animated animate__fadeInRight">
         <ul class="mb-7">
           <li class="lh-lg letter-spacing-1 ">
              客服電話：(02)-213-1234
@@ -55,8 +58,9 @@
         </div>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div class="col border-bottom border-md-end border-bottom-md-0  border-light pb-9 pb-md-0">
+   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
+      <div class="col border-bottom border-md-end border-bottom-md-0  border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
@@ -65,7 +69,9 @@
           在商品庫存充足下，我們允諾下單三天內會出貨，如您所訂購的商品庫存不足，我們將盡快以電子郵件通知您。
         </p>
       </div>
-      <div class="col border-bottom border-lg-end border-bottom-md-0 border-light  pb-9 pb-md-0">
+      <div data-wow-delay="0.5s"
+       class="col border-bottom border-lg-end border-bottom-md-0 border-light  pb-9 pb-md-0
+       wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7  ">
           lock
         </span>
@@ -74,14 +80,16 @@
         <p>為保障買家權益， 所有商品皆享有30日的售後服務。</p>
       </div>
 
-      <div class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0">
+      <div data-wow-delay="1s"
+      class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>
         <p class="text-xl mb-4">客服服務</p>
         <p>如購買過程及收到商品有任何問題，歡迎聯繫我們， 我們會盡快回覆您。</p>
       </div>
-      <div class="col">
+      <div data-wow-delay="1.5s" class="col  wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           card_giftcard
         </span>
