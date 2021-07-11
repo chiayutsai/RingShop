@@ -42,12 +42,6 @@
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
-  props: {
-    item: {
-      type: Object,
-    },
-
-  },
 
   mixins: [modalMixin],
 

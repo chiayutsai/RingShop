@@ -14,6 +14,7 @@
     "@popperjs/core": "^2.9.2",
     "@vee-validate/i18n": "^4.1.20",
     "@vee-validate/rules": "^4.1.20",
+    "aos": "^2.3.4",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "core-js": "^3.6.5",
@@ -23,6 +24,7 @@
     "swiper": "^6.7.0",
     "vee-validate": "^4.4.5",
     "vue": "^3.0.0",
+    "vue-aos": "^2.1.0",
     "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^3.2.4",
     "vue-router": "^4.0.0-0"

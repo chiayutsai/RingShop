@@ -39,8 +39,19 @@
 }
 .bannerSwiper {
   height: 100% !important;
+
   .swiper-slide {
+    overflow: hidden;
     background: transparent;
+    img{
+      transition: all 0.5s;
+cursor: pointer;
+    }
+    &:hover{
+      img{
+        transform: scale(1.05)
+      }
+    }
   }
 }
 .banner-text {
@@ -148,7 +159,7 @@
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
-    
+   
     @include media-breakpoint-up(md) {
       font-size: 28px;
 
@@ -165,6 +176,7 @@
       box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
       margin-right: 12px;
       display: none;
+      
       @include media-breakpoint-up(sm) {
         display: block;
       }

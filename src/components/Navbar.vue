@@ -6,16 +6,115 @@
         <router-link class="me-7  scale-hover" :to="`/shop`">
           <span class="material-icons text-3xl"> storefront </span>
         </router-link>
+        <div class="popUp" @click="stopPropagation">
+          <a
+            @click.prevent="openNavList('favorite')"
+            href=""
+            v-if="page !== 'favorite'"
+            class="position-relative me-7 scale-hover"
+          >
+            <span v-if="myFavorite.length" class="nav-num">
+              {{ myFavorite.length }}
+            </span>
+            <span class="material-icons text-base text-3xl "> favorite </span>
+          </a>
+          <div class="nav-dropdown" ref="navFavoriteDropdown" @click="stopPropagation">
+            <div v-if="favoriteProduct.length <= 0">
+              <p class="text-dark text-center mb-5">
+                收藏清單目前沒有商品喔
+              </p>
+              <a
+                @click.prevent="goToTarget('shop')"
+                class="btn btn-secondary secondary-hover text-white w-100"
+                >前往商店</a
+              >
+            </div>
+            <div v-else>
+              <div
+                v-for="item in favoriteProduct"
+                class="d-flex text-dark  align-items-center justify-content-between
+          border-bottom pb-5 mb-5"
+                :key="item.id"
+              >
+                <div class="d-flex">
+                  <img class="w-20 me-4" :src="item.imageUrl" alt="" />
+                  <div class=" flex-shrink-0 me-4">
+                    <p>{{ item.title }}</p>
+                    <p class="text-sm opacity-6">NT${{ toCurrency(item.price) }}</p>
+                  </div>
+                </div>
+              </div>
 
-        <a href="" class="me-7 scale-hover">
-          <span class="material-icons text-base text-3xl "> favorite </span>
-        </a>
-        <router-link v-if="showCart" :to="`/cart`" class="position-relative  scale-hover me-7">
-          <span v-if="carts.length" class="nav-num">
-            {{ carts.length }}
-          </span>
-          <span class="material-icons text-3xl "> shopping_cart </span>
-        </router-link>
+              <a
+                @click.prevent="goToTarget('favorite')"
+                class="btn btn-secondary secondary-hover text-white w-100"
+                >前往收藏清單</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="popUp" @click="stopPropagation">
+          <a
+            @click.prevent="openNavList('cart')"
+            v-if="showCart"
+            href=""
+            class="position-relative  scale-hover me-7"
+          >
+            <span v-if="carts.length" class="nav-num">
+              {{ carts.length }}
+            </span>
+            <span class="material-icons text-3xl "> shopping_cart </span>
+          </a>
+          <div class="nav-dropdown" ref="navCartDropdown">
+            <div
+              v-if="dropDownLoading"
+              class="d-flex justify-content-center align-items-center position-absolute
+          w-100 h-100 top-0 start-0 bg-light z-1"
+            >
+              <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <div v-if="carts.length <= 0">
+              <p class="text-dark text-center mb-5">
+                購物車目前沒有商品喔
+              </p>
+              <a
+                @click.prevent="goToTarget('shop')"
+                class="btn btn-secondary secondary-hover text-white w-100"
+                >前往商店</a
+              >
+            </div>
+            <div v-else>
+              <div
+                v-for="item in carts"
+                class="d-flex text-dark  align-items-center justify-content-between
+          border-bottom pb-5 mb-5"
+                :key="item.id"
+              >
+                <div class="d-flex">
+                  <img class="w-20 me-4" :src="item.product.imageUrl" alt="" />
+                  <div class=" flex-shrink-0 me-4">
+                    <p>{{ item.product.title }}</p>
+                    <p class="text-sm opacity-6">
+                      {{ item.qty }} * NT${{ toCurrency(item.product.price) }} = NT${{
+                        toCurrency(item.final_total)
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <a @click.prevent="deleteCart(item.id)" href="" class="text-dark"
+                  ><span class="material-icons scale-hover"> delete_forever </span></a
+                >
+              </div>
+              <a
+                @click.prevent="goToTarget('cart')"
+                class="btn btn-secondary secondary-hover text-white w-100"
+                >前往購物車</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
       <div class="navbar-toggle" @click="openNav" ref="toggle">
         <span></span><span></span><span></span>
@@ -136,9 +235,10 @@
 
 <script>
 import emitter from '@/methods/eventBus';
+import localStorage from '@/mixins/localStorage';
 
-const showIconRoute = ['product', 'cart', 'checkout', 'check', 'final'];
-const showCartRoute = ['', 'shop', 'product'];
+const showIconRoute = ['product', 'cart', 'about', 'checkout', 'check', 'favorite', 'final'];
+const showCartRoute = ['', 'shop', 'product', 'about', 'favorite'];
 export default {
   props: {
     page: {
@@ -152,10 +252,16 @@ export default {
       nowPage: '',
       hoverPage: '',
       carts: [],
+      favoriteProduct: [],
       showIcon: false,
-      showCart: false,
+      showCart: true,
+      type: '',
+      dropdownData: [],
+      myFavorite: this.get() || [],
+      dropDownLoading: false,
     };
   },
+  mixins: [localStorage],
   methods: {
     openNav() {
       this.$refs.toggle.classList.toggle('open');
@@ -196,18 +302,100 @@ export default {
           console.log(err);
         });
     },
+    getFavorite() {
+      this.myFavorite = this.get() || [];
+      this.favoriteProduct = [];
+
+      if (this.myFavorite.length > 0) {
+        this.myFavorite.forEach((item) => {
+          const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${item}`;
+          this.$http
+            .get(url)
+            .then((res) => {
+              if (res.data.success) {
+                this.favoriteProduct.push(res.data.product);
+              } else {
+                console.log(res.data.message);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      }
+    },
+    openNavList(type) {
+      this.type = type;
+      if (type === 'cart') {
+        this.$refs.navCartDropdown.classList.toggle('show');
+        this.$refs.navFavoriteDropdown.classList.remove('show');
+      } else if (type === 'favorite') {
+        this.$refs.navFavoriteDropdown.classList.toggle('show');
+        this.$refs.navCartDropdown.classList.remove('show');
+      } else {
+        this.$refs.navCartDropdown.classList.remove('show');
+        this.$refs.navFavoriteDropdown.classList.remove('show');
+      }
+    },
+    stopPropagation(e) {
+      e.stopPropagation();
+    },
+    deleteCart(id) {
+      this.dropDownLoading = true;
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
+      this.$http
+        .delete(url)
+        .then((res) => {
+          console.log(res);
+          if (res.data.success) {
+            emitter.emit('update-cart');
+            emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+            this.dropDownLoading = false;
+            this.getcart();
+          } else {
+            this.dropDownLoading = false;
+            emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    goToTarget(page) {
+      this.$refs.navCartDropdown.classList.remove('show');
+      this.$refs.navFavoriteDropdown.classList.remove('show');
+      this.$router.push(`/${page}`);
+    },
   },
   watch: {
     page() {
       this.showIcon = showIconRoute.includes(this.page);
-      this.showCart = showCartRoute.includes(this.page);
+      this.showCart = showCartRoute.includes(this.page) || this.page === '';
     },
   },
   mounted() {
     this.getcart();
-
+    this.getFavorite();
     emitter.on('update-cart', () => {
       this.getcart();
+    });
+    emitter.on('update-favorite', () => {
+      this.myFavorite = this.get();
+      this.getFavorite();
+    });
+    document.body.addEventListener('click', () => {
+      if (this.$refs.navCartDropdown) {
+        this.$refs.navCartDropdown.classList.remove('show');
+      }
+      if (this.$refs.navFavoriteDropdown) {
+        this.$refs.navFavoriteDropdown.classList.remove('show');
+      }
     });
   },
 

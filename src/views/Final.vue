@@ -3,7 +3,7 @@
     <Progress step="4" />
   </div>
   <div class="container mt-15">
-    <div class="row bg-linear rounded p-8">
+    <div class="row bg-linear rounded mx-5 p-8">
       <p class="text-center text-2xl mb-6">感謝您的購買</p>
       <p class="text-center mb-6">下列為您的訂單資訊</p>
       <div class="d-flex w-100 w-md-40 mx-auto">
@@ -12,7 +12,6 @@
         >
         <router-link
           :to="`/shop`"
-          href="index.html"
           class="w-50 btn btn-secondary shadow-sm text-white secondary-hover"
           >前往商店</router-link
         >
@@ -53,7 +52,7 @@
               <p>{{ item.qty }}</p>
             </div>
             <div class="col-3">
-              <p>NT${{ item.final_total }}</p>
+              <p>NT${{ toCurrency(item.final_total) }}</p>
             </div>
           </div>
 
@@ -71,7 +70,7 @@
             </div>
 
             <div class="col-3">
-              <p class="fw-bold text-lg text-end">NT${{ order.total }}</p>
+              <p class="fw-bold text-lg text-end">NT${{ toCurrency(order.total) }}</p>
             </div>
           </div>
         </div>

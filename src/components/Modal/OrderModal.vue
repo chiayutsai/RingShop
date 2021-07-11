@@ -64,7 +64,7 @@
                     {{ orderDate }}
                   </p>
                   <p class="col-4 fw-bold mb-4">總金額</p>
-                  <p class="col-8 mb-4">{{ order.total }}</p>
+                  <p class="col-8 mb-4">{{ toCurrency(order.total) }}</p>
                   <p class="col-4 fw-bold mb-4">訂單編號</p>
                   <p class="col-8 mb-4">{{ order.id }}</p>
                   <p class="col-4 fw-bold mb-4">訂單狀態</p>
@@ -101,7 +101,7 @@
                 <div class="row" v-for="item in order.products" :key="item.id">
                   <p class="col-4 ">{{ item.product.title }}</p>
                   <p class="col-4">{{ item.qty }} / {{ item.product.unit }}</p>
-                  <p class="col-4">{{ item.final_total }}</p>
+                  <p class="col-4">{{ toCurrency(item.final_total) }}</p>
                 </div>
               </div>
             </div>

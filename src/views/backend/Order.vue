@@ -28,7 +28,7 @@
               <td class="w-20">{{ item.id }}</td>
               <td>{{ item.user.name }}</td>
               <td>{{ item.user.tel }}</td>
-              <td>{{ item.total }}</td>
+              <td>{{ toCurrency(item.total) }}</td>
               <td>
                 <div
                   v-if="!item.is_paid && item.status !== 'cancel'"

@@ -48,10 +48,14 @@
 .icon-hover {
   &:hover {
     background-color: #fff;
-    color: $dark;
+    color: $secondary;
   }
 }
-
+.icon-active-hover {
+  &:hover {
+    background-color: rgba(#fff,0.8) !important;
+  }
+}
 .scale-hover {
   &:hover {
     animation: scale 1s infinite;
@@ -102,12 +106,12 @@
     transform-origin: left top;
     display: flex;
     align-items: center;
-    margin-right: 32px;
+    margin-right: 24px;
     padding: 8px 12px;
     border-radius: 50rem;
    
     @include media-breakpoint-up(md) {
-      margin-right: 48px;
+      margin-right: 36px;
     }
     @include media-breakpoint-up(xl) {
       padding: 0px;

@@ -91,7 +91,7 @@
             <div class=" mb-6">
               <p class="form-label">總金額</p>
               <p class="form-control border-white">
-                {{ order.total }}
+                {{ toCurrency(order.total) }}
               </p>
             </div>
             <div class="mb-6">
@@ -114,7 +114,7 @@
         <div class="row mx-2 mb-6" v-for="item in order.products" :key="item.id">
           <p class="col-4 ">{{ item.product.title }}</p>
           <p class="col-4">{{ item.qty }} / {{ item.product.unit }}</p>
-          <p class="col-4">{{ item.final_total }}</p>
+          <p class="col-4">{{ toCurrency(item.final_total) }}</p>
         </div>
       </Form>
       <div class="d-flex justify-content-end border-top pt-6">

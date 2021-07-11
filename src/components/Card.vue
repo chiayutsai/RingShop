@@ -25,11 +25,29 @@
           >
         </h3>
         <p class="mb-2">
-          NT${{ product.price
-          }}<span class="text-dark text-sm opacity-5 text-decoration-line-through ms-2"
-            >NT${{ product.origin_price }}</span
+          NT${{ toCurrency(product.price)
+          }}<span
+            v-if="product.price !== product.origin_price"
+            class="text-dark text-sm opacity-5 text-decoration-line-through ms-2"
+            >NT${{ toCurrency(product.origin_price) }}</span
           >
         </p>
+        <a
+          v-if="myFavorite.includes(product.id)"
+          href=""
+          class="btn btn-sm btn-secondary text-white secondary-hover  me-2"
+          @click.prevent="emitaddMyFavorite(product.id)"
+        >
+          <span class="material-icons text-base"> favorite </span></a
+        >
+        <a
+          v-else
+          href=""
+          class="btn btn-sm btn-outline-secondary white-hover cartCard-btn  me-2"
+          @click.prevent="emitaddMyFavorite(product.id)"
+        >
+          <span class="material-icons text-base"> favorite_border </span></a
+        >
         <div class="position-relative d-inline-block">
           <div
             class="btn btn-sm btn-secondary text-white secondary-hover"
@@ -55,16 +73,32 @@
             <router-link :to="`/product/${product.id}`">{{ product.title }}</router-link>
           </h3>
           <p>
-            NT${{ product.price
-            }}<span class="text-light text-decoration-line-through ms-2"
-              >NT${{ product.origin_price }}</span
+            NT${{ toCurrency(product.price)
+            }}<span
+              v-if="product.price !== product.origin_price"
+              class="text-light text-decoration-line-through ms-2"
+              >NT${{ toCurrency(product.origin_price) }}</span
             >
           </p>
         </div>
         <div class="d-flex">
-          <a href="" class="border rounded-circle  p-2  me-4 icon-hover">
+          <a
+            v-if="myFavorite.includes(product.id)"
+            href=""
+            class="border bg-white text-secondary rounded-circle  p-2  me-4 icon-active-hover"
+            @click.prevent="emitaddMyFavorite(product.id)"
+          >
+            <span class="material-icons"> favorite </span></a
+          >
+          <a
+            v-else
+            href=""
+            class="border rounded-circle  p-2  me-4 icon-hover"
+            @click.prevent="emitaddMyFavorite(product.id)"
+          >
             <span class="material-icons"> favorite_border </span></a
           >
+
           <div v-if="loading" class="add-loading border rounded-circle  p-2 ">
             <div class="spinner-border spinner-border-sm text-dark" role="status">
               <span class="visually-hidden">Loading...</span>
@@ -93,10 +127,18 @@
 </template>
 
 <script>
+import localStorage from '@/mixins/localStorage';
+
 export default {
   props: {
     product: Object,
     cartCard: Boolean,
+    myFavorite: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
   data() {
     return {
@@ -104,6 +146,7 @@ export default {
       loading: false,
     };
   },
+  mixins: [localStorage],
   inject: ['emitter'],
   methods: {
     changeImg() {
@@ -142,6 +185,12 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    emitaddMyFavorite(id) {
+      // console.log(id, storageMethods);
+      // this.myFavorite.push(id);
+      // storageMethods.save(this.myFavorite);
+      this.$emit('emit-add-favorite', id);
     },
   },
 };

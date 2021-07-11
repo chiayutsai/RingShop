@@ -21,26 +21,25 @@
   }
 }
 .cate-active {
-  
   display: inline-block;
   position: relative;
   margin-right: 48px;
- color:$dark;
- background-color: #fff;
- border-radius: 50rem;
- padding:8px  12px;
+  color: $dark;
+  background-color: #fff;
+  border-radius: 50rem;
+  padding: 8px 12px;
   span {
     display: none;
   }
- &:hover{
-   color:$dark;
-   @include media-breakpoint-up(xl) {
-     color:#fff;
-   }
- }
- @include media-breakpoint-up(md) {
-  margin-right: 64px;
-}
+  &:hover {
+    color: $dark;
+    @include media-breakpoint-up(xl) {
+      color: #fff;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    margin-right: 64px;
+  }
   @include media-breakpoint-up(xl) {
     padding: 0;
     border-radius: 0;
@@ -77,7 +76,6 @@
     height: 360px;
   }
   @include media-breakpoint-up(lg) {
-    
     width: 54%;
   }
 }
@@ -132,9 +130,6 @@
   text-align: left;
   transform: scale(0.95);
   transition: all 0.5s;
-  &:hover {
-    transform: scale(1);
-  }
 }
 .sale-tag {
   position: absolute;
@@ -144,6 +139,7 @@
   top: -12px;
   right: -12px;
   font-size: 16px;
+  z-index: 1;
 }
 
 .home-ellipse {
@@ -224,9 +220,10 @@
   }
 }
 
-.product-img{
+.product-img {
   height: 300px;
   width: 100%;
+  object-position: bottom;
   @include media-breakpoint-up(sm) {
     height: 360px;
   }
@@ -235,9 +232,22 @@
   }
 }
 
-.no-allow{
-  cursor:not-allowed !important;
+.no-allow {
+  cursor: not-allowed !important;
 }
-.btn-secondary:focus{
+.btn-secondary:focus {
   background-color: $secondary;
+}
+
+.home-swiper-img {
+  overflow: hidden;
+  height: 338px;
+  img{
+    transition: all 0.5s;
+  }
+  &:hover{
+    img{
+      transform: scale(1.1) rotate(5deg)
+    }
+  }
 }

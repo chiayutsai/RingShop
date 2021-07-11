@@ -29,8 +29,8 @@
             </td>
             <td>{{ item.title }}</td>
             <td>{{ item.category }}</td>
-            <td>{{ item.origin_price }}</td>
-            <td>{{ item.price }}</td>
+            <td>{{ toCurrency(item.origin_price) }}</td>
+            <td>{{ toCurrency(item.price) }}</td>
             <td>
               <div class="form-check form-switch">
                 <input

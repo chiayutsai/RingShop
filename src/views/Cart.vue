@@ -16,8 +16,10 @@
       </div>
     </div>
     <div v-else>
-      <div class="d-none d-md-flex row g-0 p-4 border border-white
-       border-bottom-0 bg-table text-dark">
+      <div
+        class="d-none d-md-flex row g-0 p-4 border border-white
+       border-bottom-0 bg-table text-dark"
+      >
         <div class="col-4">商品資料</div>
         <div class="col-2">單件價格</div>
         <div class="col-3">數量</div>
@@ -40,15 +42,17 @@
           </div>
           <div class="col-6 col-md-2 order-4 order-md-0">
             <div class="d-flex d-md-block align-items-end">
-            <p class="me-3 me-md-0">NT${{ item.product.price }}</p>
-            <p class="text-dark opacity-5 text-sm text-decoration-line-through">
-              NT${{ item.product.origin_price }}
-            </p>
+              <p class="me-3 me-md-0">NT${{ toCurrency(item.product.price) }}</p>
+              <p
+                v-if="item.product.price !== item.product.origin_price"
+                class="text-dark opacity-5 text-sm text-decoration-line-through"
+              >
+                NT${{ toCurrency(item.product.origin_price) }}
+              </p>
             </div>
           </div>
           <div class="col-12 col-md-3 order-3 order-md-0 mb-5 mb-md-0">
             <div class="d-flex w-100  w-md-75 position-relative">
-
               <button
                 :disabled="item.qty <= 1"
                 class="quantity-btn cart-remove text-dark border-dark"
@@ -88,7 +92,8 @@
           </div>
           <div class="col-6 col-md-2 order-4 order-md-0 text-end text-md-start">
             <span class="d-inline d-md-none">小計：</span>
-          NT${{ item.final_total }}</div>
+            NT${{ toCurrency(item.final_total) }}
+          </div>
           <div class="col-1 order-2 order-md-0">
             <a @click.prevent="openModal(item.id)" href="" class="text-dark scale-hover"
               ><span class="material-icons"> delete_forever </span></a
@@ -105,7 +110,8 @@
 
         <div class="d-flex flex-column flex-sm-row align-items-center">
           <p class="text-dark text-base text-md-xl mb-5 mb-sm-0 me-sm-5 ">
-            總計：NT${{ final_total }}</p>
+            總計：NT${{ toCurrency(final_total) }}
+          </p>
           <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7"
             ><span>繼續購物</span></router-link
           >
@@ -116,11 +122,16 @@
   <div class="container border-bottom border-light mt-9 mt-lg-15 pb-15 mb-15">
     <div class="row g-5">
       <div class="col-12 col-lg-8">
-        <p class="text-xl rounded-top bg-secondary p-4">超值加購</p>
+        <p class="text-xl rounded-top bg-secondary p-4">不要錯過～</p>
         <div class="p-4 rounded-bottom border border-white bg-table text-dark">
           <ul class="row row-cols-2 row-cols-sm-3">
             <li class="col mb-5 mb-sm-0" v-for="item in randomProduct" :key="item.id">
-            <Card  :cartCard="true" :product="item" />
+              <Card
+                :cartCard="true"
+                :product="item"
+                :myFavorite="myFavorite"
+                @emit-add-favorite="addMyFavorite"
+              />
             </li>
           </ul>
         </div>
@@ -138,7 +149,7 @@
             <p>小計：</p>
           </div>
           <div class="col-8 mb-4 text-end">
-            <p>NT${{ final_total }}</p>
+            <p>NT${{ toCurrency(final_total) }}</p>
           </div>
           <!-- <div class="col-4 mb-6">
             <p class="text-secondary">折扣：</p>
@@ -153,7 +164,7 @@
             <p class="fw-bold">總計：</p>
           </div>
           <div class="col-8 mb-4 text-end">
-            <p class="fw-bold">NT${{ final_total }}</p>
+            <p class="fw-bold">NT${{ toCurrency(final_total) }}</p>
           </div>
           <div class="col-12">
             <div
@@ -174,7 +185,11 @@
 import Progress from '@/components/Progress.vue';
 import Card from '@/components/Card.vue';
 import FrontDelModal from '@/components/Modal/FrontDelModal.vue';
+import localStorage from '@/mixins/localStorage';
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 export default {
   data() {
     return {
@@ -187,8 +202,11 @@ export default {
       tempCartID: '',
       isLoading: false,
       updateLoading: false,
+      myFavorite: this.get() || [],
     };
   },
+  mixins: [localStorage],
+
   inject: ['emitter'],
   components: {
     Progress,
@@ -234,6 +252,7 @@ export default {
             this.allQty = 0;
             this.cart = res.data.data.carts;
             this.final_total = res.data.data.final_total;
+
             this.cart.forEach((item) => {
               this.allQty += item.qty;
             });
@@ -333,11 +352,19 @@ export default {
       this.$refs.delModal.openModal();
     },
     getRandom() {
-      const ran = Math.floor(Math.random() * this.allProduct.length);
-      const ranArr = [ran, ran + 1, ran + 2];
-      const ranFinal = ranArr.map((item) => item % this.allProduct.length);
-      ranFinal.forEach((item) => {
-        this.randomProduct.push(this.allProduct[item]);
+      this.randomProduct = [];
+      const cartProductId = this.cart.map((item) => item.product_id);
+      const filterProduct = this.allProduct.filter((item) => !cartProductId.includes(item.id));
+      console.log(filterProduct);
+      const arrSet = new Set([]);
+      const maxSize = filterProduct.length < 3 ? filterProduct.length : 3;
+      for (let i = 0; arrSet.size < maxSize; i + 1) {
+        const num = getRandomInt(filterProduct.length);
+        arrSet.add(num);
+        console.log(arrSet);
+      }
+      arrSet.forEach((item) => {
+        this.randomProduct.push(filterProduct[item]);
       });
     },
   },

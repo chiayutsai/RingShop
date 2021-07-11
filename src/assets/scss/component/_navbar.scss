@@ -97,7 +97,6 @@
   transition: all 0.6s;
   @include media-breakpoint-up(sm) {
     padding: 0 36px;
-   
   }
   @include media-breakpoint-up(lg) {
     padding: 0 8.3%;
@@ -128,7 +127,7 @@
       animation-delay: 1.1s;
     }
   }
-  .nav-circle{
+  .nav-circle {
     animation: nav-link-fade 0.5s linear 0.2s forwards;
     @include media-breakpoint-up(ipad) {
       animation: nav-link-fade 0.5s linear 1s forwards;
@@ -226,9 +225,9 @@
     color: #fff;
     border: 0;
     padding-left: 0 !important;
-      padding-right: 0 !important;
+    padding-right: 0 !important;
     @include media-breakpoint-up(sm) {
-      padding:0.5rem 1rem !important;
+      padding: 0.5rem 1rem !important;
     }
     @include media-breakpoint-up(md) {
       font-size: 18px;
@@ -324,10 +323,10 @@
     top: 0;
   }
 }
-.nav-num{
+.nav-num {
   position: absolute;
-  top: -8px;
-  left: 14px;
+  top: -10px;
+  left: 16px;
   width: 18px;
   height: 18px;
   font-size: 14px;
@@ -336,6 +335,44 @@
   justify-content: center;
   border-radius: 50%;
   background-color: $secondary;
-  color:#fff;
-  box-shadow: -1px 1px 5px rgba(0,0,0,0.5);
+  color: #fff;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.tab-pane {
+  ul {
+    &:last-child {
+      border: 0px !important;
+    }
+  }
+}
+
+.nav-dropdown {
+  background-color: #fff;
+  width: 280px;
+  position: absolute;
+  opacity: 0;
+  transition: all 0.5s;
+  padding: 16px;
+  top: 54px;
+  right: 0px;
+  border-radius: 4px;
+  pointer-events: none;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  @include media-breakpoint-up(sm) {
+    width: 320px;
+  }
+  @include media-breakpoint-up(lg) {
+    top: 72px;
+  }
+}
+
+.nav-dropdown.show {
+  opacity: 1;
+  right: 12px;
+  pointer-events: all;
+  @include media-breakpoint-up(sm) {
+    right: 24px;
+  }
 }

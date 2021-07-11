@@ -67,7 +67,8 @@
               <div class="w-40 flex-shrink-0 me-4">
                 <p>{{ item.product.title }}</p>
                 <p class="text-sm opacity-6">
-                  {{ item.qty }} * NT${{ item.product.price }} = NT${{ item.final_total }}
+                  {{ item.qty }} * NT${{ toCurrency(item.product.price) }} =
+                   NT${{ toCurrency(item.final_total) }}
                 </p>
               </div>
 
@@ -104,7 +105,7 @@
         </div>
       </div>
       <div v-if="cart.length > 0" class="offcanvas-btn">
-        <p class="text-dark text-lg mb-5">總計：NT${{ final_total }}</p>
+        <p class="text-dark text-lg mb-5">總計：NT${{ toCurrency(final_total) }}</p>
         <router-link
           :to="`/shop`"
           class="d-block  btn btn-dark btn-hover py-3 mb-5"
@@ -126,8 +127,8 @@
 import { Offcanvas } from 'bootstrap';
 import emitter from '@/methods/eventBus';
 
-const showIconRoute = ['shop', 'product', 'cart', 'checkout', 'check', 'final'];
-const showCartRoute = ['', 'shop', 'product'];
+const showIconRoute = ['shop', 'product', 'cart', 'about', 'favorite', 'checkout', 'check', 'final'];
+const showCartRoute = ['', 'shop', 'product', 'about', 'favorite'];
 export default {
   props: {
     page: {
@@ -143,7 +144,7 @@ export default {
       final_total: 0,
       offcanvasLoading: false,
       showIcon: false,
-      showCart: false,
+      showCart: true,
     };
   },
   watch: {

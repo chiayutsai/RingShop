@@ -5,7 +5,7 @@
     <Progress step="3" />
   </div>
   <div class="container border-bottom border-light mt-15 pb-15 mb-15">
-    <div class="row bg-linear rounded p-8">
+    <div class="row bg-linear rounded p-8 mx-5">
       <h3 class="text-center mb-10">確認訂單</h3>
       <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 ">
         <div class="row mb-8">
@@ -27,7 +27,7 @@
           <p
             class="col-8 mb-4 pb-4 border-bottom d-flex align-items-center justify-content-between"
           >
-            NT${{ order.total }}
+            NT${{ toCurrency(order.total) }}
             <a
               href=""
               @click.prevent="openCollapse"
@@ -64,7 +64,7 @@
                 <p>{{ item.qty }}</p>
               </div>
               <div class="col-3">
-                <p>NT${{ item.final_total }}</p>
+                <p>NT${{ toCurrency(item.final_total) }}</p>
               </div>
             </div>
           </div>
@@ -138,11 +138,12 @@ export default {
         .then((res) => {
           console.log(res.data);
           if (res.data.success) {
-            this.emitter.emit('push-message', {
-              type: 'success',
-              message: res.data.message,
-            });
+            // this.emitter.emit('push-message', {
+            //   type: 'success',
+            //   message: res.data.message,
+            // });
             this.$router.push({ name: 'final', params: { order: this.orderID } });
+
             this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {

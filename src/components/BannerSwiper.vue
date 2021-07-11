@@ -5,8 +5,10 @@
       <p class="banner-shop ">Fashion Shop<br />2021</p>
       <div class="banner-title" ref="title">
         <span ref="category">Earrings</span>
+
         <h2 ref="mainTitle">心之所向耳環</h2>
       </div>
+
       <p class="banner-description" ref="description">
         目之所及，心之所向<br />
         戴上耳環．吸引目光<br />
@@ -41,12 +43,12 @@
           </span>
           <p class="tooltip-title">購物車</p>
         </router-link>
-        <a href="" class="tooltip">
+        <router-link :to="`/favorite`" class="tooltip">
           <span class="material-icons scale-hover">
             favorite
           </span>
           <p class="tooltip-title">收藏清單</p>
-        </a>
+        </router-link>
       </div>
       <div class="scroll-down">
         <div class="arrow"></div>
@@ -61,33 +63,41 @@
     <div class="home-banner  ">
       <div ref="bannerSwiper" class="swiper-container bannerSwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img
-              class="banner-swiper-img rounded-sm-pill"
-              src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-              alt=""
-            />
+          <div class="swiper-slide rounded-sm-pill">
+            <router-link :to="`/product/-MdzislBPdzePO6Wqbdp`" class="h-100">
+              <img
+                class="banner-swiper-img "
+                src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                alt=""
+              />
+            </router-link>
           </div>
-          <div class="swiper-slide">
-            <img
-              class="banner-swiper-img rounded-sm-pill"
-              src="https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
-              alt=""
-            />
+          <div class="swiper-slide rounded-sm-pill">
+            <router-link :to="`/product/-MdzhX5kvyXgP4xVEsE5`" class="h-100">
+              <img
+                class="banner-swiper-img "
+                src="https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
+                alt=""
+              />
+            </router-link>
           </div>
-          <div class="swiper-slide">
-            <img
-              class="banner-swiper-img rounded-sm-pill"
-              src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-              alt=""
-            />
+          <div class="swiper-slide rounded-sm-pill">
+            <router-link :to="`/product/-MdzgVs6D-zpxYwm4Eaa`" class="h-100">
+              <img
+                class="banner-swiper-img"
+                src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                alt=""
+              />
+            </router-link>
           </div>
-          <div class="swiper-slide">
-            <img
-              class="banner-swiper-img rounded-sm-pill"
-              src="https://images.unsplash.com/photo-1590820233493-ffc0efee2dc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-              alt=""
-            />
+          <div class="swiper-slide rounded-sm-pill">
+            <router-link :to="`/product/-Me-0e65M2XmteADsRl4`" class="h-100">
+              <img
+                class="banner-swiper-img "
+                src="https://images.unsplash.com/photo-1590820233493-ffc0efee2dc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                alt=""
+              />
+            </router-link>
           </div>
         </div>
       </div>
@@ -179,8 +189,12 @@ export default {
   methods: {
     changeBanner() {
       this.bannerIndex = this.swiper.realIndex;
-      this.$refs.description.classList.add('blurAnimation');
-      this.$refs.title.classList.add('titleAnimation');
+      if (this.$refs.description) {
+        this.$refs.description.classList.add('blurAnimation');
+      }
+      if (this.$refs.title) {
+        this.$refs.title.classList.add('titleAnimation');
+      }
     },
   },
   mounted() {
@@ -204,7 +218,6 @@ export default {
       slidesPerView: 1,
       spaceBetween: 0,
       loop: true,
-
     });
     this.swiper.on('slideNextTransitionStart', () => {
       this.secondarySwiper.slideNext();

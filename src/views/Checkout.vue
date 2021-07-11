@@ -40,7 +40,7 @@
               <p>{{ item.qty }}</p>
             </div>
             <div class="col-3">
-              <p>NT${{ item.final_total }}</p>
+              <p>NT${{ toCurrency(item.final_total) }}</p>
             </div>
           </div>
 
@@ -58,7 +58,7 @@
             </div>
 
             <div class="col-3">
-              <p class="fw-bold text-lg text-end">NT${{ final_total }}</p>
+              <p class="fw-bold text-lg text-end">NT${{ toCurrency(final_total) }}</p>
             </div>
           </div>
         </div>

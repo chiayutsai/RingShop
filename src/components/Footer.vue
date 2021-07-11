@@ -1,21 +1,69 @@
 <template>
-<div class="container mb-15">
+  <div class="container mb-15">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
       <div class="col mb-10 mb-md-0">
         <p class="text-lg mb-4">品牌故事</p>
         <ul class="footer-link">
-          <li class="mb-2"><a href="#" >關於品牌<span class="text-light ms-2">About Us</span></a></li>
-          <li><a href="#" >聯絡我們 <span class="text-light ms-2">Contact Us</span></a></li>
+          <li class="mb-2">
+            <router-link :to="`/about`"
+              >關於品牌<span class="text-light ms-2">About Us</span></router-link
+            >
+          </li>
+          <li>
+            <router-link :to="`/contact`"
+              >聯絡我們 <span class="text-light ms-2">Contact Us</span></router-link
+            >
+          </li>
         </ul>
       </div>
       <div class="col mb-10 mb-md-0">
         <p class="text-lg mb-4">商品專區</p>
         <ul class="footer-link">
-          <li class="mb-2"><a href="#" >戒指 <span class="text-light ms-2">Rings</span></a></li>
-          <li class="mb-2"><a href="#" >耳環 <span class="text-light ms-2">Earrings</span></a></li>
-          <li class="mb-2"><a href="#" >手鍊 <span class="text-light ms-2">Bracelets</span></a></li>
-          <li class="mb-2"><a href="#" >手錶 <span class="text-light ms-2">Watches</span></a></li>
-          <li><a href="#" >項鍊 <span class="text-light ms-2">Necklaces</span></a></li>
+          <li class="mb-2">
+            <router-link
+              :to="{
+                name: 'shop',
+                query: { category: '戒指' }
+              }"
+              >戒指 <span class="text-light ms-2">Rings</span></router-link
+            >
+          </li>
+          <li class="mb-2">
+            <router-link
+              :to="{
+                name: 'shop',
+                query: { category: '耳環' }
+              }"
+              >耳環 <span class="text-light ms-2">Earrings</span></router-link
+            >
+          </li>
+          <li class="mb-2">
+            <router-link
+              :to="{
+                name: 'shop',
+                query: { category: '手鍊' }
+              }"
+              >手鍊 <span class="text-light ms-2">Bracelets</span></router-link
+            >
+          </li>
+          <li class="mb-2">
+            <router-link
+              :to="{
+                name: 'shop',
+                query: { category: '手錶' }
+              }"
+              >手錶 <span class="text-light ms-2">Watches</span></router-link
+            >
+          </li>
+          <li>
+            <router-link
+              :to="{
+                name: 'shop',
+                query: { category: '項鍊' }
+              }"
+              >項鍊 <span class="text-light ms-2">Necklaces</span></router-link
+            >
+          </li>
         </ul>
       </div>
       <div class="col">
@@ -38,8 +86,8 @@
         </div>
       </div>
     </div>
-    </div>
-    <div class="text-center text-xs text-light py-4">
+  </div>
+  <div class="text-center text-xs text-light py-4">
     <p>Copyright ©RingRing All Rights Reserved. Designed by ChiaYu</p>
   </div>
 </template>

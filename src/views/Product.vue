@@ -1,9 +1,24 @@
 <template>
- <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading"></Loading>
   <div class="w-100 vh-100 position-absolute -z-1">
     <div class="img-overlay"></div>
   </div>
   <div class="container pt-15">
+    <ol class="breadcrumb mb-5">
+      <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
+      <li class="breadcrumb-item"><router-link :to="`/shop`">產品</router-link></li>
+      <li class="breadcrumb-item">
+        <router-link
+          :to="{
+            name: 'shop',
+            query: { category: product.category }
+          }"
+          >{{ product.category }}</router-link
+        >
+      </li>
+      <li class="breadcrumb-item active">{{ product.title }}</li>
+    </ol>
+
     <div class="row g-5">
       <div class="col-12 col-lg-6">
         <img
@@ -19,14 +34,18 @@
 
         <h1 class="text-3xl mb-7">{{ product.title }}</h1>
         <ul class="mb-7 text-sm text-light point">
-          <li class="mb-2">商品材質：鋯石 / 銅 (保色電鍍)</li>
-          <li>SIZE長寬約：7 cm x 0.9 cm</li>
+          <li v-for="(format, index) in product.formats" :key="index" class="mb-2">
+            {{format.format}}： {{format.content}}
+          </li>
+
         </ul>
 
         <p class="fw-bold text-xl mb-7">
-          NT${{ product.price
-          }}<span class="text-light text-lg fw-normal text-decoration-line-through ms-4"
-            >NT${{ product.origin_price }}</span
+          NT${{ toCurrency(product.price)
+          }}<span
+            v-if="product.price !== product.origin_price"
+            class="text-light text-lg fw-normal text-decoration-line-through ms-4"
+            >NT${{ toCurrency(product.origin_price) }}</span
           >
         </p>
 
@@ -55,14 +74,14 @@
            "
         >
           <button
-
             class="w-100 d-flex justify-content-center white-hover
             btn btn-secondary text-white shadow secondary-hover"
             @click="addCart(product.id, qty)"
           >
-            <span class="material-icons"> shopping_cart </span>加入購物車</button
-          >
-          <button v-if="addLoading"
+            <span class="material-icons"> shopping_cart </span>加入購物車
+          </button>
+          <button
+            v-if="addLoading"
             class=" btn d-flex justify-content-center align-items-center position-absolute no-allow
                w-100 h-100 top-0 start-0 bg-light"
           >
@@ -72,15 +91,20 @@
           </button>
         </div>
 
-        <a href="" class="d-flex my-7">
+        <a
+          v-if="myFavorite.includes(product.id)"
+          href=""
+          class="d-flex my-7"
+          @click.prevent="addMyFavorite(product.id)"
+        >
+          <span class="material-icons me-3"> favorite </span>已加入收藏清單</a
+        >
+        <a v-else href="" class="d-flex my-7" @click.prevent="addMyFavorite(product.id)">
           <span class="material-icons me-3"> favorite_border </span>加入收藏清單</a
         >
         <ul class="border-start border-3 border-secondary text-sm ps-5">
           <li class="mb-2">
             <span class="fw-bold text-primary opacity-8">限時活動</span> 全館$101免運
-          </li>
-          <li>
-            <span class="fw-bold text-primary opacity-8">夏季優惠</span> 全館單件9/兩件85/三件8折
           </li>
         </ul>
       </div>
@@ -92,7 +116,13 @@
     <div v-if="relativeProduct.length > 0" class="container mb-15">
       <p class="text-3xl text-center border-bottom border-light pb-4 mb-8">相關產品</p>
       <ul class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5">
-        <Card v-for="item in relativeProduct" :key="item.id" :product="item" />
+        <Card
+          v-for="item in relativeProduct"
+          :key="item.id"
+          :product="item"
+          :myFavorite="myFavorite"
+          @emit-add-favorite="addMyFavorite"
+        />
       </ul>
     </div>
   </div>
@@ -100,8 +130,13 @@
 <script>
 import Card from '@/components/Card.vue';
 import SwiperComponent from '@/components/SwiperComponent.vue';
+import localStorage from '@/mixins/localStorage';
 
 import Tab from '@/components/Tab.vue';
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 
 export default {
   components: {
@@ -109,6 +144,7 @@ export default {
     Tab,
     Card,
   },
+  mixins: [localStorage],
   data() {
     return {
       allProduct: [],
@@ -120,6 +156,7 @@ export default {
       routeID: '',
       addLoading: false,
       isLoading: false,
+      myFavorite: this.get() || [],
     };
   },
   inject: ['emitter'],
@@ -147,6 +184,7 @@ export default {
           console.log(res);
           if (res.data.success) {
             this.allProduct = res.data.products;
+            this.getRelativeProduct();
           } else {
             alert(res.data.message);
           }
@@ -165,7 +203,7 @@ export default {
           if (res.data.success) {
             this.product = res.data.product;
             this.isLoading = false;
-            this.getRelativeProduct();
+            this.getAll();
           } else {
             console.log(res.data.message);
             this.isLoading = false;
@@ -178,14 +216,22 @@ export default {
     },
     getRelativeProduct() {
       this.relativeProduct = [];
-      this.allProduct.forEach((item) => {
-        if (this.relativeProduct.length < 4) {
-          if (item.category === this.product.category && item.id !== this.product.id) {
-            this.relativeProduct.push(item);
-          }
-        }
+      const { category } = this.product;
+      const { id } = this.product;
+      const filterProduct = this.allProduct.filter(
+        (item) => item.category === category && item.id !== id,
+      );
+      const arrSet = new Set([]);
+      const maxSize = filterProduct.length < 4 ? filterProduct.length : 4;
+      for (let i = 0; arrSet.size < maxSize; i + 1) {
+        const num = getRandomInt(filterProduct.length);
+        arrSet.add(num);
+      }
+      arrSet.forEach((item) => {
+        this.relativeProduct.push(filterProduct[item]);
       });
     },
+
     addCart(id, qty) {
       this.addLoading = true;
       const data = {
@@ -231,7 +277,7 @@ export default {
   },
   created() {
     this.routeID = this.$route.params.id;
-    this.getAll();
+
     this.getProduct(this.routeID);
   },
 };

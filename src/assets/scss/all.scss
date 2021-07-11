@@ -20,6 +20,7 @@
 @import '../../../node_modules/bootstrap/scss/offcanvas';
 @import '../../../node_modules/bootstrap/scss/modal';
 @import '../../../node_modules/bootstrap/scss/spinners';
+@import '../../../node_modules/bootstrap/scss/popover';
 
 @import 'helpers/background';
 @import 'helpers/text';
@@ -43,3 +44,4 @@
 @import 'component/loading';
 @import 'component/tooltip';
 @import 'component/sideBtn';
+@import 'component/breadcrumb';
