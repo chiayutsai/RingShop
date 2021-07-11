@@ -48,11 +48,11 @@
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <p  ref="description" class="mb-8"></p>
          <p  class="mb-8">{{product.content}}</p>
-        <img class="mx-auto mb-8" :src="product.imageUrl" />
+        <img class="w-100 w-md-60 mx-auto mb-8" :src="product.imageUrl" />
         <img
           v-for="(img, index) in product.imagesUrl"
           :key="index"
-          class="mx-auto mb-8"
+          class="w-100 w-md-60 mx-auto mb-8"
           :src="img"
           alt=""
         />
