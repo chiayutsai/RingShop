@@ -46,19 +46,42 @@
 }
 
 .addCartAnimation{
-  position: absolute;
-  width: 38px;
-  height: 38px;
-  right: 0;
-  bottom: 0;
-  border-radius: 50%;
-  opacity: 1;
+  position: fixed;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  opacity: 0;
   pointer-events: none;
   z-index: 10;
-  transition: all 0.5s;
+
+}
+.addCartAnimation.show{
+  opacity: 1;
+  
+ 
+}
+.addCartAnimation.move{
+  left: calc(100% - 56px)!important;
+  top: calc(100% - 152px) !important;
+  animation: addscale 0.5s linear 0.5s forwards;
+  transition: all 0.8s;
+  @include media-breakpoint-up(sm) {
+    left: calc(100% - 64px)!important;
+  top: calc(100% - 152px) !important;
+  }
 }
 
 .cartCard-btn{
   padding-top: 3px;
   padding-bottom: 3px;
+}
+
+@keyframes addscale{
+  0%{
+    transform: scale(1);
+  }
+ 
+  100%{
+    transform: scale(0);
+  }
 }

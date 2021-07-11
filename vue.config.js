@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: '/RingRing/dist/',
+  publicPath: '/RingRing/RingRing/',
+  outputDir: 'RingRing'
 };

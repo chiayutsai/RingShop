@@ -4,7 +4,7 @@
   <div class="container pt-15">
     <Progress step="3" />
   </div>
-  <div class="container border-bottom border-light mt-15 pb-15 mb-15">
+  <div class="container border-bottom border-light mt-10 mt-sm-15 pb-15 mb-15">
     <div class="row bg-linear rounded p-8 mx-5">
       <h3 class="text-center mb-10">確認訂單</h3>
       <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 ">

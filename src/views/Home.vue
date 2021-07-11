@@ -162,12 +162,7 @@
                 >
                   <span class="material-icons"> shopping_cart </span>
                 </a>
-                <!-- <img ref="addImg"
-              class="addCartAnimation"
-              :class="{ 'show': showAddAnimation }"
-              :src="product.imageUrl"
-              alt=""
-            /> -->
+
               </div>
             </div>
           </div>
@@ -358,6 +353,8 @@ export default {
       isLoading: false,
       addLoading: false,
       saleProduct: [],
+      elTop: 0,
+      elLeft: 0,
       breakpoints: {
         992: {
           slidesPerView: 3,

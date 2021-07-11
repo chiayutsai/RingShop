@@ -140,9 +140,10 @@ export default {
           if (res.data.success) {
             emitter.emit('push-message', {
               type: 'success',
-              message: '已登入',
+              message: '已登出',
             });
             this.isLoading = false;
+            document.cookie = 'chiayuToken=; expires=;';
             this.$router.push('/login');
           } else {
             this.isLoading = false;

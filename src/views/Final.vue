@@ -2,7 +2,7 @@
   <div class="container pt-15">
     <Progress step="4" />
   </div>
-  <div class="container mt-15">
+  <div class="container mt-10 mt-sm-15">
     <div class="row bg-linear rounded mx-5 p-8">
       <p class="text-center text-2xl mb-6">感謝您的購買</p>
       <p class="text-center mb-6">下列為您的訂單資訊</p>

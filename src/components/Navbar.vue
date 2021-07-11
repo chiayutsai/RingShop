@@ -20,36 +20,41 @@
           </a>
           <div class="nav-dropdown" ref="navFavoriteDropdown" @click="stopPropagation">
             <div v-if="favoriteProduct.length <= 0">
-              <p class="text-dark text-center mb-5">
+              <p class="text-dark text-center p-5">
                 收藏清單目前沒有商品喔
               </p>
+              <div class="p-5">
               <a
                 @click.prevent="goToTarget('shop')"
                 class="btn btn-secondary secondary-hover text-white w-100"
                 >前往商店</a
-              >
+              ></div>
             </div>
             <div v-else>
-              <div
-                v-for="item in favoriteProduct"
-                class="d-flex text-dark  align-items-center justify-content-between
-          border-bottom pb-5 mb-5"
-                :key="item.id"
-              >
-                <div class="d-flex">
-                  <img class="w-20 me-4" :src="item.imageUrl" alt="" />
-                  <div class=" flex-shrink-0 me-4">
-                    <p>{{ item.title }}</p>
-                    <p class="text-sm opacity-6">NT${{ toCurrency(item.price) }}</p>
+              <div class="nav-dropdown-body">
+                <div
+                  v-for="item in favoriteProduct"
+                  class=" d-flex
+                text-dark  align-items-center justify-content-between
+          border-bottom p-5 "
+                  :key="item.id"
+                >
+                  <div class="d-flex">
+                    <img class="w-20 me-4" :src="item.imageUrl" alt="" />
+                    <div class=" flex-shrink-0 me-4">
+                      <p>{{ item.title }}</p>
+                      <p class="text-sm opacity-6">NT${{ toCurrency(item.price) }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
+              <div class="p-5">
               <a
                 @click.prevent="goToTarget('favorite')"
-                class="btn btn-secondary secondary-hover text-white w-100"
+                class="btn btn-secondary secondary-hover text-white  w-100"
                 >前往收藏清單</a
               >
+              </div>
             </div>
           </div>
         </div>
@@ -76,42 +81,48 @@
               </div>
             </div>
             <div v-if="carts.length <= 0">
-              <p class="text-dark text-center mb-5">
+              <p class="text-dark text-center p-5">
                 購物車目前沒有商品喔
               </p>
+              <div class="p-5">
               <a
                 @click.prevent="goToTarget('shop')"
-                class="btn btn-secondary secondary-hover text-white w-100"
+                class="btn btn-secondary secondary-hover text-white  w-100"
                 >前往商店</a
               >
+              </div>
             </div>
             <div v-else>
-              <div
-                v-for="item in carts"
-                class="d-flex text-dark  align-items-center justify-content-between
-          border-bottom pb-5 mb-5"
-                :key="item.id"
-              >
-                <div class="d-flex">
-                  <img class="w-20 me-4" :src="item.product.imageUrl" alt="" />
-                  <div class=" flex-shrink-0 me-4">
-                    <p>{{ item.product.title }}</p>
-                    <p class="text-sm opacity-6">
-                      {{ item.qty }} * NT${{ toCurrency(item.product.price) }} = NT${{
-                        toCurrency(item.final_total)
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <a @click.prevent="deleteCart(item.id)" href="" class="text-dark"
-                  ><span class="material-icons scale-hover"> delete_forever </span></a
+              <div class="nav-dropdown-body">
+                <div
+                  v-for="item in carts"
+                  class="d-flex text-dark align-items-center justify-content-between
+          border-bottom p-5 "
+                  :key="item.id"
                 >
+                  <div class="d-flex">
+                    <img class="w-20 me-4" :src="item.product.imageUrl" alt="" />
+                    <div class=" flex-shrink-0 me-4">
+                      <p>{{ item.product.title }}</p>
+                      <p class="text-sm opacity-6">
+                        {{ item.qty }} * NT${{ toCurrency(item.product.price) }} = NT${{
+                          toCurrency(item.final_total)
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <a @click.prevent="deleteCart(item.id)" href="" class="text-dark"
+                    ><span class="material-icons scale-hover"> delete_forever </span></a
+                  >
+                </div>
               </div>
+              <div class="p-5">
               <a
                 @click.prevent="goToTarget('cart')"
-                class="btn btn-secondary secondary-hover text-white w-100"
+                class="btn btn-secondary secondary-hover text-white  w-100"
                 >前往購物車</a
               >
+              </div>
             </div>
           </div>
         </div>

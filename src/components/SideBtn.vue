@@ -1,6 +1,6 @@
 <template>
   <ul  v-if="scrollDown ||showIcon"  class="sideBtn">
-    <li  class="sideBtn-item" :class="{'d-none': !showCart}">
+    <li ref="cartItem" class="sideBtn-item" :class="{'d-none': !showCart}">
       <a href="" @click.prevent="openOffcanvas">
         <span v-if="cart.length" class="cart-num">
           {{ cart.length }}
@@ -145,6 +145,8 @@ export default {
       offcanvasLoading: false,
       showIcon: false,
       showCart: true,
+      elLeft: 0,
+      elTop: 0,
     };
   },
   watch: {

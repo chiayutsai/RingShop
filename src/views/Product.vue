@@ -76,7 +76,7 @@
           <button
             class="w-100 d-flex justify-content-center white-hover
             btn btn-secondary text-white shadow secondary-hover"
-            @click="addCart(product.id, qty)"
+            @click="addCart(product.id, qty,$event)"
           >
             <span class="material-icons"> shopping_cart </span>加入購物車
           </button>
@@ -89,6 +89,7 @@
               <span class="visually-hidden">Loading...</span>
             </div>
           </button>
+
         </div>
 
         <a
@@ -157,6 +158,8 @@ export default {
       addLoading: false,
       isLoading: false,
       myFavorite: this.get() || [],
+      elTop: 0,
+      elLeft: 0,
     };
   },
   inject: ['emitter'],

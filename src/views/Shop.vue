@@ -4,12 +4,11 @@
   <div class="vh-40 vh-lg-60 bg-all"></div>
 
   <div class="container border-bottom border-light py-15 mb-15">
-
-      <ol class="breadcrumb mb-10 mb-sm-13 mb-xl-5">
-        <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
-        <li class="breadcrumb-item"><router-link :to="`/shop`">產品</router-link></li>
-        <li class="breadcrumb-item active" >{{ selectCategory ? selectCategory : "全部商品" }}</li>
-      </ol>
+    <ol class="breadcrumb mb-10 mb-sm-13 mb-xl-5">
+      <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
+      <li class="breadcrumb-item"><router-link :to="`/shop`">產品</router-link></li>
+      <li class="breadcrumb-item active">{{ selectCategory ? selectCategory : "全部商品" }}</li>
+    </ol>
 
     <div class="row">
       <div class="col-12 col-xl-3 mt-xl-13 mb-10 mb-sm-13 mb-xl-0">
@@ -104,6 +103,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -121,6 +121,7 @@ export default {
       isLoading: false,
       productByCategory: [],
       myFavorite: this.get() || [],
+
       pagination: {
         current_page: 1,
         has_next: true,

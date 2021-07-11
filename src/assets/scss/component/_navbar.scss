@@ -353,12 +353,13 @@
   position: absolute;
   opacity: 0;
   transition: all 0.5s;
-  padding: 16px;
+  
   top: 54px;
   right: 0px;
   border-radius: 4px;
   pointer-events: none;
-  overflow: hidden;
+  overflow-y: hidden;
+
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   @include media-breakpoint-up(sm) {
     width: 320px;
@@ -367,7 +368,10 @@
     top: 72px;
   }
 }
-
+.nav-dropdown-body{
+  overflow-y: auto;
+  max-height: 360px;
+}
 .nav-dropdown.show {
   opacity: 1;
   right: 12px;

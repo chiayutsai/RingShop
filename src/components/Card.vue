@@ -53,8 +53,15 @@
             class="btn btn-sm btn-secondary text-white secondary-hover"
             @click="addCart(product.id)"
           >
-            加入購物車
+            <span>加入購物車</span>
           </div>
+          <img
+            ref="addImg"
+            class="addCartAnimation"
+            :style="{ top: `${elTop}px`, left: `${elLeft}px` }"
+            :src="product.imageUrl"
+            alt=""
+          />
           <button
             v-if="loading"
             class=" btn d-flex justify-content-center align-items-center
@@ -109,16 +116,17 @@
               v-if="!loading"
               href=""
               class=" border rounded-circle  p-2  icon-hover"
-              @click.prevent="addCart(product.id)"
+              @click.prevent="addCart(product.id, $event)"
             >
               <span class="material-icons"> shopping_cart </span>
             </a>
-            <!-- <img ref="addImg"
+            <img
+              ref="addImg"
               class="addCartAnimation"
-              :class="{ 'show': showAddAnimation }"
+              :style="{ top: `${elTop}px`, left: `${elLeft}px` }"
               :src="product.imageUrl"
               alt=""
-            /> -->
+            />
           </div>
         </div>
       </div>
@@ -144,6 +152,8 @@ export default {
     return {
       showFirstImg: true,
       loading: false,
+      elTop: 0,
+      elLeft: 0,
     };
   },
   mixins: [localStorage],
@@ -158,8 +168,20 @@ export default {
     recoveryImg() {
       this.showFirstImg = true;
     },
-    addCart(id) {
-      this.loading = true;
+    addCart(id, event) {
+      if (event) {
+        const addImg = event.target.parentNode.nextElementSibling;
+        addImg.classList.add('show');
+        this.elTop = event.target.getBoundingClientRect().top - 5;
+        this.elLeft = event.target.getBoundingClientRect().left - 5;
+        setTimeout(() => {
+          addImg.classList.add('move');
+        }, 10);
+        setTimeout(() => {
+          addImg.classList.remove('move', 'show');
+        }, 1000);
+      }
+
       const data = {
         data: { product_id: id, qty: 1 },
       };
