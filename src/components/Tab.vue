@@ -46,7 +46,7 @@
     </ul>
     <div class="tab-content px-lg-8" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <p v-if="product.description !== ''" ref="description" class="mb-8"></p>
+        <p  ref="description" class="mb-8"></p>
          <p  class="mb-8">{{product.content}}</p>
         <img class="mx-auto mb-8" :src="product.imageUrl" />
         <img
@@ -93,7 +93,9 @@ export default {
 
   watch: {
     product() {
-      this.$refs.description.innerHTML = this.product.description;
+      if (this.product.description !== '' || this.product.description) { this.$refs.description.innerHTML = this.product.description; } else {
+        this.$refs.description.innerHTML = '';
+      }
     },
 
   },
