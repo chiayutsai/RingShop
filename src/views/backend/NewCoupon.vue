@@ -5,7 +5,7 @@
 
   <div class=" overflow-hidden ">
     <div class="container-fluid ">
-      <div class="row  ">
+      <div class="row">
         <div class="col-6 bg-white rounded border border-secondary py-6">
           <CouponForm ref="Coupon" :isAdd="true" />
           <div class="d-flex justify-content-end border-top pt-6">
@@ -49,7 +49,6 @@ export default {
             .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`,
               data)
             .then((res) => {
-              console.log(res);
               if (res.data.success) {
                 this.emitter.emit('push-message', {
                   type: 'success',
@@ -65,9 +64,7 @@ export default {
                 this.isLoading = false;
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => err);
         }
       });
     },

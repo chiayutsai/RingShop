@@ -1,6 +1,5 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
-
   <div class="container pt-15">
     <Progress step="3" />
   </div>
@@ -29,7 +28,7 @@
           >
             NT${{ toCurrency(order.total) }}
             <a
-              href=""
+              href="#"
               @click.prevent="openCollapse"
               class="lh-1"
               :class="{ 'arrow-rotate': open }"
@@ -43,7 +42,6 @@
               <div class="col-6">
                 <p>商品詳情</p>
               </div>
-
               <div class="col-3">
                 <p>數量</p>
               </div>
@@ -55,11 +53,9 @@
               <div class="col-6">
                 <div class="d-flex align-items-center">
                   <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
-
                   <p>{{ item.product.title }}</p>
                 </div>
               </div>
-
               <div class="col-3">
                 <p>{{ item.qty }}</p>
               </div>
@@ -69,7 +65,6 @@
             </div>
           </div>
         </div>
-
         <button
           type="button"
           @click="pay(orderID)"
@@ -109,7 +104,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res.data);
           if (res.data.success) {
             this.order = res.data.order;
             const date = new Date(res.data.order.create_at * 1000).toISOString().split('T');
@@ -117,13 +111,10 @@ export default {
             this.user = res.data.order.user;
             this.isLoading = false;
           } else {
-            console.log(res.data.message);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     openCollapse() {
       this.collapse.toggle();
@@ -136,14 +127,12 @@ export default {
       this.$http
         .post(url)
         .then((res) => {
-          console.log(res.data);
           if (res.data.success) {
             // this.emitter.emit('push-message', {
             //   type: 'success',
             //   message: res.data.message,
             // });
             this.$router.push({ name: 'final', params: { order: this.orderID } });
-
             this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
@@ -153,9 +142,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   mounted() {

@@ -7,7 +7,7 @@
     >
   </div>
   <div class="bg-white rounded overflow-hidden border border-secondary ">
-    <div class="container-fluid  py-6">
+    <div class="container-fluid py-6">
       <Form v-slot="{ errors }" ref="editForm" class="text-dark">
         <div class="row mb-6">
           <div class="col-6">
@@ -128,7 +128,6 @@
 
 <script>
 export default {
-  components: {},
   data() {
     return {
       order: {},
@@ -146,7 +145,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             if (res.data.order) {
               this.isLoading = false;
@@ -168,13 +166,9 @@ export default {
               });
               this.$router.push('/dashboard/order');
             }
-          } else {
-            console.log(res.data.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     updateStatus(status) {
       if (status === 'handle' || status === 'finish') {
@@ -201,7 +195,6 @@ export default {
               data,
             )
             .then((res) => {
-              console.log(res);
               if (res.data.success) {
                 this.emitter.emit('push-message', {
                   type: 'success',
@@ -217,9 +210,7 @@ export default {
                 this.isLoading = false;
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => err);
         }
       });
     },

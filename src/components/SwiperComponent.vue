@@ -1,17 +1,17 @@
 <template>
-  <swiper
+  <Swiper
     :loop="false"
     :spaceBetween="10"
     :navigation="false"
     :thumbs="{ swiper: thumbsSwiper }"
     class="mySwiper2"
   >
-    <swiper-slide><img :src="product.imageUrl"/></swiper-slide>
-    <swiper-slide v-for="(img, index) in product.imagesUrl" :key="index"
+    <SwiperSlide><img :src="product.imageUrl"/></SwiperSlide>
+    <SwiperSlide v-for="(img, index) in product.imagesUrl" :key="index"
       ><img :src="product.imagesUrl[index]"
-    /></swiper-slide>
-  </swiper>
-  <swiper
+    /></SwiperSlide>
+  </Swiper>
+  <Swiper
     @swiper="setThumbsSwiper"
     :loop="false"
     :spaceBetween="10"
@@ -21,14 +21,13 @@
     :watchSlidesProgress="true"
     class="mySwiper"
   >
-    <swiper-slide><img :src="product.imageUrl"/></swiper-slide>
-    <swiper-slide v-for="(img, index) in product.imagesUrl" :key="index"
+    <SwiperSlide><img :src="product.imageUrl"/></SwiperSlide>
+    <SwiperSlide v-for="(img, index) in product.imagesUrl" :key="index"
       ><img :src="product.imagesUrl[index]"
-    /></swiper-slide>
-  </swiper>
+    /></SwiperSlide>
+  </Swiper>
 </template>
 <script>
-
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles

@@ -14,7 +14,6 @@
         :src="product.imagesUrl[0]"
         alt=""
     /></router-link>
-
     <div class="card-body">
       <div v-if="cartCard">
         <h3 class="card-title mb-2">
@@ -34,16 +33,16 @@
         </p>
         <a
           v-if="myFavorite.includes(product.id)"
-          href=""
-          class="btn btn-sm btn-secondary text-white secondary-hover  me-2"
+          href="#"
+          class="btn btn-sm btn-secondary text-white secondary-hover me-2"
           @click.prevent="emitaddMyFavorite(product.id)"
         >
           <span class="material-icons text-base"> favorite </span></a
         >
         <a
           v-else
-          href=""
-          class="btn btn-sm btn-outline-secondary white-hover cartCard-btn  me-2"
+          href="#"
+          class="btn btn-sm btn-outline-secondary white-hover cartCard-btn me-2"
           @click.prevent="emitaddMyFavorite(product.id)"
         >
           <span class="material-icons text-base"> favorite_border </span></a
@@ -64,6 +63,7 @@
           />
           <button
             v-if="loading"
+            type="button"
             class=" btn d-flex justify-content-center align-items-center
                 position-absolute no-allow
                 h-100 w-100 top-0 start-0 bg-light"
@@ -91,22 +91,21 @@
         <div class="d-flex">
           <a
             v-if="myFavorite.includes(product.id)"
-            href=""
-            class="border bg-white text-secondary rounded-circle  p-2  me-4 icon-active-hover"
+            href="#"
+            class="border bg-white text-secondary rounded-circle p-2 me-4 icon-active-hover"
             @click.prevent="emitaddMyFavorite(product.id)"
           >
             <span class="material-icons"> favorite </span></a
           >
           <a
             v-else
-            href=""
-            class="border rounded-circle  p-2  me-4 icon-hover"
+            href="#"
+            class="border rounded-circle p-2 me-4 icon-hover"
             @click.prevent="emitaddMyFavorite(product.id)"
           >
             <span class="material-icons"> favorite_border </span></a
           >
-
-          <div v-if="loading" class="add-loading border rounded-circle  p-2 ">
+          <div v-if="loading" class="add-loading border rounded-circle p-2 ">
             <div class="spinner-border spinner-border-sm text-dark" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -114,8 +113,8 @@
           <div class="position-relative">
             <a
               v-if="!loading"
-              href=""
-              class=" border rounded-circle  p-2  icon-hover"
+              href="#"
+              class=" border rounded-circle p-2 icon-hover"
               @click.prevent="addCart(product.id, $event)"
             >
               <span class="material-icons"> shopping_cart </span>
@@ -188,7 +187,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`, data)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -204,14 +202,9 @@ export default {
             this.loading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     emitaddMyFavorite(id) {
-      // console.log(id, storageMethods);
-      // this.myFavorite.push(id);
-      // storageMethods.save(this.myFavorite);
       this.$emit('emit-add-favorite', id);
     },
   },

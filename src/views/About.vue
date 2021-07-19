@@ -18,7 +18,7 @@
     ">
       <div data-wow-delay="0.5s" class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10
        wow animate__animated animate__fadeInLeft">
-        <div class="d-flex align-items-center  mb-10 ">
+        <div class="d-flex align-items-center mb-10 ">
           <p class="title text-3xl">關於品牌</p>
           <p class="text-lg opacity-6">About Us</p>
         </div>
@@ -28,7 +28,7 @@
           alt=""
         />
       </div>
-      <div data-wow-delay="0.5s" class="col-12 col-md-6 col-lg-4 offset-lg-2  mb-10
+      <div data-wow-delay="0.5s" class="col-12 col-md-6 col-lg-4 offset-lg-2 mb-10
        wow animate__animated animate__fadeInRight">
         <p class="lh-lg letter-spacing-1 mb-10">
           我們的目標是提供平價但不平凡的飾品，<br />
@@ -58,14 +58,14 @@
       <div class="col-12 col-md-6 col-lg-4 offset-lg-2
        wow animate__animated animate__fadeInRight">
         <img
-          class="rounded-3  w-80 w-md-100 mx-auto mb-10 mb-md-0"
+          class="rounded-3 w-80 w-md-100 mx-auto mb-10 mb-md-0"
           src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1626002142810.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=aFo90%2F6RPgTHbltitJlchKED5smRJf7qvSYcecmPbbV6hd7%2BwPRSGkZZ%2FC%2BOxlNLnWOBeuhoVLToVOnbJNq9MmMMJXP9SnToUToIvtDzo57VH4vrmikr9UDdp502aQ%2Bc75lcSyyhWfeWtjRHGzOO9nHbKP8NmNhYEJo8laZkZuc%2F5ejyujctmFXPootLiOHWoYul24NAzBNGfR0sAXpl6J6DcPK0ePbj1Ara2IfjyKBPL2RhueMTXqleGII4dYN6oQq5FLuC7eOxUSQhr%2BTEsZ2x1cLyTWsbvYohaF9m8K73tI%2FIB%2B74cMiRa7X%2BeHXdkwHWCQYYOpk2r86ntDTkPg%3D%3D"
           alt=""
         />
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div class="col border-bottom border-md-end border-bottom-md-0  border-light pb-9 pb-md-0
+      <div class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
@@ -76,9 +76,9 @@
         </p>
       </div>
       <div data-wow-delay="0.5s"
-       class="col border-bottom border-lg-end border-bottom-md-0 border-light  pb-9 pb-md-0
+       class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
        wow animate__animated animate__zoomIn">
-        <span class="material-icons text-4xl mb-4 mb-md-7  ">
+        <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
         <p class="text-xl mb-4">售後服務</p>
@@ -95,7 +95,7 @@
         <p class="text-xl mb-4">客服服務</p>
         <p>如購買過程及收到商品有任何問題，歡迎聯繫我們， 我們會盡快回覆您。</p>
       </div>
-      <div data-wow-delay="1.5s" class="col  wow animate__animated animate__zoomIn">
+      <div data-wow-delay="1.5s" class="col wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           card_giftcard
         </span>

@@ -60,7 +60,6 @@
               v-model="tempArticle.imageUrl"
             />
             <p class="text-xs mb-2">或</p>
-
             <button
               v-if="isUpload"
               class="btn btn-primary text-sm text-secondary"
@@ -97,16 +96,14 @@
                 placeholder="標籤"
                 v-model="tempArticle.tag[key]"
               />
-              <button type="button" class="btn-close  tag-close" @click="deleteTag(key)"></button>
+              <button type="button" class="btn-close tag-close" @click="deleteTag(key)"></button>
             </div>
           </div>
         </div>
         <div class="btn btn-secondary text-white text-sm" @click="createTag">新增標籤</div>
       </div>
       <div class="col-12 mb-8">
-        <label for="articleDescription" class="form-label"
-          >文章描述<span>最多50字</span></label
-        >
+        <label for="articleDescription" class="form-label">文章描述<span>最多50字</span></label>
         <Field
           type="text"
           rows="3"
@@ -118,7 +115,7 @@
           rules="max:50"
           v-model="tempArticle.description"
         ></Field>
-         <error-message name="文章描述" class="backend-invalid-feedback"></error-message>
+        <error-message name="文章描述" class="backend-invalid-feedback"></error-message>
       </div>
     </div>
 
@@ -170,7 +167,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`, formData)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.tempArticle.imageUrl = res.data.imageUrl;
             this.isUpload = false;

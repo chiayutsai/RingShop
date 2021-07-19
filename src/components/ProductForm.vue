@@ -61,9 +61,8 @@
           v-model="tempProduct.category"
         >
           <option :disabled="product.category">請選擇</option>
-          <option v-for="category in productsCategory" :value="category" :key="category">{{
-            category
-          }}</option>
+          <option v-for="category in productsCategory" :value="category" :key="category">
+            {{ category }}</option>
         </Field>
         <error-message name="產品分類" class="backend-invalid-feedback"></error-message>
       </div>
@@ -95,7 +94,7 @@
           <input
             type="text"
             name="規格"
-            class=" form-control  me-2"
+            class=" form-control me-2"
             placeholder="規格"
             v-model="item.format"
           />
@@ -227,10 +226,10 @@
               placeholder="輸入圖片位址"
               v-model="tempProduct.imagesUrl[key]"
             />
-            <p class="text-xs  mb-2">或</p>
+            <p class="text-xs mb-2">或</p>
             <button
               v-if="isUploads[key]"
-              class="d-block w-100 btn btn-primary text-sm  text-secondary mb-4"
+              class="d-block w-100 btn btn-primary text-sm text-secondary mb-4"
               type="button"
               disabled
             >
@@ -290,6 +289,7 @@ export default {
     },
     isAdd: Boolean,
   },
+  inject: ['emitter'],
   data() {
     return {
       tempProduct: {},
@@ -312,7 +312,6 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.productsAll = res.data.products;
             this.productsAll.forEach((product) => {
@@ -320,13 +319,9 @@ export default {
                 this.productsCategory.push(product.category);
               }
             });
-          } else {
-            alert(res.data.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     addFormat() {
       const formatObj = {
@@ -337,7 +332,10 @@ export default {
     },
     addCategory() {
       this.productsCategory.push(this.tempCategory);
-      alert(`新增${this.tempCategory}分類`);
+      this.emitter.emit('push-message', {
+        type: 'success',
+        message: `新增${this.tempCategory}分類`,
+      });
       this.tempCategory = '';
       this.isAddCategory = false;
     },
@@ -354,7 +352,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`, formData)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             if (key === 'main') {
               this.tempProduct.imageUrl = res.data.imageUrl;

@@ -1,10 +1,8 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
-
   <div class="container pt-15 border-bottom border-light pb-15 mb-15">
     <ol class="breadcrumb mb-5">
       <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
-
       <li class="breadcrumb-item active">收藏清單</li>
     </ol>
     <h3
@@ -43,7 +41,6 @@
             <router-link :to="`/product/${item.id}`">
               <div class="d-flex align-items-center">
                 <img class="w-40 me-4" :src="item.imageUrl" alt="" />
-
                 <h3 class="text-base text-dark">{{ item.title }}</h3>
               </div>
             </router-link>
@@ -59,10 +56,10 @@
               </p>
             </div>
           </div>
-
           <div class="col-6 col-md-3 order-4 order-md-0 ">
             <div class="position-relative">
               <button
+              type="button"
                 class="btn btn-secondary secondary-hover text-white w-100 w-md-75"
                 @click="addCart(item.id)"
               >
@@ -70,6 +67,7 @@
               </button>
               <button
                 v-if="addloading"
+                 type="button"
                 class=" btn d-flex justify-content-center
                 align-items-center position-absolute no-allow w-100
                w-md-75 h-100 top-0 start-0 bg-light"
@@ -81,7 +79,7 @@
             </div>
           </div>
           <div class="col-1 order-2 order-md-0">
-            <a @click.prevent="openModal(item.id)" href="" class="text-dark scale-hover"
+            <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover"
               ><span class="material-icons"> delete_forever </span></a
             >
           </div>
@@ -97,7 +95,6 @@
       </div>
     </div>
   </div>
-
   <FrontDelModal ref="delModal" @delete="deleteFavorite" />
 </template>
 
@@ -137,20 +134,16 @@ export default {
                 this.favoriteProduct.push(res.data.product);
                 this.isLoading = false;
               } else {
-                console.log(res.data.message);
                 this.isLoading = false;
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => err);
         });
       } else {
         this.isLoading = false;
       }
     },
     openModal(id) {
-      console.log(id);
       this.tempID = id;
       this.$refs.delModal.openModal();
     },
@@ -162,7 +155,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`, data)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -178,9 +170,7 @@ export default {
             this.addloading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     deleteFavorite() {
       this.myFavorite.splice(this.myFavorite.indexOf(this.tempID), 1);

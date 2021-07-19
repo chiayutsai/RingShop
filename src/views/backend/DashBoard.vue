@@ -19,7 +19,7 @@
           </span>
           前往前台
         </router-link>
-        <a href="" class="p-4 dashboard-hover" @click.prevent="logOut">
+        <a href="#" class="p-4 dashboard-hover" @click.prevent="logOut">
           <span class="material-icons">
             logout
           </span>
@@ -29,7 +29,7 @@
     </div>
     <div class="position-fixed w-10 h-dashboard bg-secondary" ref="nav">
       <a
-        href=""
+        href="#"
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage === 'admin' }"
         @click.prevent="changeDropdown('admin')"
@@ -46,7 +46,7 @@
         <router-link :to="`/dashboard/newProduct`" class="p-4 ">新增產品</router-link>
       </ul>
       <a
-        href=""
+        href="#"
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'order' }"
         @click.prevent="changeDropdown('order')"
@@ -56,7 +56,7 @@
         <router-link :to="`/dashboard/order`" class="p-4">訂單列表</router-link>
       </ul>
       <a
-        href=""
+        href="#"
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'coupons' }"
         @click.prevent="changeDropdown('coupons')"
@@ -69,7 +69,7 @@
         <router-link :to="`/dashboard/newCoupon`" class="p-4">新增優惠券</router-link>
       </ul>
        <a
-        href=""
+        href="#"
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'articles' }"
         @click.prevent="changeDropdown('articles')"
@@ -82,7 +82,6 @@
         <router-link :to="`/dashboard/newArticle`" class="p-4">新增文章</router-link>
       </ul>
     </div>
-
     <div class="w-90 float-end py-15 px-8 bg-dashboard min-vh-100">
       <router-view v-if="check" />
     </div>
@@ -115,7 +114,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}api/user/check`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.check = true;
             this.isLoading = false;
@@ -127,16 +125,13 @@ export default {
             this.$router.push('/login');
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     logOut() {
       this.isLoading = true;
       this.$http
         .post(`${process.env.VUE_APP_API}logout`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             emitter.emit('push-message', {
               type: 'success',
@@ -149,9 +144,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     changeDropdown(page) {
       this.nowPage = page;

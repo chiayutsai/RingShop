@@ -1,5 +1,5 @@
 <template>
-  <div class="banner position-relative z-2  wow animate__animated animate__zoomIn">
+  <div class="banner position-relative z-2 wow animate__animated animate__zoomIn">
     <div class="d-flex align-items-end align-items-sm-center vh-50 vh-sm-60 vh-md-100">
       <p class="banner-text font-abril">New</p>
       <p class="banner-shop ">Fashion Shop<br />2021</p>
@@ -61,7 +61,7 @@
      wow animate__animated animate__zoomIn"
   >
     <RingCircle class="banner-ring" />
-    <div class="home-banner  ">
+    <div class="home-banner">
       <div ref="bannerSwiper" class="swiper-container bannerSwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide rounded-sm-pill">
@@ -102,8 +102,6 @@
           </div>
         </div>
       </div>
-      <!-- If we need navigation buttons -->
-      <!-- <div class="swiper-button-prev"></div> -->
       <div class="swiper-button-next"></div>
     </div>
     <div class="home-secondary-banner">

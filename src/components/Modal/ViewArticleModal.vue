@@ -32,7 +32,7 @@
           </div>
           <div class="d-flex justify-content-between  mb-4">
             <p>作者 : {{ article.author }}</p>
-            <p>發布日期 : {{publicDate}}</p>
+            <p>發布日期 : {{ publicDate }}</p>
           </div>
           <img class="w-100 mb-6" v-if="article.imageUrl" :src="article.imageUrl" alt="" />
 

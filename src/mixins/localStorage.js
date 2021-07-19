@@ -13,7 +13,6 @@ export default {
       } else {
         this.myFavorite.push(id);
       }
-      console.log(this.myFavorite);
       this.save(this.myFavorite);
       this.emitter.emit('update-favorite');
     },

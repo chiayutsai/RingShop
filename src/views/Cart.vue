@@ -1,6 +1,5 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
-
   <div class="container pt-15">
     <Progress step="1" />
     <h3
@@ -36,7 +35,6 @@
           <div class="col-11 col-md-4 mb-5 mb-md-0">
             <div class="d-flex align-items-center">
               <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
-
               <h3 class="text-base">{{ item.product.title }}</h3>
             </div>
           </div>
@@ -52,7 +50,7 @@
             </div>
           </div>
           <div class="col-12 col-md-3 order-3 order-md-0 mb-5 mb-md-0">
-            <div class="d-flex w-100  w-md-75 position-relative">
+            <div class="d-flex w-100 w-md-75 position-relative">
               <button
                 :disabled="item.qty <= 1"
                 class="quantity-btn cart-remove text-dark border-dark"
@@ -77,9 +75,9 @@
               >
                 +
               </button>
-
               <button
                 v-if="updateLoading"
+                type="button"
                 class=" btn d-flex justify-content-center align-items-center
                 position-absolute no-allow
                w-100 h-100 top-0 start-0 bg-light"
@@ -95,7 +93,7 @@
             NT${{ toCurrency(item.final_total) }}
           </div>
           <div class="col-1 order-2 order-md-0">
-            <a @click.prevent="openModal(item.id)" href="" class="text-dark scale-hover"
+            <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover"
               ><span class="material-icons"> delete_forever </span></a
             >
           </div>
@@ -103,11 +101,10 @@
       </div>
       <div
         class="d-flex
-         justify-content-between align-items-end  align-items-sm-center
+         justify-content-between align-items-end align-items-sm-center
       rounded-bottom bg-table border border-white p-6"
       >
         <a @click.prevent="openModal()" class="btn btn-outline-dark">清空購物車</a>
-
         <div class="d-flex flex-column flex-sm-row align-items-center">
           <p class="text-dark text-base text-md-xl mb-5 mb-sm-0 me-sm-5 ">
             總計：NT${{ toCurrency(final_total) }}
@@ -218,25 +215,19 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.allProduct = res.data.products;
 
             this.getRandom();
-          } else {
-            alert(res.data.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     addCartQty(item) {
       this.cart[item].qty += 1;
       this.updateCart(item, this.cart[item].id, this.cart[item].qty);
     },
     minusCartQty(item) {
-      console.log(this.cart[item].qty);
       this.cart[item].qty -= 1;
       this.updateCart(item, this.cart[item].id, this.cart[item].qty);
     },
@@ -247,7 +238,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res.data.data);
           if (res.data.success) {
             this.allQty = 0;
             this.cart = res.data.data.carts;
@@ -258,13 +248,10 @@ export default {
             });
             this.isLoading = false;
           } else {
-            console.log(res.data.message);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     updateCart(item, id, qty) {
       if (this.cart[item].qty < 1) {
@@ -282,7 +269,6 @@ export default {
       this.$http
         .put(url, data)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('update-cart');
             this.updateLoading = false;
@@ -299,9 +285,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     deleteCart() {
       let url = '';
@@ -314,7 +298,6 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.$refs.delModal.hideModal();
             this.emitter.emit('update-cart');
@@ -332,9 +315,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
 
     goToPay() {
@@ -355,13 +336,11 @@ export default {
       this.randomProduct = [];
       const cartProductId = this.cart.map((item) => item.product_id);
       const filterProduct = this.allProduct.filter((item) => !cartProductId.includes(item.id));
-      console.log(filterProduct);
       const arrSet = new Set([]);
       const maxSize = filterProduct.length < 3 ? filterProduct.length : 3;
       for (let i = 0; arrSet.size < maxSize; i + 1) {
         const num = getRandomInt(filterProduct.length);
         arrSet.add(num);
-        console.log(arrSet);
       }
       arrSet.forEach((item) => {
         this.randomProduct.push(filterProduct[item]);

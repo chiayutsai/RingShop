@@ -8,7 +8,7 @@
     >
   </div>
 
-  <div class="bg-white rounded overflow-hidden border border-secondary  ">
+  <div class="bg-white rounded overflow-hidden border border-secondary">
     <table class="table table-borderless mb-0">
       <thead class="bg-secondary text-white">
         <tr>
@@ -42,7 +42,6 @@
                   :false-value="0"
                   @change="changeStatus(item)"
                 />
-
                 <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key"
                   >上架</label
                 >
@@ -65,6 +64,7 @@
                 刪除
               </button>
               <button
+               type="button"
                 class="btn btn-outline-secondary white-hover float-end p-0 lh-1 mt-2 me-4"
                 @click="openCollapse(key)"
               >
@@ -132,19 +132,15 @@ export default {
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.products = res.data.products;
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            console.log(res.data.messages);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/all`)
         .then((res) => {
@@ -158,9 +154,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     openCollapse(id) {
       if (this.isOpen.id === id) {
@@ -203,7 +197,6 @@ export default {
           data,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -220,9 +213,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     changeStatus(item) {
       this.tempProduct = {
@@ -237,7 +228,6 @@ export default {
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -254,9 +244,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   mounted() {

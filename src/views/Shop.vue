@@ -1,15 +1,12 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
-
   <div class="vh-40 vh-lg-60 bg-all"></div>
-
   <div class="container border-bottom border-light py-15 mb-15">
     <ol class="breadcrumb mb-10 mb-sm-13 mb-xl-5">
       <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
       <li class="breadcrumb-item"><router-link :to="`/shop`">產品</router-link></li>
       <li class="breadcrumb-item active">{{ selectCategory ? selectCategory : "全部商品" }}</li>
     </ol>
-
     <div class="row">
       <div class="col-12 col-xl-3 mt-xl-13 mb-10 mb-sm-13 mb-xl-0">
         <div class="d-none d-xl-block w-xl-90">
@@ -19,11 +16,7 @@
               <span class="w-bar bg-white me-2"></span>
             </div>
             <p>
-              全部商品 <span
-                class="font-abril text-lg
-          opacity-8 align-self-end"
-                >All Products</span
-              >
+              全部商品 <span class="font-abril text-lg opacity-8 align-self-end">All Products</span>
             </p>
             <div class="d-flex">
               <span class="w-bar bg-white ms-2"></span>
@@ -33,7 +26,7 @@
           <ul class="mb-xl-10">
             <li class="category-link">
               <a
-                href=""
+                href="#"
                 @click.prevent="changeCategory('')"
                 :class="{ 'cate-active': selectCategory === '' || !selectCategory }"
                 >全部商品
@@ -50,7 +43,7 @@
               <span class="w-bar bg-white me-1"></span><span class="w-bar bg-white me-2"></span>
             </div>
             <p>
-              商品分類 <span class="font-abril text-lg  opacity-8  align-self-end">Category</span>
+              商品分類 <span class="font-abril text-lg opacity-8 align-self-end">Category</span>
             </p>
             <div class="d-flex">
               <span class="w-bar bg-white ms-2"></span><span class="w-bar bg-white ms-1"></span>
@@ -59,7 +52,7 @@
           <ul class="d-flex flex-wrap flex-md-nowrap d-xl-block justify-content-md-center">
             <li class="d-block d-xl-none category-link mb-5 mb-md-0">
               <a
-                href=""
+                href="#"
                 @click.prevent="changeCategory('')"
                 :class="{ 'cate-active': selectCategory === '' || !selectCategory }"
                 >全部商品
@@ -68,14 +61,9 @@
                 </span>
               </a>
             </li>
-            <li
-              v-for="category in productsCategory"
-              class="category-link
-           mb-xl-4 "
-              :key="category"
-            >
+            <li v-for="category in productsCategory" class="category-link mb-xl-4" :key="category">
               <a
-                href=""
+                href="#"
                 @click.prevent="changeCategory(category)"
                 :class="{ 'cate-active': selectCategory === category }"
                 >{{ category }}
@@ -90,24 +78,19 @@
       <div class="col-12 col-xl-9">
         <div class="d-flex mb-10">
           <h1 class="title text-4xl">{{ selectCategory ? selectCategory : "全部商品" }}</h1>
-          <!-- <p class="font-abril text-3xl opacity-8 align-self-end">All Products</p> -->
         </div>
-
         <ul class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-5 mb-13">
           <li class="col" v-for="item in productByCategory" :key="item.id">
             <Card :product="item" :myFavorite="myFavorite" @emit-add-favorite="addMyFavorite" />
           </li>
         </ul>
-
         <Pagination :pagination="pagination" @emit-page="showCategory" />
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
-// @ is an alias to /src
 import Card from '@/components/Card.vue';
 import Pagination from '@/components/Pagination.vue';
 import localStorage from '@/mixins/localStorage';
@@ -121,7 +104,6 @@ export default {
       isLoading: false,
       productByCategory: [],
       myFavorite: this.get() || [],
-
       pagination: {
         current_page: 1,
         has_next: true,
@@ -143,7 +125,6 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.productsAll = res.data.products;
             this.isLoading = false;
@@ -154,13 +135,10 @@ export default {
               }
             });
           } else {
-            console.log(res.data.message);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     changeCategory(category) {
       this.$router.push({ name: 'shop', query: { category } });

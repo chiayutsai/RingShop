@@ -1,14 +1,12 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
-
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">文章列表</h2>
     <router-link :to="`/dashboard/newArticle`" class="btn btn-secondary text-white shadow-none "
       >新增文章</router-link
     >
   </div>
-
-  <div class="bg-white rounded overflow-hidden border border-secondary  ">
+  <div class="bg-white rounded overflow-hidden border border-secondary">
     <table class="table table-borderless mb-0">
       <thead class="bg-secondary text-white">
         <tr>
@@ -17,7 +15,6 @@
           <th class="w-20">描述</th>
           <th>文章分類</th>
           <th>作者</th>
-
           <th>建立時間</th>
           <th>更新時間</th>
           <th>是否公開</th>
@@ -37,7 +34,6 @@
               <p v-for="(tag, key) in item.tag" :key="key">＃{{ tag }}</p>
             </td>
             <td>{{ item.author }}</td>
-
             <td>{{ new Date(item.create_at * 1000).toISOString().split("T")[0] }}</td>
             <td v-if="item.updateDate">
               {{ new Date(item.updateDate * 1000).toISOString().split("T")[0] }}
@@ -54,7 +50,6 @@
                   v-model="item.isPublic"
                   @click="getSingle(item, 'status')"
                 />
-
                 <label v-if="item.isPublic" class="form-check-label" :for="'enabled' + key"
                   >公開</label
                 >
@@ -63,7 +58,7 @@
             </td>
             <td>
               <a
-                href=""
+                href="#"
                 class=" text-secondary text-center shadow-none eye-hover"
                 @click.prevent="getSingle(item, 'view')"
               >
@@ -97,7 +92,6 @@
     </div>
   </div>
   <ViewArticleModal :article="tempArticle" ref="viewModal" @edit="editArticle" />
-
   <ArticleModal :article="tempArticle" ref="updateModal" @update="updateArticle" />
   <DeleteModal :item="tempArticle" :type="'normal'" ref="delModal" @delete="deleteArticle" />
 </template>
@@ -133,26 +127,21 @@ export default {
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/articles?page=${page}`,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.articles = res.data.articles;
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            console.log(res.data.messages);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     getSingle(item, type) {
       this.isLoading = true;
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${item.id}`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.tempArticle = res.data.article;
 
@@ -169,13 +158,10 @@ export default {
               this.openModal('view', this.tempArticle);
             }
           } else {
-            console.log(res.data.messages);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     openModal(type, item) {
       if (type === 'edit') {
@@ -199,7 +185,6 @@ export default {
           data,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -216,9 +201,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
 
     deleteArticle() {
@@ -228,7 +211,6 @@ export default {
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${this.tempArticle.id}`,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -245,12 +227,9 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     editArticle() {
-      console.log('edit');
       this.$refs.updateModal.openModal();
     },
   },

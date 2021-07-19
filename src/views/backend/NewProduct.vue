@@ -50,7 +50,6 @@ export default {
           this.$http
             .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`, data)
             .then((res) => {
-              console.log(res);
               if (res.data.success) {
                 this.emitter.emit('push-message', {
                   type: 'success',
@@ -66,9 +65,7 @@ export default {
                 this.isLoading = false;
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => err);
         }
       });
     },

@@ -1,10 +1,8 @@
 <template>
   <Loading :isLoading="isLoading"></Loading>
-
   <h2 class="text-dark mb-5">訂單列表</h2>
-
-  <div class="bg-white rounded overflow-hidden border border-secondary  ">
-    <p v-if="this.orders.length == 0" class="bg-secondary text-center  py-8">目前沒有訂單</p>
+  <div class="bg-white rounded overflow-hidden border border-secondary">
+    <p v-if="this.orders.length == 0" class="bg-secondary text-center py-8">目前沒有訂單</p>
     <div v-else>
       <table class="table table-borderless mb-0">
         <thead class="bg-secondary text-white">
@@ -38,7 +36,7 @@
                   等待付款中
                 </div>
                 <div
-                  v-if="item.is_paid  && item.status !== 'finish'  && item.status !== 'cancel'"
+                  v-if="item.is_paid && item.status !== 'finish' && item.status !== 'cancel'"
                   class="status status-handle"
                   @click="openModal('status', item)"
                 >
@@ -61,7 +59,7 @@
               </td>
               <td>
                 <a
-                  href=""
+                  href="#"
                   class=" text-secondary text-center shadow-none eye-hover"
                   @click.prevent="openModal('watch', item)"
                 >
@@ -98,9 +96,7 @@
     </div>
   </div>
   <StatusModal :order="tempOrder" :status="status" ref="statusModal" @emit-status="updateOrder" />
-
   <OrderModal :order="tempOrder" ref="orderModal" @edit="goToEdit" />
-
   <DeleteModal :item="tempOrder" :type="'order'" ref="delModal" @delete="deleteOrder" />
 </template>
 
@@ -133,19 +129,15 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.orders = res.data.orders;
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            console.log(res.data.messages);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
 
     openModal(type, item) {
@@ -197,7 +189,6 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -214,9 +205,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
 
     goToEdit(item) {
@@ -235,7 +224,6 @@ export default {
           data,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -252,9 +240,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   mounted() {

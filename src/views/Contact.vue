@@ -2,21 +2,19 @@
   <div class="container py-15">
       <ol class="breadcrumb mb-5">
       <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
-
       <li class="breadcrumb-item active">聯絡我們</li>
     </ol>
     <div class="py-12 border-bottom border-top border-light mb-12
      wow animate__animated animate__flipInX">
       <h3 class="text-3xl text-lg-4xl text-center ">美麗，從這裡出發</h3>
     </div>
-
     <div
       class="row align-items-center
      flex-column flex-md-row pb-15 border-bottom border-light mb-10"
     >
       <div class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10
        wow animate__animated animate__fadeInLeft">
-        <div class="d-flex align-items-center  mb-10">
+        <div class="d-flex align-items-center mb-10">
           <p class="title text-3xl">聯絡我們</p>
           <p class="text-lg opacity-6">Contact Us</p>
         </div>
@@ -26,7 +24,7 @@
           alt=""
         />
       </div>
-      <div class="col-12 col-md-6 col-lg-4 offset-lg-2  mb-10
+      <div class="col-12 col-md-6 col-lg-4 offset-lg-2 mb-10
        wow animate__animated animate__fadeInRight">
         <ul class="mb-7">
           <li class="lh-lg letter-spacing-1 ">
@@ -59,7 +57,7 @@
       </div>
     </div>
    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div class="col border-bottom border-md-end border-bottom-md-0  border-light pb-9 pb-md-0
+      <div class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
@@ -70,16 +68,14 @@
         </p>
       </div>
       <div data-wow-delay="0.5s"
-       class="col border-bottom border-lg-end border-bottom-md-0 border-light  pb-9 pb-md-0
+       class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
        wow animate__animated animate__zoomIn">
-        <span class="material-icons text-4xl mb-4 mb-md-7  ">
+        <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
         <p class="text-xl mb-4">售後服務</p>
-
         <p>為保障買家權益， 所有商品皆享有30日的售後服務。</p>
       </div>
-
       <div data-wow-delay="1s"
       class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
        wow animate__animated animate__zoomIn">
@@ -89,11 +85,10 @@
         <p class="text-xl mb-4">客服服務</p>
         <p>如購買過程及收到商品有任何問題，歡迎聯繫我們， 我們會盡快回覆您。</p>
       </div>
-      <div data-wow-delay="1.5s" class="col  wow animate__animated animate__zoomIn">
+      <div data-wow-delay="1.5s" class="col wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           card_giftcard
         </span>
-
         <p class="text-xl mb-4">包裝服務</p>
         <p>如需額外包裝，可再下訂後通知我們，會有專人協助處理相關事宜。</p>
       </div>

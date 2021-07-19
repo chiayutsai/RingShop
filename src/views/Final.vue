@@ -27,7 +27,6 @@
             <div class="col-6">
               <p>商品資訊</p>
             </div>
-
             <div class="col-3">
               <p>數量</p>
             </div>
@@ -43,11 +42,9 @@
             <div class="col-6">
               <div class="d-flex align-items-center">
                 <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
-
                 <p>{{ item.product.title }}</p>
               </div>
             </div>
-
             <div class="col-3">
               <p>{{ item.qty }}</p>
             </div>
@@ -55,20 +52,17 @@
               <p>NT${{ toCurrency(item.final_total) }}</p>
             </div>
           </div>
-
           <div class="border-bottom border-2 border-white"></div>
           <div class="row text-dark px-4 py-6">
             <!-- <div class="col-9 mb-4">
               <p class="fw-bold text-lg text-secondary">折扣</p>
             </div>
-
             <div class="col-3">
               <p class="fw-bold text-lg text-end text-secondary">-NT$80</p>
             </div> -->
             <div class="col-9">
               <p class="fw-bold text-lg">總計：</p>
             </div>
-
             <div class="col-3">
               <p class="fw-bold text-lg text-end">NT${{ toCurrency(order.total) }}</p>
             </div>
@@ -80,23 +74,23 @@
         <div class="bg-table px-8 rounded-bottom text-dark">
           <div class="row row-cols-2 py-4 border-bottom">
             <p class="col">下單日期</p>
-            <p class="col">{{orderDate}}</p>
+            <p class="col">{{ orderDate }}</p>
           </div>
           <div class="row row-cols-2 py-4 border-bottom">
             <p class="col">顧客姓名</p>
-            <p class="col">{{user.name}}</p>
+            <p class="col">{{ user.name }}</p>
           </div>
           <div class="row row-cols-2 py-4 border-bottom">
             <p class="col">聯絡電話</p>
-            <p class="col">{{user.tel}}</p>
+            <p class="col">{{ user.tel }}</p>
           </div>
           <div class="row row-cols-2 py-4 border-bottom">
             <p class="col ">電子郵件</p>
-            <p class="col text-break">{{user.email}}</p>
+            <p class="col text-break">{{ user.email }}</p>
           </div>
           <div class="row row-cols-2 py-4 border-bottom">
             <p class="col">地址</p>
-            <p class="col">{{user.address}}</p>
+            <p class="col">{{ user.address }}</p>
           </div>
         </div>
       </div>
@@ -125,24 +119,18 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res.data);
           if (res.data.success) {
             this.order = res.data.order;
             const date = new Date(res.data.order.create_at * 1000).toISOString().split('T');
             [this.orderDate] = date;
             this.user = res.data.order.user;
-          } else {
-            alert(res.data.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   created() {
     this.orderID = this.$route.params.order;
-    console.log(this.$route);
     this.getOrder(this.orderID);
   },
 };

@@ -15,7 +15,6 @@
             <div class="col-6">
               <p>商品資訊</p>
             </div>
-
             <div class="col-3">
               <p>數量</p>
             </div>
@@ -31,11 +30,9 @@
             <div class="col-6">
               <div class="d-flex align-items-center">
                 <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
-
                 <p>{{ item.product.title }}</p>
               </div>
             </div>
-
             <div class="col-3">
               <p>{{ item.qty }}</p>
             </div>
@@ -43,20 +40,17 @@
               <p>NT${{ toCurrency(item.final_total) }}</p>
             </div>
           </div>
-
           <div class="border-bottom border-2 border-white"></div>
           <div class="row text-dark px-4 py-6">
             <!-- <div class="col-9 mb-4">
               <p class="fw-bold text-lg text-secondary">折扣</p>
             </div>
-
             <div class="col-3">
               <p class="fw-bold text-lg text-end text-secondary">-NT$80</p>
             </div> -->
             <div class="col-9">
               <p class="fw-bold text-lg">總計：</p>
             </div>
-
             <div class="col-3">
               <p class="fw-bold text-lg text-end">NT${{ toCurrency(final_total) }}</p>
             </div>
@@ -107,7 +101,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res.data.data);
           if (res.data.success) {
             this.cart = res.data.data.carts;
             this.final_total = res.data.data.final_total;
@@ -120,18 +113,14 @@ export default {
               this.$router.push('/shop');
             }
           } else {
-            console.log(res.data.message);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   mounted() {
     this.getcart();
   },
-
 };
 </script>

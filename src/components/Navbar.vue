@@ -3,13 +3,13 @@
     <router-link class="logo" :to="`/`" @click="changePage">RingRing</router-link>
     <div class="navbar-nav">
       <div v-if="scrollDown || showIcon" class="d-flex">
-        <router-link class="me-7  scale-hover" :to="`/shop`">
+        <router-link class="me-7 scale-hover" :to="`/shop`">
           <span class="material-icons text-3xl"> storefront </span>
         </router-link>
         <div class="popUp" @click="stopPropagation">
           <a
             @click.prevent="openNavList('favorite')"
-            href=""
+            href="#"
             v-if="page !== 'favorite'"
             class="position-relative me-7 scale-hover"
           >
@@ -35,7 +35,7 @@
                 <div
                   v-for="item in favoriteProduct"
                   class=" d-flex
-                text-dark  align-items-center justify-content-between
+                text-dark align-items-center justify-content-between
           border-bottom p-5 "
                   :key="item.id"
                 >
@@ -51,7 +51,7 @@
               <div class="p-5">
               <a
                 @click.prevent="goToTarget('favorite')"
-                class="btn btn-secondary secondary-hover text-white  w-100"
+                class="btn btn-secondary secondary-hover text-white w-100"
                 >前往收藏清單</a
               >
               </div>
@@ -62,8 +62,8 @@
           <a
             @click.prevent="openNavList('cart')"
             v-if="showCart"
-            href=""
-            class="position-relative  scale-hover me-7"
+            href="#"
+            class="position-relative scale-hover me-7"
           >
             <span v-if="carts.length" class="nav-num">
               {{ carts.length }}
@@ -87,7 +87,7 @@
               <div class="p-5">
               <a
                 @click.prevent="goToTarget('shop')"
-                class="btn btn-secondary secondary-hover text-white  w-100"
+                class="btn btn-secondary secondary-hover text-white w-100"
                 >前往商店</a
               >
               </div>
@@ -119,7 +119,7 @@
               <div class="p-5">
               <a
                 @click.prevent="goToTarget('cart')"
-                class="btn btn-secondary secondary-hover text-white  w-100"
+                class="btn btn-secondary secondary-hover text-white w-100"
                 >前往購物車</a
               >
               </div>
@@ -132,7 +132,7 @@
       </div>
     </div>
     <div class="navbar-collapse " ref="navbar">
-      <div class="d-flex flex-column-reverse  flex-ipad-row align-items-center w-100">
+      <div class="d-flex flex-column-reverse flex-ipad-row align-items-center w-100">
         <div
           class="d-flex justify-content-start justify-content-sm-center
           justify-content-md-start w-100 w-md-50 "
@@ -198,7 +198,7 @@
               show: nowPage === '',
               hoverImg: hoverPage === 'home' && nowPage !== ''
             }"
-            class="w-100  rounded-pill"
+            class="w-100 rounded-pill"
             src="@/assets/images/home-link.jpg"
             alt=""
           />
@@ -278,7 +278,6 @@ export default {
       this.$refs.toggle.classList.toggle('open');
       this.$refs.navbar.classList.toggle('open');
       this.nowPage = this.$route.name;
-      console.log(this.nowPage);
     },
     changePage() {
       this.$refs.toggle.classList.remove('open');
@@ -302,16 +301,11 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res.data.data);
           if (res.data.success) {
             this.carts = res.data.data.carts;
-          } else {
-            alert(res.data.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     getFavorite() {
       this.myFavorite = this.get() || [];
@@ -325,13 +319,9 @@ export default {
             .then((res) => {
               if (res.data.success) {
                 this.favoriteProduct.push(res.data.product);
-              } else {
-                console.log(res.data.message);
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => err);
         });
       }
     },
@@ -357,7 +347,6 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             emitter.emit('update-cart');
             emitter.emit('push-message', {
@@ -374,9 +363,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     goToTarget(page) {
       this.$refs.navCartDropdown.classList.remove('show');

@@ -7,8 +7,8 @@
     >
   </div>
 
-  <div class="bg-white rounded overflow-hidden border border-secondary  ">
-    <p v-if="this.coupons.length == 0" class="bg-secondary text-center  py-8">目前沒有優惠券</p>
+  <div class="bg-white rounded overflow-hidden border border-secondary">
+    <p v-if="this.coupons.length == 0" class="bg-secondary text-center py-8">目前沒有優惠券</p>
     <div v-else>
       <table class="table table-borderless mb-0">
         <thead class="bg-secondary text-white">
@@ -105,19 +105,15 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.coupons = res.data.coupons;
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            console.log(res.data.messages);
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
 
     openModal(type, item) {
@@ -140,7 +136,6 @@ export default {
           data,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -157,9 +152,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     changeStatus(item) {
       this.tempCoupon = {
@@ -174,7 +167,6 @@ export default {
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`,
         )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.emitter.emit('push-message', {
               type: 'success',
@@ -191,9 +183,7 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   created() {

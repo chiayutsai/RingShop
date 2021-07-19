@@ -57,11 +57,8 @@ export default {
     update() {
       const { productForm } = this.$refs;
       productForm.$refs.addForm.validate().then((success) => {
-        console.log(success);
         if (success.valid) {
           this.$emit('update', this.product);
-        } else {
-          console.log('error');
         }
       });
     },

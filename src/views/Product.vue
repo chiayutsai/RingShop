@@ -18,7 +18,6 @@
       </li>
       <li class="breadcrumb-item active">{{ product.title }}</li>
     </ol>
-
     <div class="row g-5">
       <div class="col-12 col-lg-6">
         <img
@@ -31,15 +30,12 @@
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
         <p class="text-light mb-3">{{ product.category }}</p>
-
         <h1 class="text-3xl mb-7">{{ product.title }}</h1>
         <ul class="mb-7 text-sm text-light point">
           <li v-for="(format, index) in product.formats" :key="index" class="mb-2">
-            {{format.format}}： {{format.content}}
+            {{ format.format }}： {{ format.content }}
           </li>
-
         </ul>
-
         <p class="fw-bold text-xl mb-7">
           NT${{ toCurrency(product.price)
           }}<span
@@ -48,7 +44,6 @@
             >NT${{ toCurrency(product.origin_price) }}</span
           >
         </p>
-
         <div class="d-flex w-100 w-lg-75 mb-3" :class="{ 'mb-7': !failQty }">
           <button
             class="quantity-btn remove text-xl"
@@ -68,19 +63,17 @@
           <button type="button" class="quantity-btn plus text-xl" @click="addQty">+</button>
         </div>
         <p v-if="failQty" class="text-sm text-primary opacity-5 mb-7">商品數量最少為一件!</p>
-
-        <div
-          class="position-relative w-100 w-lg-75
-           "
-        >
+        <div class="position-relative w-100 w-lg-75">
           <button
+           type="button"
             class="w-100 d-flex justify-content-center white-hover
             btn btn-secondary text-white shadow secondary-hover"
-            @click="addCart(product.id, qty,$event)"
+            @click="addCart(product.id, qty, $event)"
           >
             <span class="material-icons"> shopping_cart </span>加入購物車
           </button>
           <button
+           type="button"
             v-if="addLoading"
             class=" btn d-flex justify-content-center align-items-center position-absolute no-allow
                w-100 h-100 top-0 start-0 bg-light"
@@ -89,18 +82,16 @@
               <span class="visually-hidden">Loading...</span>
             </div>
           </button>
-
         </div>
-
         <a
           v-if="myFavorite.includes(product.id)"
-          href=""
+          href="#"
           class="d-flex my-7"
           @click.prevent="addMyFavorite(product.id)"
         >
           <span class="material-icons me-3"> favorite </span>已加入收藏清單</a
         >
-        <a v-else href="" class="d-flex my-7" @click.prevent="addMyFavorite(product.id)">
+        <a v-else href="#" class="d-flex my-7" @click.prevent="addMyFavorite(product.id)">
           <span class="material-icons me-3"> favorite_border </span>加入收藏清單</a
         >
         <ul class="border-start border-3 border-secondary text-sm ps-5">
@@ -113,7 +104,6 @@
   </div>
   <div class="container border-bottom border-light pt-15 mb-15">
     <Tab :product="product" />
-
     <div v-if="relativeProduct.length > 0" class="container mb-15">
       <p class="text-3xl text-center border-bottom border-light pb-4 mb-8">相關產品</p>
       <ul class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5">
@@ -184,17 +174,12 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.allProduct = res.data.products;
             this.getRelativeProduct();
-          } else {
-            alert(res.data.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     getProduct(id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
@@ -202,20 +187,16 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.product = res.data.product;
             this.isLoading = false;
             this.getAll();
           } else {
-            console.log(res.data.message);
             this.isLoading = false;
             this.$router.push('/shop');
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
     getRelativeProduct() {
       this.relativeProduct = [];
@@ -243,7 +224,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`, data)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             this.qty = 1;
             this.emitter.emit('push-message', {
@@ -260,9 +240,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
   computed: {

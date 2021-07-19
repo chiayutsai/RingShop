@@ -58,15 +58,11 @@ export default {
     update() {
       const { coupon } = this.$refs;
       coupon.$refs.addForm.validate().then((success) => {
-        console.log(success);
         if (success.valid) {
           this.$emit('update', this.coupon);
-        } else {
-          console.log('error');
         }
       });
     },
   },
-
 };
 </script>

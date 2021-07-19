@@ -1,6 +1,6 @@
 <template>
 <Loading :isLoading="isLoading" ></Loading>
-<Noty  />
+<Noty />
 <div class="position-relative bg-login w-100 min-vh-100">
     <div class="bg-overlay opacity-5 z-0"></div>
   <div class="position-relative d-flex justify-content-center align-items-center vh-100">
@@ -77,7 +77,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}admin/signin`, this.user)
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             const { token, expired } = res.data;
             document.cookie = `chiayuToken=${token}; expires=${new Date(expired)}`;
@@ -95,9 +94,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => err);
     },
   },
 };
