@@ -36,7 +36,7 @@
                   v-for="item in favoriteProduct"
                   class=" d-flex
                 text-dark align-items-center justify-content-between
-          border-bottom p-5 "
+                border-bottom p-5 "
                   :key="item.id"
                 >
                   <div class="d-flex">
@@ -97,7 +97,7 @@
                 <div
                   v-for="item in carts"
                   class="d-flex text-dark align-items-center justify-content-between
-          border-bottom p-5 "
+                  border-bottom p-5 "
                   :key="item.id"
                 >
                   <div class="d-flex">
@@ -310,7 +310,6 @@ export default {
     getFavorite() {
       this.myFavorite = this.get() || [];
       this.favoriteProduct = [];
-
       if (this.myFavorite.length > 0) {
         this.myFavorite.forEach((item) => {
           const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${item}`;
@@ -396,7 +395,6 @@ export default {
       }
     });
   },
-
   created() {
     window.addEventListener('scroll', this.handleScroll);
   },

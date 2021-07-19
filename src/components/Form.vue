@@ -1,13 +1,7 @@
 <template>
-<Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <p class="text-xl rounded-top bg-secondary p-4">顧客資訊</p>
-  <Form
-    v-slot="{ errors }"
-
-    ref="form"
-    @submit="onSubmit"
-    class="bg-table rounded-bottom py-6 px-8"
-  >
+  <Form v-slot="{ errors }" ref="form" @submit="onSubmit" class="bg-table rounded-bottom py-6 px-8">
     <div class="form-floating form-downline mb-3">
       <Field
         id="name"
@@ -22,7 +16,6 @@
       <label for="name" class="form-label">姓名 <sup>*</sup>：</label>
       <error-message name="姓名" class="invalid-feedback"></error-message>
     </div>
-
     <div class="form-floating form-downline mb-3">
       <Field
         id="email"
@@ -34,7 +27,6 @@
         rules="email|required"
         v-model="form.user.email"
       ></Field>
-
       <label for="email">電子郵件 <sup>*</sup>：</label>
       <error-message name="email" class="invalid-feedback"></error-message>
     </div>
@@ -61,10 +53,8 @@
         :class="{ 'is-invalid': errors['地址'] }"
         placeholder="請輸入地址"
         rules="required"
-
         v-model="form.user.address"
       ></Field>
-
       <label for="address">地址 <sup>*</sup>：</label>
       <error-message name="地址" class="invalid-feedback"></error-message>
     </div>
@@ -73,11 +63,11 @@
       <textarea
         class="form-control bg-transparent border-secondary"
         id="exampleFormControlTextarea1"
-        rows="3" v-model="form.message"
+        rows="3"
+        v-model="form.message"
       ></textarea>
     </div>
     <div class="form-check mb-3">
-
       <Field
         class="form-check-input"
         id="flexCheckChecked"
@@ -87,11 +77,10 @@
         value="checked"
         :rules="isChecked"
       ></Field>
-
       <label class="form-check-label text-dark" for="flexCheckChecked">
         我已閱讀並同意網站的 條款與條件 <sup>*</sup>
       </label>
-        <error-message name="check" class="invalid-feedback"></error-message>
+      <error-message name="check" class="invalid-feedback"></error-message>
     </div>
     <button
       type="submit"
@@ -103,7 +92,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -129,7 +117,6 @@ export default {
       if (value && value.length) {
         return true;
       }
-
       return '請勾選同意網站的條款與條件';
     },
     onSubmit() {
@@ -160,6 +147,5 @@ export default {
         .catch((err) => err);
     },
   },
-
 };
 </script>

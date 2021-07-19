@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <BannerSwiper />
   <div class=" container position-relative py-15">
     <div class="d-none d-lg-block line"></div>
@@ -171,8 +171,11 @@
     <div class="row row-cols-3">
       <div data-wow-delay="0.5s" class="col-12 col-lg wow animate__animated animate__flipInY">
         <a
-        href="#" @click.prevent="goToCategory('戒指')" class="bg-topic
-          mb-7 ">
+          href="#"
+          @click.prevent="goToCategory('戒指')"
+          class="bg-topic
+          mb-7 "
+        >
           <img
             class="position-absolute w-100 top-0 rounded-3"
             src="@/assets/images/topic-ring.jpg"
@@ -182,8 +185,11 @@
           <p class="text-2xl position-absolute">戒指</p>
         </a>
         <a
-         href="#" @click.prevent="goToCategory('手錶')" class="bg-topic rounded-3 mb-7 mb-lg-0
-         ">
+          href="#"
+          @click.prevent="goToCategory('手錶')"
+          class="bg-topic rounded-3 mb-7 mb-lg-0
+         "
+        >
           <img
             class="position-absolute w-100 top-0 rounded-3"
             src="@/assets/images/topic-watch.jpg"
@@ -211,8 +217,11 @@
       </div>
       <div data-wow-delay="1.5s" class="col-12 col-lg wow animate__animated animate__flipInY">
         <a
-         href="#" @click.prevent="goToCategory('耳環')" class="bg-topic rounded-3 mb-7
-        ">
+          href="#"
+          @click.prevent="goToCategory('耳環')"
+          class="bg-topic rounded-3 mb-7
+        "
+        >
           <img
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-earring.jpg"
@@ -222,8 +231,11 @@
           <p class="text-2xl position-absolute">耳環</p>
         </a>
         <a
-        href="#" @click.prevent="goToCategory('手鍊')" class="bg-topic rounded-3
-       ">
+          href="#"
+          @click.prevent="goToCategory('手鍊')"
+          class="bg-topic rounded-3
+       "
+        >
           <img
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-bracelet.jpg"
@@ -279,8 +291,10 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-      wow animate__animated animate__zoomIn">
+      <div
+        class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
+      wow animate__animated animate__zoomIn"
+      >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
@@ -289,18 +303,22 @@
           在商品庫存充足下，我們允諾下單三天內會出貨，如您所訂購的商品庫存不足，我們將盡快以電子郵件通知您。
         </p>
       </div>
-      <div data-wow-delay="0.5s"
-       class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn">
+      <div
+        data-wow-delay="0.5s"
+        class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn"
+      >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
         <p class="text-xl mb-4">售後服務</p>
         <p>為保障買家權益， 所有商品皆享有30日的售後服務。</p>
       </div>
-      <div data-wow-delay="1s"
-       class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn">
+      <div
+        data-wow-delay="1s"
+        class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn"
+      >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>
@@ -320,7 +338,6 @@
 
 <script>
 import BannerSwiper from '@/components/BannerSwiper.vue';
-// import Swiper from 'swiper/bundle';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import SwiperCore, { Pagination } from 'swiper/core';
 import localStorage from '@/mixins/localStorage';
@@ -375,7 +392,6 @@ export default {
         })
         .catch((err) => err);
     },
-
     goToCategory(category) {
       this.$router.push({ name: 'shop', query: { category } });
     },
@@ -408,6 +424,5 @@ export default {
   mounted() {
     this.getSale();
   },
-  created() {},
 };
 </script>

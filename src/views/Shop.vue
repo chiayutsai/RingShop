@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="vh-40 vh-lg-60 bg-all"></div>
   <div class="container border-bottom border-light py-15 mb-15">
     <ol class="breadcrumb mb-10 mb-sm-13 mb-xl-5">
@@ -113,7 +113,6 @@ export default {
     };
   },
   mixins: [localStorage],
-
   inject: ['emitter'],
   components: {
     Card,
@@ -128,7 +127,6 @@ export default {
           if (res.data.success) {
             this.productsAll = res.data.products;
             this.isLoading = false;
-
             this.productsAll.forEach((product) => {
               if (!this.productsCategory.includes(product.category)) {
                 this.productsCategory.push(product.category);

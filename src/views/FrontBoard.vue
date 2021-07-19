@@ -1,16 +1,14 @@
 <template>
-
-<Noty />
-  <Nabvar :page="page"/>
-  <SideBtn :page="page"/>
+  <Noty />
+  <Nabvar :page="page" />
+  <SideBtn :page="page" />
   <div class="bg-overlay"></div>
-  <router-view/>
-  <Footer/>
+  <router-view />
+  <Footer />
 </template>
 
 <script>
 import Noty from '@/components/Noty.vue';
-
 import Nabvar from '@/components/Navbar.vue';
 import SideBtn from '@/components/SideBtn.vue';
 import Footer from '@/components/Footer.vue';

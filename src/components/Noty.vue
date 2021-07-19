@@ -8,10 +8,8 @@ export default {
   data() {
     return {
       noty: {},
-
     };
   },
-
   inject: ['emitter'],
   mounted() {
     this.emitter.on('push-message', (message) => {
@@ -23,7 +21,6 @@ export default {
         progressBar: true,
         closeWith: ['click', 'button'],
         killer: true,
-
       }).show();
     });
   },

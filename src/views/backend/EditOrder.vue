@@ -1,5 +1,5 @@
 <template>
- <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">編輯訂單</h2>
     <router-link :to="`/dashboard/order`" class="btn btn-secondary text-white shadow-none "

@@ -2,7 +2,6 @@
   <div class="container py-15">
     <ol class="breadcrumb mb-5">
       <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
-
       <li class="breadcrumb-item active">關於品牌</li>
     </ol>
     <div
@@ -11,13 +10,15 @@
     >
       <h3 class="text-3xl text-lg-4xl text-center ">時尚生活，由妳自己定義</h3>
     </div>
-
     <div
-     class="row align-items-end flex-column flex-md-row pb-15 border-bottom border-light mb-10
-
-    ">
-      <div data-wow-delay="0.5s" class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10
-       wow animate__animated animate__fadeInLeft">
+      class="row align-items-end flex-column flex-md-row pb-15 border-bottom border-light mb-10
+    "
+    >
+      <div
+        data-wow-delay="0.5s"
+        class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10
+       wow animate__animated animate__fadeInLeft"
+      >
         <div class="d-flex align-items-center mb-10 ">
           <p class="title text-3xl">關於品牌</p>
           <p class="text-lg opacity-6">About Us</p>
@@ -28,8 +29,11 @@
           alt=""
         />
       </div>
-      <div data-wow-delay="0.5s" class="col-12 col-md-6 col-lg-4 offset-lg-2 mb-10
-       wow animate__animated animate__fadeInRight">
+      <div
+        data-wow-delay="0.5s"
+        class="col-12 col-md-6 col-lg-4 offset-lg-2 mb-10
+       wow animate__animated animate__fadeInRight"
+      >
         <p class="lh-lg letter-spacing-1 mb-10">
           我們的目標是提供平價但不平凡的飾品，<br />
           讓女孩們追求漂亮的道路變得簡單，<br />
@@ -41,8 +45,10 @@
           alt=""
         />
       </div>
-      <div class="col-12 col-md-6 col-lg-4 offset-lg-1 order-1 order-md-0
-       wow animate__animated animate__fadeInLeft">
+      <div
+        class="col-12 col-md-6 col-lg-4 offset-lg-1 order-1 order-md-0
+       wow animate__animated animate__fadeInLeft"
+      >
         <p class="lh-lg letter-spacing-1 mb-md-10">
           我們只想給你最好的品質，<br />
           因此提供完善的售後服務以保障買家權益。<br />
@@ -55,8 +61,10 @@
           alt=""
         />
       </div>
-      <div class="col-12 col-md-6 col-lg-4 offset-lg-2
-       wow animate__animated animate__fadeInRight">
+      <div
+        class="col-12 col-md-6 col-lg-4 offset-lg-2
+       wow animate__animated animate__fadeInRight"
+      >
         <img
           class="rounded-3 w-80 w-md-100 mx-auto mb-10 mb-md-0"
           src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1626002142810.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=aFo90%2F6RPgTHbltitJlchKED5smRJf7qvSYcecmPbbV6hd7%2BwPRSGkZZ%2FC%2BOxlNLnWOBeuhoVLToVOnbJNq9MmMMJXP9SnToUToIvtDzo57VH4vrmikr9UDdp502aQ%2Bc75lcSyyhWfeWtjRHGzOO9nHbKP8NmNhYEJo8laZkZuc%2F5ejyujctmFXPootLiOHWoYul24NAzBNGfR0sAXpl6J6DcPK0ePbj1Ara2IfjyKBPL2RhueMTXqleGII4dYN6oQq5FLuC7eOxUSQhr%2BTEsZ2x1cLyTWsbvYohaF9m8K73tI%2FIB%2B74cMiRa7X%2BeHXdkwHWCQYYOpk2r86ntDTkPg%3D%3D"
@@ -65,8 +73,10 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn">
+      <div
+        class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn"
+      >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
@@ -75,20 +85,22 @@
           在商品庫存充足下，我們允諾下單三天內會出貨，如您所訂購的商品庫存不足，我們將盡快以電子郵件通知您。
         </p>
       </div>
-      <div data-wow-delay="0.5s"
-       class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn">
+      <div
+        data-wow-delay="0.5s"
+        class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn"
+      >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
         <p class="text-xl mb-4">售後服務</p>
-
         <p>為保障買家權益， 所有商品皆享有30日的售後服務。</p>
       </div>
-
-      <div data-wow-delay="1s"
-      class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn">
+      <div
+        data-wow-delay="1s"
+        class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
+       wow animate__animated animate__zoomIn"
+      >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>
@@ -99,10 +111,9 @@
         <span class="material-icons text-4xl mb-4 mb-md-7">
           card_giftcard
         </span>
-
         <p class="text-xl mb-4">包裝服務</p>
         <p>如需額外包裝，可再下訂後通知我們，會有專人協助處理相關事宜。</p>
       </div>
     </div>
-  </div></template
->
+  </div>
+</template>

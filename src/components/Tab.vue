@@ -57,7 +57,6 @@
           alt=""
         />
       </div>
-
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <ul
           v-for="(format, index) in product.formats"
@@ -90,7 +89,6 @@ export default {
   props: {
     product: Object,
   },
-
   watch: {
     product() {
       if (this.product.description !== '' || this.product.description) {

@@ -1,10 +1,8 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
-
+  <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">新增文章</h2>
   </div>
-
   <div class="bg-white rounded overflow-hidden border border-secondary ">
     <div class="container-fluid py-6">
       <ArticleForm :isAdd="true" ref="articleForm" />

@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="w-100 vh-100 position-absolute -z-1">
     <div class="img-overlay"></div>
   </div>
@@ -65,7 +65,7 @@
         <p v-if="failQty" class="text-sm text-primary opacity-5 mb-7">商品數量最少為一件!</p>
         <div class="position-relative w-100 w-lg-75">
           <button
-           type="button"
+            type="button"
             class="w-100 d-flex justify-content-center white-hover
             btn btn-secondary text-white shadow secondary-hover"
             @click="addCart(product.id, qty, $event)"
@@ -73,7 +73,7 @@
             <span class="material-icons"> shopping_cart </span>加入購物車
           </button>
           <button
-           type="button"
+            type="button"
             v-if="addLoading"
             class=" btn d-flex justify-content-center align-items-center position-absolute no-allow
                w-100 h-100 top-0 start-0 bg-light"
@@ -122,7 +122,6 @@
 import Card from '@/components/Card.vue';
 import SwiperComponent from '@/components/SwiperComponent.vue';
 import localStorage from '@/mixins/localStorage';
-
 import Tab from '@/components/Tab.vue';
 
 function getRandomInt(max) {
@@ -215,7 +214,6 @@ export default {
         this.relativeProduct.push(filterProduct[item]);
       });
     },
-
     addCart(id, qty) {
       this.addLoading = true;
       const data = {
@@ -258,7 +256,6 @@ export default {
   },
   created() {
     this.routeID = this.$route.params.id;
-
     this.getProduct(this.routeID);
   },
 };

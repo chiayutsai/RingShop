@@ -15,7 +15,6 @@
         ></Field>
         <error-message name="產品名稱" class="backend-invalid-feedback"></error-message>
       </div>
-
       <div class="col-6 mb-8">
         <label for="author" class="form-label">作者<span v-if="isAdd">必填</span></label>
         <Field
@@ -118,7 +117,6 @@
         <error-message name="文章描述" class="backend-invalid-feedback"></error-message>
       </div>
     </div>
-
     <div class="row">
       <div class="col-12 mb-8">
         <p class="form-label">文章內容<span v-if="isAdd">必填</span></p>
@@ -157,7 +155,6 @@ export default {
       this.tempArticle = this.article;
     },
   },
-
   methods: {
     uploadImage(e) {
       const file = e.target.files[0];
@@ -182,7 +179,6 @@ export default {
     deleteTag(id) {
       this.tempArticle.tag.splice(id, 1);
     },
-
     cleanForm() {
       this.$refs.addForm.resetForm();
       this.tempArticle.isPublic = false;

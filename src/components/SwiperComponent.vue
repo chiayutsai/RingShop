@@ -29,17 +29,11 @@
 </template>
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/swiper.scss';
-
 import 'swiper/components/navigation/navigation.min.css';
 import 'swiper/components/thumbs/thumbs.min.css';
-
-// import Swiper core and required modules
 import SwiperCore, { Navigation, Thumbs } from 'swiper/core';
 
-// install Swiper modules
 SwiperCore.use([Navigation, Thumbs]);
 
 export default {

@@ -249,7 +249,6 @@ export default {
     emitter.on('update-cart', () => {
       this.getcart();
     });
-
     this.$refs.offcanvas.addEventListener('hidden.bs.offcanvas', () => {
       document.querySelector(':root').style.overflowY = 'auto';
     });

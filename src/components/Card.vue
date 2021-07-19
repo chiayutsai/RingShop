@@ -163,7 +163,6 @@ export default {
         this.showFirstImg = false;
       }
     },
-
     recoveryImg() {
       this.showFirstImg = true;
     },
@@ -180,7 +179,6 @@ export default {
           addImg.classList.remove('move', 'show');
         }, 1000);
       }
-
       const data = {
         data: { product_id: id, qty: 1 },
       };

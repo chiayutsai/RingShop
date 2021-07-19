@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <h2 class="text-dark mb-5">訂單列表</h2>
   <div class="bg-white rounded overflow-hidden border border-secondary">
     <p v-if="this.orders.length == 0" class="bg-secondary text-center py-8">目前沒有訂單</p>
@@ -88,7 +88,6 @@
           </template>
         </tbody>
       </table>
-
       <div class="d-flex justify-content-between align-items-center py-4 px-6 bg-secondary ">
         <div class="btn btn-outline-white" @click="openModal('deleteAll')">刪除全部訂單</div>
         <Pagination :pagination="pagination" @emit-page="getOrder" />
@@ -139,7 +138,6 @@ export default {
         })
         .catch((err) => err);
     },
-
     openModal(type, item) {
       if (type === 'edit') {
         this.tempProduct = {
@@ -207,14 +205,12 @@ export default {
         })
         .catch((err) => err);
     },
-
     goToEdit(item) {
       this.$refs.orderModal.hideModal();
       this.$router.push(`/dashboard/editOrder/${item.id}`);
     },
     updateOrder(item) {
       this.isLoading = true;
-
       const data = {
         data: item,
       };

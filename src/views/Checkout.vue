@@ -1,5 +1,5 @@
 <template>
-<Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="container pt-15">
     <Progress step="2" />
   </div>
@@ -70,7 +70,7 @@
           </p>
         </div>
       </div>
-      <div class="col mb-9 mb-lg-0" >
+      <div class="col mb-9 mb-lg-0">
         <Form />
       </div>
     </div>

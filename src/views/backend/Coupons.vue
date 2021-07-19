@@ -1,12 +1,11 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">優惠券列表</h2>
     <router-link :to="`/dashboard/newCoupon`" class="btn btn-secondary text-white shadow-none "
       >新增優惠券</router-link
     >
   </div>
-
   <div class="bg-white rounded overflow-hidden border border-secondary">
     <p v-if="this.coupons.length == 0" class="bg-secondary text-center py-8">目前沒有優惠券</p>
     <div v-else>
@@ -42,7 +41,6 @@
                     :false-value="0"
                     @change="changeStatus(item)"
                   />
-
                   <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key"
                     >啟用</label
                   >
@@ -98,7 +96,6 @@ export default {
     DeleteModal,
     CouponModal,
   },
-
   methods: {
     getCoupon(page = 1) {
       this.isLoading = true;
@@ -115,7 +112,6 @@ export default {
         })
         .catch((err) => err);
     },
-
     openModal(type, item) {
       this.tempCoupon = { ...item };
       if (type === 'edit') {
@@ -129,7 +125,6 @@ export default {
       const data = {
         data: item,
       };
-
       this.$http
         .put(
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`,

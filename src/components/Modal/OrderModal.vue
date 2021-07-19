@@ -17,7 +17,6 @@
             >
               等待付款中
             </div>
-
             <div
               v-if="order.is_paid && order.status !== 'finish' && order.status !== 'cancel'"
               class="status status-handle pointer-none me-4"
@@ -68,7 +67,6 @@
                   <p class="col-4 fw-bold mb-4">訂單編號</p>
                   <p class="col-8 mb-4">{{ order.id }}</p>
                   <p class="col-4 fw-bold mb-4">訂單狀態</p>
-
                   <div v-if="!order.is_paid && order.status !== 'cancel'" class="col-8 mb-4">
                     等待付款中
                   </div>
@@ -88,7 +86,6 @@
                   <p v-if="order.paid_date" class="col-8 mb-4">
                     {{ paidDate }}
                   </p>
-
                 </div>
               </div>
               <div class="col-12">
@@ -154,6 +151,5 @@ export default {
     },
   },
   mixins: [modalMixin],
-
 };
 </script>

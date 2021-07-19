@@ -1,6 +1,6 @@
 <template>
-<Loading :isLoading="isLoading" ></Loading>
-<Noty />
+  <Loading :isLoading="isLoading" />
+  <Noty />
   <div v-if="check">
     <div
       class="position-fixed w-100 bg-secondary z-1 d-flex align-items-center
@@ -35,11 +35,7 @@
         @click.prevent="changeDropdown('admin')"
         >產品</a
       >
-      <ul
-        class="dropdown-menu"
-        :class="{ show: nowPage == 'admin'}"
-        ref="admin"
-      >
+      <ul class="dropdown-menu" :class="{ show: nowPage == 'admin' }" ref="admin">
         <router-link :to="`/dashboard/admin`" class="p-4 border-bottom border-secondary"
           >產品列表</router-link
         >
@@ -68,7 +64,7 @@
         >
         <router-link :to="`/dashboard/newCoupon`" class="p-4">新增優惠券</router-link>
       </ul>
-       <a
+      <a
         href="#"
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'articles' }"

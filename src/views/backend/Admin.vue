@@ -1,13 +1,11 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
-
+  <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">產品列表</h2>
     <router-link :to="`/dashboard/newProduct`" class="btn btn-secondary text-white shadow-none "
       >新增產品</router-link
     >
   </div>
-
   <div class="bg-white rounded overflow-hidden border border-secondary">
     <table class="table table-borderless mb-0">
       <thead class="bg-secondary text-white">
@@ -64,7 +62,7 @@
                 刪除
               </button>
               <button
-               type="button"
+                type="button"
                 class="btn btn-outline-secondary white-hover float-end p-0 lh-1 mt-2 me-4"
                 @click="openCollapse(key)"
               >
@@ -91,7 +89,6 @@
     </div>
   </div>
   <ProductModal :product="tempProduct" ref="updateModal" @update="updateProduct" />
-
   <DeleteModal :item="tempProduct" :type="'normal'" ref="delModal" @delete="deleteProduct" />
 </template>
 
@@ -123,7 +120,6 @@ export default {
     DeleteModal,
     ProductModal,
   },
-
   methods: {
     getData(page = 1) {
       this.isLoading = true;

@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss">
-textPath{
+textPath {
   letter-spacing: 3px;
   font-weight: bold;
 }

@@ -10,7 +10,6 @@
       <div class="modal-content">
         <div class="modal-header bg-secondary text-white py-4">
           <h5 class="modal-title" id="exampleModalLabel">選擇訂單狀態</h5>
-
           <button
             type="button"
             class="btn-close btn-close-white"
@@ -79,7 +78,6 @@ export default {
   methods: {
     updateStatus(status) {
       this.tempOrder.status = status;
-
       if (status === 'handle' || status === 'finish') {
         this.tempOrder.is_paid = true;
         if (!this.tempOrder.paid_date) {
@@ -93,6 +91,5 @@ export default {
       this.$emit('emit-status', this.tempOrder);
     },
   },
-
 };
 </script>

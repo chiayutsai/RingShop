@@ -1,5 +1,5 @@
 <template>
-<Loading :isLoading="isLoading" ></Loading>
+<Loading :isLoading="isLoading" />
 <Noty />
 <div class="position-relative bg-login w-100 min-vh-100">
     <div class="bg-overlay opacity-5 z-0"></div>
@@ -17,8 +17,7 @@
             placeholder="name@example.com"
             rules="email|required"
             v-model="user.username"
-          ></Field>
-
+          ></Field>Î
           <label for="account">帳號：</label>
           <error-message name="email" class="invalid-feedback"></error-message>
         </div>

@@ -26,9 +26,7 @@ export default {
   },
   data() {
     return {
-
       failQty: false,
-
     };
   },
 };

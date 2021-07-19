@@ -50,7 +50,6 @@
           type="date"
           class="form-control"
           id="due_date"
-
           v-model="dueDate"
           @change="changeTime"
         />
@@ -108,7 +107,6 @@ export default {
       }
     },
   },
-
   methods: {
     isPositive(value) {
       return value > 0 && value % 1 === 0 ? true : '請輸入正整數';

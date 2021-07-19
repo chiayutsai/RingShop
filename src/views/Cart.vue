@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="container pt-15">
     <Progress step="1" />
     <h3
@@ -193,7 +193,6 @@ export default {
       cart: [],
       final_total: 0,
       allQty: 0,
-
       allProduct: [],
       randomProduct: [],
       tempCartID: '',
@@ -203,7 +202,6 @@ export default {
     };
   },
   mixins: [localStorage],
-
   inject: ['emitter'],
   components: {
     Progress,
@@ -217,7 +215,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.allProduct = res.data.products;
-
             this.getRandom();
           }
         })
@@ -231,7 +228,6 @@ export default {
       this.cart[item].qty -= 1;
       this.updateCart(item, this.cart[item].id, this.cart[item].qty);
     },
-
     getcart() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
@@ -242,7 +238,6 @@ export default {
             this.allQty = 0;
             this.cart = res.data.data.carts;
             this.final_total = res.data.data.final_total;
-
             this.cart.forEach((item) => {
               this.allQty += item.qty;
             });
@@ -317,7 +312,6 @@ export default {
         })
         .catch((err) => err);
     },
-
     goToPay() {
       if (this.cart.length === 0) {
         this.emitter.emit('push-message', {

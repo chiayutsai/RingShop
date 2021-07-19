@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="container pt-15 border-bottom border-light pb-15 mb-15">
     <ol class="breadcrumb mb-5">
       <li class="breadcrumb-item"><router-link :to="`/`">首頁</router-link></li>
@@ -59,7 +59,7 @@
           <div class="col-6 col-md-3 order-4 order-md-0 ">
             <div class="position-relative">
               <button
-              type="button"
+                type="button"
                 class="btn btn-secondary secondary-hover text-white w-100 w-md-75"
                 @click="addCart(item.id)"
               >
@@ -67,7 +67,7 @@
               </button>
               <button
                 v-if="addloading"
-                 type="button"
+                type="button"
                 class=" btn d-flex justify-content-center
                 align-items-center position-absolute no-allow w-100
                w-md-75 h-100 top-0 start-0 bg-light"
@@ -114,7 +114,6 @@ export default {
     };
   },
   mixins: [localStorage],
-
   inject: ['emitter'],
   components: {
     FrontDelModal,

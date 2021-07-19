@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="container pt-15">
     <Progress step="3" />
   </div>
@@ -122,16 +122,11 @@ export default {
     },
     pay(id) {
       this.isLoading = true;
-
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${id}`;
       this.$http
         .post(url)
         .then((res) => {
           if (res.data.success) {
-            // this.emitter.emit('push-message', {
-            //   type: 'success',
-            //   message: res.data.message,
-            // });
             this.$router.push({ name: 'final', params: { order: this.orderID } });
             this.isLoading = false;
           } else {

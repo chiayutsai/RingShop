@@ -1,5 +1,5 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
+  <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">文章列表</h2>
     <router-link :to="`/dashboard/newArticle`" class="btn btn-secondary text-white shadow-none "
@@ -118,7 +118,6 @@ export default {
     ArticleModal,
     ViewArticleModal,
   },
-
   methods: {
     getArticle(page = 1) {
       this.isLoading = true;
@@ -144,7 +143,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.tempArticle = res.data.article;
-
             this.isLoading = false;
             if (type === 'modal') {
               if (!this.tempArticle.tag) {
@@ -178,7 +176,6 @@ export default {
       const data = {
         data: item,
       };
-
       this.$http
         .put(
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${item.id}`,
@@ -203,7 +200,6 @@ export default {
         })
         .catch((err) => err);
     },
-
     deleteArticle() {
       this.isLoading = true;
       this.$http

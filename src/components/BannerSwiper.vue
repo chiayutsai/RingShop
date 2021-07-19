@@ -5,10 +5,8 @@
       <p class="banner-shop ">Fashion Shop<br />2021</p>
       <div class="banner-title" ref="title">
         <span ref="category">Earrings</span>
-
         <h2 ref="mainTitle">心之所向耳環</h2>
       </div>
-
       <p class="banner-description" ref="description">
         目之所及，心之所向<br />
         戴上耳環．吸引目光<br />
@@ -206,7 +204,6 @@ export default {
         delay: 5000,
         pauseOnMouseEnter: true,
       },
-
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -231,7 +228,6 @@ export default {
       this.$refs.description.innerHTML = this.banner[this.bannerIndex].description;
       this.$refs.category.innerHTML = this.banner[this.bannerIndex].category;
       this.$refs.mainTitle.innerHTML = this.banner[this.bannerIndex].title;
-
       setTimeout(() => {
         this.$refs.description.classList.remove('blurAnimation');
         this.$refs.title.classList.remove('titleAnimation');

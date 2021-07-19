@@ -62,7 +62,8 @@
         >
           <option :disabled="product.category">請選擇</option>
           <option v-for="category in productsCategory" :value="category" :key="category">
-            {{ category }}</option>
+            {{ category }}
+          </option>
         </Field>
         <error-message name="產品分類" class="backend-invalid-feedback"></error-message>
       </div>
@@ -147,7 +148,6 @@
           <label v-else class="form-check-label" for="flexCheckDefault">未上架</label>
         </div>
       </div>
-
       <div class="col-12 mb-8">
         <label for="productDescription" class="form-label">產品描述</label>
         <textarea
@@ -186,7 +186,6 @@
               v-model="tempProduct.imageUrl"
             />
             <p class="text-xs mb-2">或</p>
-
             <button
               v-if="isUpload"
               class="btn btn-primary text-sm text-secondary"
@@ -216,7 +215,6 @@
         <div class="row row-cols-3 align-items-end">
           <div v-for="(item, key) in tempProduct.imagesUrl" class="col mb-8" :key="key">
             <img class="w-100 h-auto" :src="tempProduct.imagesUrl[key]" alt="" />
-
             <label :for="'productImage' + key" class="form-label text-xs">圖片位址</label>
             <input
               type="text"
@@ -245,7 +243,6 @@
               <span class="material-icons text-base align-text-bottom"> file_upload </span>
               上傳圖片
             </label>
-
             <div
               v-if="tempProduct.imagesUrl[key]"
               class="btn btn-outline-secondary text-xs white-hover"
@@ -265,9 +262,7 @@
         <div class="btn btn-secondary text-white text-sm" @click="createImage">新增輪播圖片</div>
       </div>
     </div>
-
   </Form>
-
 </template>
 
 <script>
@@ -306,7 +301,6 @@ export default {
       this.tempProduct = this.product;
     },
   },
-
   methods: {
     getData() {
       this.$http
@@ -341,7 +335,6 @@ export default {
     },
     uploadImage(key, e) {
       const file = e.target.files[0];
-
       const formData = new FormData();
       formData.append('file-to-upload', file);
       if (key === 'main') {
@@ -390,7 +383,6 @@ export default {
       ];
       this.tempProduct.imagesUrl = [];
     },
-
   },
   created() {
     if (this.isAdd) {

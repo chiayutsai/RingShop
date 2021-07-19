@@ -11,7 +11,6 @@
       <div class="modal-content">
         <div class="modal-header bg-warning text-white py-4">
           <h5 class="modal-title" id="exampleModalLabel">刪除</h5>
-
           <button
             type="button"
             class="btn-close btn-close-white"
@@ -53,8 +52,6 @@ export default {
       type: String,
     },
   },
-
   mixins: [modalMixin],
-
 };
 </script>

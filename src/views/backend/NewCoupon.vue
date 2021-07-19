@@ -1,8 +1,6 @@
 <template>
-  <Loading :isLoading="isLoading"></Loading>
-
+  <Loading :isLoading="isLoading" />
   <h2 class="text-dark mb-5 ">新增優惠券</h2>
-
   <div class=" overflow-hidden ">
     <div class="container-fluid ">
       <div class="row">
@@ -44,10 +42,8 @@ export default {
           const data = {
             data: Coupon.tempCoupon,
           };
-
           this.$http
-            .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`,
-              data)
+            .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`, data)
             .then((res) => {
               if (res.data.success) {
                 this.emitter.emit('push-message', {

@@ -10,7 +10,6 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header text-dark py-4 border-0">
-
           <button
             type="button"
             class="btn-close "
@@ -21,7 +20,6 @@
         <div class="modal-body">
           <p class="text-dark text-center">
            確定要移除商品嗎？
-
           </p>
           <p class="text-sm text-info text-center">(刪除後將無法恢復)</p>
         </div>
@@ -42,8 +40,6 @@
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
-
   mixins: [modalMixin],
-
 };
 </script>

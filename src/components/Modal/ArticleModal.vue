@@ -11,7 +11,6 @@
       <div class="modal-content">
         <div class="modal-header bg-secondary text-white py-4">
           <h5 class="modal-title" id="exampleModalLabel">編輯文章</h5>
-
           <button
             type="button"
             class="btn-close btn-close-white"
@@ -49,7 +48,6 @@ export default {
       type: Object,
     },
   },
-
   components: {
     ArticleForm,
   },
@@ -69,6 +67,5 @@ export default {
       });
     },
   },
-
 };
 </script>

@@ -11,7 +11,6 @@
       <div class="modal-content">
         <div class="modal-header bg-secondary text-white py-4">
           <h5 class="modal-title" id="exampleModalLabel">{{ article.title }}</h5>
-
           <button
             type="button"
             class="btn-close btn-close-white"
@@ -35,7 +34,6 @@
             <p>發布日期 : {{ publicDate }}</p>
           </div>
           <img class="w-100 mb-6" v-if="article.imageUrl" :src="article.imageUrl" alt="" />
-
           <div ref="content"></div>
         </div>
         <div class="modal-footer">
@@ -82,6 +80,5 @@ export default {
       this.$emit('edit');
     },
   },
-
 };
 </script>
