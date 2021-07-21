@@ -16,9 +16,7 @@
         <error-message name="產品名稱" class="backend-invalid-feedback"></error-message>
       </div>
       <div class="col-6 mb-8">
-        <label for="productOriginPrice" class="form-label"
-          >產品原價<span v-if="isAdd">必填</span></label
-        >
+        <label for="productOriginPrice" class="form-label">產品原價<span v-if="isAdd">必填</span></label>
         <Field
           type="number"
           class="form-control"
@@ -206,7 +204,7 @@
             </label>
           </div>
           <div class="col">
-            <img class="w-100 h-auto" :src="tempProduct.imageUrl" alt="" />
+            <img class="w-100 h-auto" :src="tempProduct.imageUrl" />
           </div>
         </div>
       </div>
@@ -214,7 +212,7 @@
         <p class="mb-3">輪播圖片</p>
         <div class="row row-cols-3 align-items-end">
           <div v-for="(item, key) in tempProduct.imagesUrl" class="col mb-8" :key="key">
-            <img class="w-100 h-auto" :src="tempProduct.imagesUrl[key]" alt="" />
+            <img class="w-100 h-auto" :src="tempProduct.imagesUrl[key]" />
             <label :for="'productImage' + key" class="form-label text-xs">圖片位址</label>
             <input
               type="text"

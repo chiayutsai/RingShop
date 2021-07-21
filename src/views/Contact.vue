@@ -6,18 +6,15 @@
     </ol>
     <div
       class="py-12 border-bottom border-top border-light mb-12
-     wow animate__animated animate__flipInX"
-    >
+      wow animate__animated animate__flipInX">
       <h3 class="text-3xl text-lg-4xl text-center ">美麗，從這裡出發</h3>
     </div>
     <div
       class="row align-items-center
-     flex-column flex-md-row pb-15 border-bottom border-light mb-10"
-    >
+      flex-column flex-md-row pb-15 border-bottom border-light mb-10">
       <div
         class="col-12 col-md-6 col-lg-4 offset-lg-1 mb-10
-       wow animate__animated animate__fadeInLeft"
-      >
+        wow animate__animated animate__fadeInLeft">
         <div class="d-flex align-items-center mb-10">
           <p class="title text-3xl">聯絡我們</p>
           <p class="text-lg opacity-6">Contact Us</p>
@@ -25,13 +22,11 @@
         <img
           class="rounded-3 w-80 w-md-100 mx-auto"
           src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625638666278.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=jTNMXMwJRjARojrEpu0R1uWFZ%2B9CXpB%2BeDqBcXlJ6IeeHdSFDKviG2dBEuAx3qXbgrv4D4sa23fyVoI6JpHtDMMY2Kf0xHAXjFGDR4WfsPfwow7Dka%2BaHGW7Gphr0mdoJ8uHxSOPvJF%2B6F2FxU8WSwDnEf6GIeDQvpxKv1D9Kkd3mitBguwDh%2FsEvQ2ujLnFlWgHts85wZJIG2cfE28vTOMoE%2B6O9tyDWt32FiOqcA7fVUHJ5hosungoUN0iCo99JMAd3rfAZUqjLxknfUO4rjLFtorkkHgIjBrjQmAH1zR87Cfqk9Ivsa5pdC0qtGZDdEzSOIimFAbVqvs5BxF2gQ%3D%3D"
-          alt=""
-        />
+          alt="RingRing"/>
       </div>
       <div
         class="col-12 col-md-6 col-lg-4 offset-lg-2 mb-10
-       wow animate__animated animate__fadeInRight"
-      >
+        wow animate__animated animate__fadeInRight">
         <ul class="mb-7">
           <li class="lh-lg letter-spacing-1 ">
             客服電話：(02)-213-1234
@@ -50,14 +45,14 @@
           </li>
         </ul>
         <div class="d-flex social-icon">
-          <a class="scale-hover me-5" href="#" target="_blank"
-            ><span><img src="@/assets/images/fb.svg" /> </span>
+          <a class="scale-hover me-5" href="#" target="_blank">
+            <span><img src="@/assets/images/fb.svg" alt="fb" /> </span>
           </a>
-          <a class="scale-hover me-5" href="#" target="_blank"
-            ><span><img src="@/assets/images/ig.svg" /> </span>
+          <a class="scale-hover me-5" href="#" target="_blank">
+            <span><img src="@/assets/images/ig.svg" alt="ig" /> </span>
           </a>
-          <a class="scale-hover" href="#" target="_blank"
-            ><span><img src="@/assets/images/line.svg" /> </span>
+          <a class="scale-hover" href="#" target="_blank">
+            <span><img src="@/assets/images/line.svg" alt="line" /> </span>
           </a>
         </div>
       </div>
@@ -65,8 +60,7 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
       <div
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn"
-      >
+        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
@@ -78,8 +72,7 @@
       <div
         data-wow-delay="0.5s"
         class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn"
-      >
+        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
@@ -89,8 +82,7 @@
       <div
         data-wow-delay="1s"
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn"
-      >
+        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>

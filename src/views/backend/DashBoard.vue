@@ -4,8 +4,7 @@
   <div v-if="check">
     <div
       class="position-fixed w-100 bg-secondary z-1 d-flex align-items-center
-      justify-content-between "
-    >
+      justify-content-between">
       <p class="p-4">
         <span class="material-icons me-2">
           dashboard
@@ -33,12 +32,13 @@
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage === 'admin' }"
         @click.prevent="changeDropdown('admin')"
-        >產品</a
-      >
-      <ul class="dropdown-menu" :class="{ show: nowPage == 'admin' }" ref="admin">
-        <router-link :to="`/dashboard/admin`" class="p-4 border-bottom border-secondary"
-          >產品列表</router-link
         >
+        產品
+      </a>
+      <ul class="dropdown-menu" :class="{ show: nowPage == 'admin' }" ref="admin">
+        <router-link :to="`/dashboard/admin`" class="p-4 border-bottom border-secondary">
+          產品列表
+        </router-link>
         <router-link :to="`/dashboard/newProduct`" class="p-4 ">新增產品</router-link>
       </ul>
       <a
@@ -46,8 +46,9 @@
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'order' }"
         @click.prevent="changeDropdown('order')"
-        >訂單</a
-      >
+        >
+        訂單
+      </a>
       <ul class="dropdown-menu" :class="{ show: nowPage == 'order' }" ref="order">
         <router-link :to="`/dashboard/order`" class="p-4">訂單列表</router-link>
       </ul>
@@ -56,12 +57,13 @@
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'coupons' }"
         @click.prevent="changeDropdown('coupons')"
-        >優惠券</a
-      >
-      <ul class="dropdown-menu" :class="{ show: nowPage == 'coupons' }" ref="coupon">
-        <router-link :to="`/dashboard/coupons`" class="p-4 border-bottom border-secondary"
-          >優惠券列表</router-link
         >
+        優惠券
+      </a>
+      <ul class="dropdown-menu" :class="{ show: nowPage == 'coupons' }" ref="coupon">
+        <router-link :to="`/dashboard/coupons`" class="p-4 border-bottom border-secondary">
+          優惠券列表
+        </router-link>
         <router-link :to="`/dashboard/newCoupon`" class="p-4">新增優惠券</router-link>
       </ul>
       <a
@@ -69,12 +71,13 @@
         class="p-4 dropdown"
         :class="{ 'page-active': nowPage == 'articles' }"
         @click.prevent="changeDropdown('articles')"
-        >文章</a
-      >
-      <ul class="dropdown-menu" :class="{ show: nowPage == 'articles' }" ref="article">
-        <router-link :to="`/dashboard/articles`" class="p-4 border-bottom border-secondary"
-          >文章列表</router-link
         >
+        文章
+      </a>
+      <ul class="dropdown-menu" :class="{ show: nowPage == 'articles' }" ref="article">
+        <router-link :to="`/dashboard/articles`" class="p-4 border-bottom border-secondary">
+          文章列表
+        </router-link>
         <router-link :to="`/dashboard/newArticle`" class="p-4">新增文章</router-link>
       </ul>
     </div>
@@ -175,15 +178,13 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     const cookieToken = document.cookie.replace(
       /(?:(?:^|.*;\s*)chiayuToken\s*=\s*([^;]*).*$)|^.*$/,
       '$1',
     );
     this.$http.defaults.headers.common.Authorization = cookieToken;
     this.checkUser();
-  },
-  mounted() {
     this.pageCheck();
   },
 };

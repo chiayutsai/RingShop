@@ -2,10 +2,8 @@
   <Loading :isLoading="isLoading" />
   <div class="container pt-15">
     <Progress step="1" />
-    <h3
-      class="d-flex rounded-top align-items-center
-     bg-secondary text-2xl p-4"
-    >
+    <h3 class="d-flex rounded-top align-items-center
+        bg-secondary text-2xl p-4">
       <span class="material-icons me-3"> shopping_cart </span>購物車
     </h3>
     <div v-if="cart.length <= 0" class="p-4 border border-white border-bottom-0 bg-table text-dark">
@@ -17,8 +15,7 @@
     <div v-else>
       <div
         class="d-none d-md-flex row g-0 p-4 border border-white
-       border-bottom-0 bg-table text-dark"
-      >
+       border-bottom-0 bg-table text-dark">
         <div class="col-4">商品資料</div>
         <div class="col-2">單件價格</div>
         <div class="col-3">數量</div>
@@ -30,11 +27,10 @@
           v-for="(item, index) in cart"
           :key="item.id"
           class="row g-0 p-4 border border-white align-items-center
-        bg-table text-dark border-bottom-0"
-        >
+          bg-table text-dark border-bottom-0">
           <div class="col-11 col-md-4 mb-5 mb-md-0">
             <div class="d-flex align-items-center">
-              <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
+              <img class="w-40 me-4" :src="item.product.imageUrl" :alt="item.product.title" />
               <h3 class="text-base">{{ item.product.title }}</h3>
             </div>
           </div>
@@ -43,8 +39,7 @@
               <p class="me-3 me-md-0">NT${{ toCurrency(item.product.price) }}</p>
               <p
                 v-if="item.product.price !== item.product.origin_price"
-                class="text-dark opacity-5 text-sm text-decoration-line-through"
-              >
+                class="text-dark opacity-5 text-sm text-decoration-line-through">
                 NT${{ toCurrency(item.product.origin_price) }}
               </p>
             </div>
@@ -55,24 +50,20 @@
                 :disabled="item.qty <= 1"
                 class="quantity-btn cart-remove text-dark border-dark"
                 type="button"
-                @click="minusCartQty(index)"
-              >
+                @click="minusCartQty(index)">
                 -
               </button>
               <input
                 class="text-center quantity w-100 border-start-0
-              border-end-0 border-dark bg-transparent"
+                border-end-0 border-dark bg-transparent"
                 type="number"
                 v-model.number="item.qty"
                 min="1"
-                @change="updateCart(index, item.id, item.qty)"
-              />
+                @change="updateCart(index, item.id, item.qty)"/>
               <button
                 type="button"
-                class="quantity-btn plus text-dark
-            border-dark"
-                @click="addCartQty(index)"
-              >
+                class="quantity-btn plus text-dark border-dark"
+                @click="addCartQty(index)">
                 +
               </button>
               <button
@@ -80,8 +71,7 @@
                 type="button"
                 class=" btn d-flex justify-content-center align-items-center
                 position-absolute no-allow
-               w-100 h-100 top-0 start-0 bg-light"
-              >
+                w-100 h-100 top-0 start-0 bg-light">
                 <div class="spinner-border spinner-border-sm" role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -90,28 +80,27 @@
           </div>
           <div class="col-6 col-md-2 order-4 order-md-0 text-end text-md-start">
             <span class="d-inline d-md-none">小計：</span>
-            NT${{ toCurrency(item.final_total) }}
+            NT${{ toCurrency(item.total) }}
           </div>
           <div class="col-1 order-2 order-md-0">
-            <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover"
-              ><span class="material-icons"> delete_forever </span></a
-            >
+            <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover">
+              <span class="material-icons"> delete_forever </span>
+            </a>
           </div>
         </div>
       </div>
       <div
         class="d-flex
          justify-content-between align-items-end align-items-sm-center
-      rounded-bottom bg-table border border-white p-6"
-      >
+         rounded-bottom bg-table border border-white p-6">
         <a @click.prevent="openModal()" class="btn btn-outline-dark">清空購物車</a>
         <div class="d-flex flex-column flex-sm-row align-items-center">
           <p class="text-dark text-base text-md-xl mb-5 mb-sm-0 me-sm-5 ">
-            總計：NT${{ toCurrency(final_total) }}
+            總計：NT${{ toCurrency(total) }}
           </p>
-          <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7"
-            ><span>繼續購物</span></router-link
-          >
+          <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7">
+            <span>繼續購物</span>
+          </router-link>
         </div>
       </div>
     </div>
@@ -146,14 +135,52 @@
             <p>小計：</p>
           </div>
           <div class="col-8 mb-4 text-end">
-            <p>NT${{ toCurrency(final_total) }}</p>
+            <p>NT${{ toCurrency(total) }}</p>
           </div>
-          <!-- <div class="col-4 mb-6">
-            <p class="text-secondary">折扣：</p>
+          <div v-if="!showCoupon" class="col-12 mb-4 ">
+            <a class="text-secondary underline" href="#" @click.prevent="showCoupon = true">
+              使用優惠券
+            </a>
           </div>
-          <div class="col-8 mb-6">
-            <p class="text-secondary">-NT$33</p>
-          </div> -->
+          <div v-if="showCoupon" class="col-8 mb-4 pe-2">
+            <input
+              id="coupon"
+              name="優惠券代碼"
+              type="text"
+              class="form-control "
+              placeholder="請輸入優惠券代碼"
+              v-model="couponCode"
+            />
+          </div>
+          <div v-if="showCoupon" class="col-4 mb-4">
+            <div class="position-relative">
+              <button
+                type="button"
+                class="btn btn-secondary secondary-hover text-white w-100"
+                :class="{ 'use-disable ': couponCode === '' }"
+                @click.prevent="getCoupon">
+                套用
+              </button>
+              <button
+                v-if="loading"
+                type="button"
+                class=" btn d-flex justify-content-center align-items-center
+                position-absolute no-allow
+                h-100 w-100 top-0 start-0 bg-light">
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div v-if="useCoupon" class="col-4 mb-6">
+            <p class="text-secondary fw-bold">折扣：</p>
+          </div>
+          <div v-if="useCoupon" class="col-8 mb-6 text-end">
+            <p class="text-secondary fw-bold">
+              -NT${{ toCurrency(total - final_total) }}
+            </p>
+          </div>
           <div class="col-12 mb-6">
             <div class="border-bottom border-white"></div>
           </div>
@@ -166,8 +193,7 @@
           <div class="col-12">
             <div
               @click="goToPay"
-              class="btn btn-secondary w-100 fw-bold text-white shadow secondary-hover"
-            >
+              class="btn btn-secondary w-100 fw-bold text-white shadow secondary-hover">
               前往結帳
             </div>
           </div>
@@ -191,6 +217,7 @@ export default {
   data() {
     return {
       cart: [],
+      total: 0,
       final_total: 0,
       allQty: 0,
       allProduct: [],
@@ -198,7 +225,11 @@ export default {
       tempCartID: '',
       isLoading: false,
       updateLoading: false,
-      myFavorite: this.get() || [],
+      myFavorite: this.getLocalStorage() || [],
+      loading: false,
+      showCoupon: false,
+      useCoupon: false,
+      couponCode: '',
     };
   },
   mixins: [localStorage],
@@ -237,7 +268,13 @@ export default {
           if (res.data.success) {
             this.allQty = 0;
             this.cart = res.data.data.carts;
-            this.final_total = res.data.data.final_total;
+            this.final_total = Math.round(res.data.data.final_total);
+            this.total = res.data.data.total;
+            if (this.total !== this.final_total && this.final_total !== 0) {
+              this.useCoupon = true;
+            } else {
+              this.useCoupon = false;
+            }
             this.cart.forEach((item) => {
               this.allQty += item.qty;
             });
@@ -340,11 +377,47 @@ export default {
         this.randomProduct.push(filterProduct[item]);
       });
     },
+    getCoupon() {
+      this.loading = true;
+      const data = {
+        data: {
+          code: this.couponCode,
+        },
+      };
+      this.$http
+        .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`, data)
+        .then((res) => {
+          if (res.data.success) {
+            this.loading = false;
+            this.couponCode = '';
+            this.showCoupon = false;
+            this.useCoupon = true;
+            this.final_total = Math.round(res.data.data.final_total);
+            this.emitter.emit('push-message', {
+              type: 'success',
+              message: res.data.message,
+            });
+          } else {
+            this.loading = false;
+            this.couponCode = '';
+            this.emitter.emit('push-message', {
+              type: 'error',
+              message: res.data.message,
+            });
+          }
+        })
+        .catch((err) => err);
+    },
   },
   mounted() {
     this.getcart();
     this.getAllData();
     this.emitter.on('update-cart', () => {
+      this.getcart();
+    });
+  },
+  unmounted() {
+    this.emitter.off('update-cart', () => {
       this.getcart();
     });
   },

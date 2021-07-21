@@ -1,3 +1,6 @@
+<template>
+  <div class="d-none"></div>
+</template>
 <script>
 import Noty from 'noty';
 
@@ -11,8 +14,8 @@ export default {
     };
   },
   inject: ['emitter'],
-  mounted() {
-    this.emitter.on('push-message', (message) => {
+  methods: {
+    getNoty(message) {
       this.noty = new Noty({
         type: message.type,
         theme: 'nest',
@@ -22,8 +25,13 @@ export default {
         closeWith: ['click', 'button'],
         killer: true,
       }).show();
-    });
+    },
   },
-
+  mounted() {
+    this.emitter.on('push-message', this.getNoty);
+  },
+  unmounted() {
+    this.emitter.off('push-message', this.getNoty);
+  },
 };
 </script>

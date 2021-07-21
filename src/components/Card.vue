@@ -7,13 +7,13 @@
       @mouseleave="recoveryImg"
       :to="`/product/${product.id}`"
     >
-      <img :src="product.imageUrl" :class="{ 'show-card-img': showFirstImg }" alt=""/>
+      <img :src="product.imageUrl" :class="{ 'show-card-img': showFirstImg }" :alt="product.title"/>
       <img
         v-if="product.imagesUrl"
         :class="{ 'show-card-img': !showFirstImg }"
         :src="product.imagesUrl[0]"
-        alt=""
-    /></router-link>
+        :alt="product.title"/>
+    </router-link>
     <div class="card-body">
       <div v-if="cartCard">
         <h3 class="card-title mb-2">
@@ -24,12 +24,12 @@
           >
         </h3>
         <p class="mb-2">
-          NT${{ toCurrency(product.price)
-          }}<span
+          NT${{ toCurrency(product.price) }}
+          <span
             v-if="product.price !== product.origin_price"
             class="text-dark text-sm opacity-5 text-decoration-line-through ms-2"
-            >NT${{ toCurrency(product.origin_price) }}</span
-          >
+            >NT${{ toCurrency(product.origin_price) }}
+          </span>
         </p>
         <a
           v-if="myFavorite.includes(product.id)"
@@ -37,16 +37,16 @@
           class="btn btn-sm btn-secondary text-white secondary-hover me-2"
           @click.prevent="emitaddMyFavorite(product.id)"
         >
-          <span class="material-icons text-base"> favorite </span></a
-        >
+          <span class="material-icons text-base"> favorite </span>
+        </a>
         <a
           v-else
           href="#"
           class="btn btn-sm btn-outline-secondary white-hover cartCard-btn me-2"
           @click.prevent="emitaddMyFavorite(product.id)"
         >
-          <span class="material-icons text-base"> favorite_border </span></a
-        >
+          <span class="material-icons text-base"> favorite_border </span>
+        </a>
         <div class="position-relative d-inline-block">
           <div
             class="btn btn-sm btn-secondary text-white secondary-hover"
@@ -54,13 +54,6 @@
           >
             <span>加入購物車</span>
           </div>
-          <img
-            ref="addImg"
-            class="addCartAnimation"
-            :style="{ top: `${elTop}px`, left: `${elLeft}px` }"
-            :src="product.imageUrl"
-            alt=""
-          />
           <button
             v-if="loading"
             type="button"
@@ -80,12 +73,13 @@
             <router-link :to="`/product/${product.id}`">{{ product.title }}</router-link>
           </h3>
           <p>
-            NT${{ toCurrency(product.price)
-            }}<span
+            NT${{ toCurrency(product.price) }}
+            <span
               v-if="product.price !== product.origin_price"
               class="text-light text-decoration-line-through ms-2"
-              >NT${{ toCurrency(product.origin_price) }}</span
-            >
+              >
+              NT${{ toCurrency(product.origin_price) }}
+            </span>
           </p>
         </div>
         <div class="d-flex">
@@ -95,16 +89,16 @@
             class="border bg-white text-secondary rounded-circle p-2 me-4 icon-active-hover"
             @click.prevent="emitaddMyFavorite(product.id)"
           >
-            <span class="material-icons"> favorite </span></a
-          >
+            <span class="material-icons"> favorite </span>
+            </a>
           <a
             v-else
             href="#"
             class="border rounded-circle p-2 me-4 icon-hover"
             @click.prevent="emitaddMyFavorite(product.id)"
           >
-            <span class="material-icons"> favorite_border </span></a
-          >
+            <span class="material-icons"> favorite_border </span>
+          </a>
           <div v-if="loading" class="add-loading border rounded-circle p-2 ">
             <div class="spinner-border spinner-border-sm text-dark" role="status">
               <span class="visually-hidden">Loading...</span>
@@ -124,7 +118,7 @@
               class="addCartAnimation"
               :style="{ top: `${elTop}px`, left: `${elLeft}px` }"
               :src="product.imageUrl"
-              alt=""
+              :alt="product.title"
             />
           </div>
         </div>
@@ -167,6 +161,7 @@ export default {
       this.showFirstImg = true;
     },
     addCart(id, event) {
+      this.loading = true;
       if (event) {
         const addImg = event.target.parentNode.nextElementSibling;
         addImg.classList.add('show');

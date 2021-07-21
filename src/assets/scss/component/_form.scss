@@ -71,7 +71,6 @@ input[type='checkbox']:checked::after {
 textarea {
   &:focus {
     background: rgba($secondary, 0.3) !important;
-    // border: 0;
   }
   &.form-control {
     &:focus {

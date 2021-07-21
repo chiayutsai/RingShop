@@ -1,4 +1,5 @@
 <template>
+  <Loading :isLoading="isLoading" />
   <div class="container pt-15">
     <Progress step="4" />
   </div>
@@ -7,14 +8,14 @@
       <p class="text-center text-2xl mb-6">感謝您的購買</p>
       <p class="text-center mb-6">下列為您的訂單資訊</p>
       <div class="d-flex w-100 w-md-40 mx-auto">
-        <router-link :to="`/`" class="w-50 btn btn-outline-light shadow-sm me-6"
-          >前往首頁</router-link
-        >
+        <router-link :to="`/`" class="w-50 btn btn-outline-light shadow-sm me-6">
+          前往首頁
+        </router-link>
         <router-link
           :to="`/shop`"
-          class="w-50 btn btn-secondary shadow-sm text-white secondary-hover"
-          >前往商店</router-link
-        >
+          class="w-50 btn btn-secondary shadow-sm text-white secondary-hover">
+          前往商店
+        </router-link>
       </div>
     </div>
   </div>
@@ -37,11 +38,10 @@
           <div
             v-for="item in order.products"
             :key="item.id"
-            class="row py-4 align-items-center text-dark border-bottom"
-          >
+            class="row py-4 align-items-center text-dark border-bottom">
             <div class="col-6">
               <div class="d-flex align-items-center">
-                <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
+                <img class="w-40 me-4" :src="item.product.imageUrl" :alt="item.product.title" />
                 <p>{{ item.product.title }}</p>
               </div>
             </div>
@@ -54,12 +54,6 @@
           </div>
           <div class="border-bottom border-2 border-white"></div>
           <div class="row text-dark px-4 py-6">
-            <!-- <div class="col-9 mb-4">
-              <p class="fw-bold text-lg text-secondary">折扣</p>
-            </div>
-            <div class="col-3">
-              <p class="fw-bold text-lg text-end text-secondary">-NT$80</p>
-            </div> -->
             <div class="col-9">
               <p class="fw-bold text-lg">總計：</p>
             </div>
@@ -108,6 +102,7 @@ export default {
       orderID: '',
       order: {},
       user: {},
+      isLoading: false,
     };
   },
   components: {
@@ -115,6 +110,7 @@ export default {
   },
   methods: {
     getOrder(id) {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${id}`;
       this.$http
         .get(url)
@@ -124,6 +120,9 @@ export default {
             const date = new Date(res.data.order.create_at * 1000).toISOString().split('T');
             [this.orderDate] = date;
             this.user = res.data.order.user;
+            this.isLoading = false;
+          } else {
+            this.isLoading = false;
           }
         })
         .catch((err) => err);

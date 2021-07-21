@@ -31,10 +31,9 @@
               href="#"
               @click.prevent="openCollapse"
               class="lh-1"
-              :class="{ 'arrow-rotate': open }"
-            >
-              <span class="material-icons"> arrow_drop_down_circle </span></a
-            >
+              :class="{ 'arrow-rotate': open }">
+              <span class="material-icons"> arrow_drop_down_circle </span>
+            </a>
           </p>
           <div class="collapse" id="collapseExample" ref="collapse">
             <p class="fw-bold mb-6">購買商品</p>
@@ -52,7 +51,7 @@
             <div v-for="item in order.products" :key="item.id" class="row align-items-center mb-5">
               <div class="col-6">
                 <div class="d-flex align-items-center">
-                  <img class="w-40 me-4" :src="item.product.imageUrl" alt="" />
+                  <img class="w-40 me-4" :src="item.product.imageUrl" :alt="item.product.title" />
                   <p>{{ item.product.title }}</p>
                 </div>
               </div>
@@ -68,8 +67,7 @@
         <button
           type="button"
           @click="pay(orderID)"
-          class="w-100 text-white btn btn-lg btn-secondary secondary-hover shadow"
-        >
+          class="w-100 text-white btn btn-lg btn-secondary secondary-hover shadow">
           確認結帳
         </button>
       </div>
@@ -141,16 +139,14 @@ export default {
     },
   },
   mounted() {
+    this.orderID = this.$route.params.order;
+    this.getOrder(this.orderID);
     this.collapse = new Collapse(this.$refs.collapse, {
       toggle: false,
     });
     this.$refs.collapse.addEventListener('hidden.bs.collapse', () => {
       this.open = false;
     });
-  },
-  created() {
-    this.orderID = this.$route.params.order;
-    this.getOrder(this.orderID);
   },
 };
 </script>

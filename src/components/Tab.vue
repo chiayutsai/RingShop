@@ -10,8 +10,7 @@
           type="button"
           role="tab"
           aria-controls="home"
-          aria-selected="true"
-        >
+          aria-selected="true">
           商品詳情
         </button>
       </li>
@@ -38,8 +37,7 @@
           type="button"
           role="tab"
           aria-controls="contact"
-          aria-selected="false"
-        >
+          aria-selected="false">
           購物須知
         </button>
       </li>
@@ -48,13 +46,13 @@
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <p ref="description" class="mb-8"></p>
         <p class="mb-8">{{ product.content }}</p>
-        <img class="w-100 w-md-60 mx-auto mb-8" :src="product.imageUrl" />
+        <img class="w-100 w-md-60 mx-auto mb-8" :src="product.imageUrl" :alt="product.title"/>
         <img
           v-for="(img, index) in product.imagesUrl"
           :key="index"
           class="w-100 w-md-60 mx-auto mb-8"
           :src="img"
-          alt=""
+          :alt="product.title"
         />
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -62,8 +60,7 @@
           v-for="(format, index) in product.formats"
           :key="index"
           class="d-flex flex-wrap w-100 w-md-75 w-lg-50 mx-auto
-            text-center border-bottom border-light mb-4 pb-2"
-        >
+            text-center border-bottom border-light mb-4 pb-2">
           <li class="w-50 fw-bold">{{ format.format }}：</li>
           <li class="w-50">{{ format.content }}</li>
         </ul>

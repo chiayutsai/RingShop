@@ -79,11 +79,10 @@
             </label>
           </div>
           <div class="col">
-            <img class="w-100 h-auto" :src="tempArticle.imageUrl" alt="" />
+            <img class="w-100 h-auto" :src="tempArticle.imageUrl" />
           </div>
         </div>
       </div>
-
       <div class="col-12 mb-8">
         <p class="mb-4">文章標籤</p>
         <div class="row row-cols-6 align-items-end">
@@ -147,7 +146,10 @@ export default {
       tempArticle: {},
       isUpload: false,
       editor: ClassicEditor,
-      editorConfig: {},
+      editorConfig: {
+        toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', '|', 'link', 'insertTable', 'mediaEmbed', '|', 'undo',
+          'redo'],
+      },
     };
   },
   watch: {

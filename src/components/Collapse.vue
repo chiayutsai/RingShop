@@ -29,6 +29,7 @@
             v-for="(img, i) in product.imagesUrl"
             :src="img"
             :key="'img' + i"
+            :alt="product.title"
           />
         </div>
       </div>
@@ -54,10 +55,8 @@ export default {
       const collapseElementList = [].slice.call(document.querySelectorAll('.collapse'));
       this.collapse = collapseElementList.map((collapseEl, key) => {
         if (key === id) {
-          // eslint-disable-next-line no-undef
           return new Collapse(collapseEl, { toggle: false }).toggle();
         }
-        // eslint-disable-next-line no-undef
         return new Collapse(collapseEl, { toggle: false }).hide();
       });
     },

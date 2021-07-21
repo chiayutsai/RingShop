@@ -1,5 +1,4 @@
 module.exports = {
-  publicPath: '/RingShop/RingRing/',
-  outputDir: 'RingRing',
+  publicPath: '/RingShop/',
   parallel: false,
 };

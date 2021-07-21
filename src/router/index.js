@@ -121,7 +121,6 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  // linkActiveClass: 'bg-primary',
   scrollBehavior() {
     return { top: 0 };
   },

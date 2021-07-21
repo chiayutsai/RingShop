@@ -40,7 +40,6 @@ a {
   &:hover {
     color: #fff;
     text-decoration: none;
-    // text-shadow: 1px 1px 1px rgba(#000,0.7);
   }
 }
 
@@ -93,12 +92,9 @@ button {
 
 input[type='checkbox'] {
   -webkit-appearance: none;
-
   background: #fff;
   border: #999 solid 1px;
   border-radius: 3px;
-  // min-height: 15px;
-  // min-width: 15px;
 }
 input[type='checkbox']:checked {
   background: $secondary;
@@ -124,7 +120,10 @@ input[type='checkbox']:checked::after {
 .material-icons {
   vertical-align: text-bottom;
 }
-
+.ck-body-wrapper{
+  position: relative;
+  z-index: 1080;
+}
 .ck-editor__editable_inline {
   min-height: 500px;
 }

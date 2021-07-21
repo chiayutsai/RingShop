@@ -6,10 +6,10 @@
     :thumbs="{ swiper: thumbsSwiper }"
     class="mySwiper2"
   >
-    <SwiperSlide><img :src="product.imageUrl"/></SwiperSlide>
-    <SwiperSlide v-for="(img, index) in product.imagesUrl" :key="index"
-      ><img :src="product.imagesUrl[index]"
-    /></SwiperSlide>
+    <SwiperSlide><img :src="product.imageUrl" :alt="product.title"/></SwiperSlide>
+    <SwiperSlide v-for="(img, index) in product.imagesUrl" :key="index">
+      <img :src="product.imagesUrl[index]" :alt="product.title" />
+    </SwiperSlide>
   </Swiper>
   <Swiper
     @swiper="setThumbsSwiper"
@@ -21,10 +21,10 @@
     :watchSlidesProgress="true"
     class="mySwiper"
   >
-    <SwiperSlide><img :src="product.imageUrl"/></SwiperSlide>
-    <SwiperSlide v-for="(img, index) in product.imagesUrl" :key="index"
-      ><img :src="product.imagesUrl[index]"
-    /></SwiperSlide>
+    <SwiperSlide><img :src="product.imageUrl" :alt="product.title"/></SwiperSlide>
+    <SwiperSlide v-for="(img, index) in product.imagesUrl" :key="index">
+      <img :src="product.imagesUrl[index]" :alt="product.title" />
+    </SwiperSlide>
   </Swiper>
 </template>
 <script>

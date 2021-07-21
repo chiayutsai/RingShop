@@ -12,9 +12,9 @@
           :to="{
             name: 'shop',
             query: { category: product.category }
-          }"
-          >{{ product.category }}</router-link
-        >
+          }">
+            {{ product.category }}
+        </router-link>
       </li>
       <li class="breadcrumb-item active">{{ product.title }}</li>
     </ol>
@@ -24,8 +24,7 @@
           v-if="!product.imagesUrl"
           class="rounded shadow product-img"
           :src="product.imageUrl"
-          alt=""
-        />
+          :alt="product.title" />
         <SwiperComponent v-else :product="product" />
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
@@ -37,20 +36,19 @@
           </li>
         </ul>
         <p class="fw-bold text-xl mb-7">
-          NT${{ toCurrency(product.price)
-          }}<span
+          NT${{ toCurrency(product.price) }}
+          <span
             v-if="product.price !== product.origin_price"
-            class="text-light text-lg fw-normal text-decoration-line-through ms-4"
-            >NT${{ toCurrency(product.origin_price) }}</span
-          >
+            class="text-light text-lg fw-normal text-decoration-line-through ms-4">
+            NT${{ toCurrency(product.origin_price) }}
+          </span>
         </p>
         <div class="d-flex w-100 w-lg-75 mb-3" :class="{ 'mb-7': !failQty }">
           <button
             class="quantity-btn remove text-xl"
             type="button"
             @click="minusQty"
-            :disabled="qty <= 1"
-          >
+            :disabled="qty <= 1">
             -
           </button>
           <input
@@ -58,8 +56,7 @@
             type="number"
             min="1"
             v-model="qty"
-            @change="checkQty"
-          />
+            @change="checkQty" />
           <button type="button" class="quantity-btn plus text-xl" @click="addQty">+</button>
         </div>
         <p v-if="failQty" class="text-sm text-primary opacity-5 mb-7">商品數量最少為一件!</p>
@@ -68,16 +65,14 @@
             type="button"
             class="w-100 d-flex justify-content-center white-hover
             btn btn-secondary text-white shadow secondary-hover"
-            @click="addCart(product.id, qty, $event)"
-          >
+            @click="addCart(product.id, qty, $event)">
             <span class="material-icons"> shopping_cart </span>加入購物車
           </button>
           <button
             type="button"
             v-if="addLoading"
             class=" btn d-flex justify-content-center align-items-center position-absolute no-allow
-               w-100 h-100 top-0 start-0 bg-light"
-          >
+            w-100 h-100 top-0 start-0 bg-light" >
             <div class="spinner-border spinner-border-sm" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -87,13 +82,12 @@
           v-if="myFavorite.includes(product.id)"
           href="#"
           class="d-flex my-7"
-          @click.prevent="addMyFavorite(product.id)"
-        >
-          <span class="material-icons me-3"> favorite </span>已加入收藏清單</a
-        >
+          @click.prevent="addMyFavorite(product.id)">
+          <span class="material-icons me-3"> favorite </span>已加入收藏清單
+        </a>
         <a v-else href="#" class="d-flex my-7" @click.prevent="addMyFavorite(product.id)">
-          <span class="material-icons me-3"> favorite_border </span>加入收藏清單</a
-        >
+          <span class="material-icons me-3"> favorite_border </span>加入收藏清單
+        </a>
         <ul class="border-start border-3 border-secondary text-sm ps-5">
           <li class="mb-2">
             <span class="fw-bold text-primary opacity-8">限時活動</span> 全館$101免運
@@ -112,8 +106,7 @@
           :key="item.id"
           :product="item"
           :myFavorite="myFavorite"
-          @emit-add-favorite="addMyFavorite"
-        />
+          @emit-add-favorite="addMyFavorite" />
       </ul>
     </div>
   </div>
@@ -146,7 +139,7 @@ export default {
       routeID: '',
       addLoading: false,
       isLoading: false,
-      myFavorite: this.get() || [],
+      myFavorite: this.getLocalStorage() || [],
       elTop: 0,
       elLeft: 0,
     };

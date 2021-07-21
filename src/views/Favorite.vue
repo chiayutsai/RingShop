@@ -7,14 +7,12 @@
     </ol>
     <h3
       class="d-flex rounded-top align-items-center
-     bg-secondary text-2xl p-4"
-    >
+      bg-secondary text-2xl p-4">
       <span class="material-icons me-3"> favorite </span>收藏清單
     </h3>
     <div
       v-if="myFavorite.length <= 0"
-      class="p-4 border border-white border-bottom-0 bg-table text-dark"
-    >
+      class="p-4 border border-white border-bottom-0 bg-table text-dark">
       <p class="text-center text-xl mb-6">目前沒有收藏商品，快去逛逛商店吧～</p>
       <div class="d-block w-25 mx-auto btn btn-secondary text-white secondary-hover mb-5">
         <router-link class="white-hover" :to="`/shop`"> 前往商店</router-link>
@@ -23,8 +21,7 @@
     <div v-else>
       <div
         class="d-none d-md-flex row g-0 p-4 border border-white
-       border-bottom-0 bg-table text-dark"
-      >
+        border-bottom-0 bg-table text-dark">
         <div class="col-6">商品資料</div>
         <div class="col-2">價格</div>
         <div class="col-3">購買狀態</div>
@@ -35,12 +32,11 @@
           v-for="item in favoriteProduct"
           :key="item.id"
           class="row g-0 p-4 border border-white align-items-center
-        bg-table text-dark border-bottom-0"
-        >
+          bg-table text-dark border-bottom-0">
           <div class="col-11 col-md-6 mb-5 mb-md-0">
             <router-link :to="`/product/${item.id}`">
               <div class="d-flex align-items-center">
-                <img class="w-40 me-4" :src="item.imageUrl" alt="" />
+                <img class="w-40 me-4" :src="item.imageUrl" :alt="item.title" />
                 <h3 class="text-base text-dark">{{ item.title }}</h3>
               </div>
             </router-link>
@@ -61,8 +57,7 @@
               <button
                 type="button"
                 class="btn btn-secondary secondary-hover text-white w-100 w-md-75"
-                @click="addCart(item.id)"
-              >
+                @click="addCart(item.id)">
                 加入購物車
               </button>
               <button
@@ -70,8 +65,7 @@
                 type="button"
                 class=" btn d-flex justify-content-center
                 align-items-center position-absolute no-allow w-100
-               w-md-75 h-100 top-0 start-0 bg-light"
-              >
+                w-md-75 h-100 top-0 start-0 bg-light">
                 <div class="spinner-border spinner-border-sm" role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -79,19 +73,18 @@
             </div>
           </div>
           <div class="col-1 order-2 order-md-0">
-            <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover"
-              ><span class="material-icons"> delete_forever </span></a
-            >
+            <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover">
+              <span class="material-icons"> delete_forever </span>
+            </a>
           </div>
         </div>
       </div>
       <div
         class="d-flex justify-content-end
-      rounded-bottom bg-table border border-white p-6"
-      >
-        <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7 "
-          ><span>前往商店</span></router-link
-        >
+        rounded-bottom bg-table border border-white p-6">
+        <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7">
+          <span>前往商店</span>
+        </router-link>
       </div>
     </div>
   </div>
@@ -120,7 +113,7 @@ export default {
   },
   methods: {
     getFavorite() {
-      this.myFavorite = this.get() || [];
+      this.myFavorite = this.getLocalStorage() || [];
       this.favoriteProduct = [];
       this.isLoading = true;
       if (this.myFavorite.length > 0) {
@@ -173,7 +166,7 @@ export default {
     },
     deleteFavorite() {
       this.myFavorite.splice(this.myFavorite.indexOf(this.tempID), 1);
-      this.save(this.myFavorite);
+      this.saveLocalStorage(this.myFavorite);
       this.emitter.emit('update-favorite');
       this.$refs.delModal.hideModal();
       this.emitter.emit('push-message', {

@@ -33,7 +33,7 @@
             <p>作者 : {{ article.author }}</p>
             <p>發布日期 : {{ publicDate }}</p>
           </div>
-          <img class="w-100 mb-6" v-if="article.imageUrl" :src="article.imageUrl" alt="" />
+          <img class="w-100 mb-6" v-if="article.imageUrl" :src="article.imageUrl" />
           <div ref="content"></div>
         </div>
         <div class="modal-footer">

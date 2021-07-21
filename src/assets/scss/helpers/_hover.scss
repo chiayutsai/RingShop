@@ -33,6 +33,11 @@
     text-shadow: none !important;
   }
 }
+.underline{
+  &:hover{
+    text-decoration: underline;
+  }
+}
 .table-hover {
   &:hover {
     background-color: rgb(252, 248, 245);
@@ -140,5 +145,23 @@
         }
       }
     }
+  }
+}
+
+.use-disable{
+  cursor: not-allowed!important;
+  position: relative;
+  &:hover{
+    background-color: $secondary;
+    box-shadow: none !important;
+  }
+  &::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(#fff,0.3);
   }
 }

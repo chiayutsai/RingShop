@@ -24,23 +24,23 @@
                 收藏清單目前沒有商品喔
               </p>
               <div class="p-5">
-              <a
-                @click.prevent="goToTarget('shop')"
-                class="btn btn-secondary secondary-hover text-white w-100"
-                >前往商店</a
-              ></div>
+                <a
+                  @click.prevent="goToTarget('shop')"
+                  class="btn btn-secondary secondary-hover text-white w-100"
+                  >前往商店
+                </a>
+              </div>
             </div>
             <div v-else>
               <div class="nav-dropdown-body">
                 <div
                   v-for="item in favoriteProduct"
-                  class=" d-flex
-                text-dark align-items-center justify-content-between
-                border-bottom p-5 "
+                  class=" d-flex text-dark align-items-center justify-content-between
+                  border-bottom p-5 "
                   :key="item.id"
                 >
                   <div class="d-flex">
-                    <img class="w-20 me-4" :src="item.imageUrl" alt="" />
+                    <img class="w-20 me-4" :src="item.imageUrl" :alt="item.title" />
                     <div class=" flex-shrink-0 me-4">
                       <p>{{ item.title }}</p>
                       <p class="text-sm opacity-6">NT${{ toCurrency(item.price) }}</p>
@@ -49,11 +49,11 @@
                 </div>
               </div>
               <div class="p-5">
-              <a
-                @click.prevent="goToTarget('favorite')"
-                class="btn btn-secondary secondary-hover text-white w-100"
-                >前往收藏清單</a
-              >
+                <a
+                  @click.prevent="goToTarget('favorite')"
+                  class="btn btn-secondary secondary-hover text-white w-100"
+                  >前往收藏清單</a
+                >
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
             <div
               v-if="dropDownLoading"
               class="d-flex justify-content-center align-items-center position-absolute
-          w-100 h-100 top-0 start-0 bg-light z-1"
+              w-100 h-100 top-0 start-0 bg-light z-1"
             >
               <div class="spinner-border text-dark" role="status">
                 <span class="visually-hidden">Loading...</span>
@@ -85,11 +85,12 @@
                 購物車目前沒有商品喔
               </p>
               <div class="p-5">
-              <a
-                @click.prevent="goToTarget('shop')"
-                class="btn btn-secondary secondary-hover text-white w-100"
-                >前往商店</a
-              >
+                <a
+                  @click.prevent="goToTarget('shop')"
+                  class="btn btn-secondary secondary-hover text-white w-100"
+                >
+                  前往商店
+                </a>
               </div>
             </div>
             <div v-else>
@@ -101,7 +102,7 @@
                   :key="item.id"
                 >
                   <div class="d-flex">
-                    <img class="w-20 me-4" :src="item.product.imageUrl" alt="" />
+                    <img class="w-20 me-4" :src="item.product.imageUrl" :alt="item.product.title" />
                     <div class=" flex-shrink-0 me-4">
                       <p>{{ item.product.title }}</p>
                       <p class="text-sm opacity-6">
@@ -111,17 +112,17 @@
                       </p>
                     </div>
                   </div>
-                  <a @click.prevent="deleteCart(item.id)" href="" class="text-dark"
-                    ><span class="material-icons scale-hover"> delete_forever </span></a
-                  >
+                  <a @click.prevent="deleteCart(item.id)" href="" class="text-dark">
+                    <span class="material-icons scale-hover"> delete_forever </span>
+                  </a>
                 </div>
               </div>
               <div class="p-5">
-              <a
-                @click.prevent="goToTarget('cart')"
-                class="btn btn-secondary secondary-hover text-white w-100"
-                >前往購物車</a
-              >
+                <a
+                  @click.prevent="goToTarget('cart')"
+                  class="btn btn-secondary secondary-hover text-white w-100"
+                  >前往購物車
+                </a>
               </div>
             </div>
           </div>
@@ -200,7 +201,7 @@
             }"
             class="w-100 rounded-pill"
             src="@/assets/images/home-link.jpg"
-            alt=""
+            alt="首頁"
           />
           <img
             :class="{
@@ -209,7 +210,7 @@
             }"
             class="w-100 rounded-pill"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625492435301.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=c7FwVBPtQ1UK5BJawhwtiXs7rFeDuGH98BVhFGQj9mA%2B%2BCCIA5jSqcPvEkuEJZ4jb8Kvpj2cvpVMe26iZtgvKjPbXH0hAcqrVF%2B6W7wqsSn6OPD5P7E9c2F9iZyHx0JoN1CeY42PVhrnRKBLIBJpNPh8%2FbkT3b8bqm%2FwogEBsP%2FU3gzRRB8G9GJP19k83oblMs%2FLTkBW%2BleXfY4l3xkdSzi4580ADfPLbMYXv2oM0x55%2F3BV8zggSbVISk1%2FoZ8Dam0dly8zvlxnud8DZW46X586tuUATMWJgJOsKFKQjZQc1qB9RKeIgMuYdTXbzGeM6GDr4xGsxo%2B6lzkIbVYraw%3D%3D"
-            alt=""
+            alt="商店"
           />
           <img
             :class="{
@@ -218,7 +219,7 @@
             }"
             class="w-100 rounded-pill"
             src="@/assets/images/about-link.jpg"
-            alt=""
+            alt="關於品牌"
           />
           <img
             :class="{
@@ -227,7 +228,7 @@
             }"
             class="w-100 rounded-pill"
             src="@/assets/images/contact-link.jpg"
-            alt=""
+            alt="聯絡我們"
           />
           <img
             :class="{
@@ -236,7 +237,7 @@
             }"
             class="w-100 rounded-pill"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625492474348.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=F00OuaEcKhqza62j3q%2Blu%2BPr393XsWsWh2uptHGrhsSY%2FL1%2Btl48IlEOH9urqKmb4akEreUVB%2F6JZHuc9D8gG2JNm2%2BYqA8w2rfRUIy68R7XV%2Fcf9nUwvKiR81XaiHheImCDDybmXBQ0awPr4ZBuCL1I1pBvRnM1ueOoTscoTbMGTX2%2F%2Bk9rdfXFQhhlQAtoWDb%2BH7gq07MABk%2FFN7VirZivolsO4BGFNsZRrYUW3tRvoIVJSqckRe9995nhMZ2jqDrOMLTkQxggBNU6LpULyVLT2ebG4EbB3Qf8NAKbFvQcpF13Rgu0geTwxCkkZK3X2%2B6i3JwTKSd24y4TRR8%2FWg%3D%3D"
-            alt=""
+            alt="RingRing"
           />
         </div>
       </div>
@@ -268,7 +269,7 @@ export default {
       showCart: true,
       type: '',
       dropdownData: [],
-      myFavorite: this.get() || [],
+      myFavorite: this.getLocalStorage() || [],
       dropDownLoading: false,
     };
   },
@@ -308,7 +309,7 @@ export default {
         .catch((err) => err);
     },
     getFavorite() {
-      this.myFavorite = this.get() || [];
+      this.myFavorite = this.getLocalStorage() || [];
       this.favoriteProduct = [];
       if (this.myFavorite.length > 0) {
         this.myFavorite.forEach((item) => {
@@ -377,13 +378,14 @@ export default {
     },
   },
   mounted() {
+    window.addEventListener('scroll', this.handleScroll);
     this.getcart();
     this.getFavorite();
     emitter.on('update-cart', () => {
       this.getcart();
     });
     emitter.on('update-favorite', () => {
-      this.myFavorite = this.get();
+      this.myFavorite = this.getLocalStorage();
       this.getFavorite();
     });
     document.body.addEventListener('click', () => {
@@ -395,8 +397,14 @@ export default {
       }
     });
   },
-  created() {
-    window.addEventListener('scroll', this.handleScroll);
+  unmounted() {
+    emitter.off('update-cart', () => {
+      this.getcart();
+    });
+    emitter.off('update-favorite', () => {
+      this.myFavorite = this.getLocalStorage();
+      this.getFavorite();
+    });
   },
 };
 </script>

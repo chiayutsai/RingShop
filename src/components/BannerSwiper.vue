@@ -56,8 +56,7 @@
   <div
     class="position-absolute d-flex justify-content-center align-items-center
      w-100 vh-50 vh-sm-60 vh-md-100 top-0
-     wow animate__animated animate__zoomIn"
-  >
+     wow animate__animated animate__zoomIn">
     <RingCircle class="banner-ring" />
     <div class="home-banner">
       <div ref="bannerSwiper" class="swiper-container bannerSwiper">
@@ -67,7 +66,7 @@
               <img
                 class="banner-swiper-img "
                 src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                alt=""
+                alt="心之所向耳環"
               />
             </router-link>
           </div>
@@ -76,7 +75,7 @@
               <img
                 class="banner-swiper-img "
                 src="https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
-                alt=""
+                alt="緊緊相連戒指"
               />
             </router-link>
           </div>
@@ -85,7 +84,7 @@
               <img
                 class="banner-swiper-img"
                 src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                alt=""
+                alt="月光星辰項鍊"
               />
             </router-link>
           </div>
@@ -94,7 +93,7 @@
               <img
                 class="banner-swiper-img "
                 src="https://images.unsplash.com/photo-1590820233493-ffc0efee2dc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                alt=""
+                alt="流動時光耳環"
               />
             </router-link>
           </div>
@@ -109,28 +108,28 @@
             <img
               class="banner-swiper-img rounded-pill"
               src="https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
-              alt=""
+              alt="緊緊相連戒指"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
               src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-              alt=""
+              alt="月光星辰項鍊"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
               src="https://images.unsplash.com/photo-1590820233493-ffc0efee2dc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-              alt=""
+              alt="流動時光耳環"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
               src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-              alt=""
+              alt="心之所向耳環"
             />
           </div>
         </div>

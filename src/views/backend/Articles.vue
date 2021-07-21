@@ -2,9 +2,9 @@
   <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">文章列表</h2>
-    <router-link :to="`/dashboard/newArticle`" class="btn btn-secondary text-white shadow-none "
-      >新增文章</router-link
-    >
+    <router-link :to="`/dashboard/newArticle`" class="btn btn-secondary text-white shadow-none">
+      新增文章
+    </router-link>
   </div>
   <div class="bg-white rounded overflow-hidden border border-secondary">
     <table class="table table-borderless mb-0">
@@ -26,7 +26,12 @@
         <template v-for="(item, key) in articles" :key="item.id">
           <tr :class="{ 'table-primary': item.isPublic }">
             <td class="w-10 ">
-              <img v-if="item.imageUrl" class="w-100 small-size" :src="item.imageUrl" />
+              <img
+                v-if="item.imageUrl"
+                class="w-100 small-size"
+                :src="item.imageUrl"
+                :alt="item.title"
+              />
             </td>
             <td class="w-20 py-6">{{ item.title }}</td>
             <td class="w-20">{{ item.description }}</td>
@@ -50,9 +55,9 @@
                   v-model="item.isPublic"
                   @click="getSingle(item, 'status')"
                 />
-                <label v-if="item.isPublic" class="form-check-label" :for="'enabled' + key"
-                  >公開</label
-                >
+                <label v-if="item.isPublic" class="form-check-label" :for="'enabled' + key">
+                  公開
+                </label>
                 <label v-else class="form-check-label" :for="'enabled' + key">未公開</label>
               </div>
             </td>
@@ -71,15 +76,13 @@
               <button
                 type="button"
                 class="btn btn-sm btn-secondary text-white"
-                @click="getSingle(item, 'modal')"
-              >
+                @click="getSingle(item, 'modal')">
                 編輯
               </button>
               <button
                 type="button"
                 class="btn btn-sm btn-outline-secondary white-hover ms-2"
-                @click="openModal('delete', item)"
-              >
+                @click="openModal('delete', item)">
                 刪除
               </button>
             </td>
@@ -189,13 +192,11 @@ export default {
             });
             this.$refs.updateModal.hideModal();
             this.getArticle(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);
@@ -214,13 +215,11 @@ export default {
             });
             this.$refs.delModal.hideModal();
             this.getArticle(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);

@@ -31,29 +31,25 @@
                 <div
                   v-if="!item.is_paid && item.status !== 'cancel'"
                   class="status status-wait"
-                  @click="openModal('status', item)"
-                >
+                  @click="openModal('status', item)">
                   等待付款中
                 </div>
                 <div
                   v-if="item.is_paid && item.status !== 'finish' && item.status !== 'cancel'"
                   class="status status-handle"
-                  @click="openModal('status', item)"
-                >
+                  @click="openModal('status', item)">
                   處理中
                 </div>
                 <div
                   v-if="item.status === 'finish'"
                   class="status status-finish"
-                  @click="openModal('status', item)"
-                >
+                  @click="openModal('status', item)">
                   完成
                 </div>
                 <div
                   v-if="item.status === 'cancel'"
                   class="status status-cancel"
-                  @click="openModal('status', item)"
-                >
+                  @click="openModal('status', item)">
                   取消
                 </div>
               </td>
@@ -61,8 +57,7 @@
                 <a
                   href="#"
                   class=" text-secondary text-center shadow-none eye-hover"
-                  @click.prevent="openModal('watch', item)"
-                >
+                  @click.prevent="openModal('watch', item)">
                   <span class="material-icons text-lg ">
                     visibility
                   </span>
@@ -72,15 +67,13 @@
                 <button
                   type="button"
                   class="btn btn-sm btn-secondary text-white"
-                  @click="goToEdit(item)"
-                >
+                  @click="goToEdit(item)">
                   編輯
                 </button>
                 <button
                   type="button"
                   class="btn btn-sm btn-outline-secondary white-hover ms-2"
-                  @click="openModal('delete', item)"
-                >
+                  @click="openModal('delete', item)">
                   刪除
                 </button>
               </td>
@@ -194,13 +187,11 @@ export default {
             });
             this.$refs.delModal.hideModal();
             this.getOrder(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);
@@ -227,13 +218,11 @@ export default {
             });
             this.$refs.statusModal.hideModal();
             this.getOrder(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);

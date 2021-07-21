@@ -2,9 +2,9 @@
   <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">產品列表</h2>
-    <router-link :to="`/dashboard/newProduct`" class="btn btn-secondary text-white shadow-none "
-      >新增產品</router-link
-    >
+    <router-link :to="`/dashboard/newProduct`" class="btn btn-secondary text-white shadow-none">
+      新增產品
+    </router-link>
   </div>
   <div class="bg-white rounded overflow-hidden border border-secondary">
     <table class="table table-borderless mb-0">
@@ -23,7 +23,7 @@
         <template v-for="(item, key) in products" :key="item.id">
           <tr :class="{ 'table-primary': item.is_enabled }">
             <td class="w-15">
-              <img class="w-100 small-size" :src="item.imageUrl" />
+              <img class="w-100 small-size" :src="item.imageUrl" :alt="item.title"/>
             </td>
             <td>{{ item.title }}</td>
             <td>{{ item.category }}</td>
@@ -34,15 +34,15 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  :id="'enabled' + key"
+                  :id="`enabled${key}`"
                   v-model="item.is_enabled"
                   :true-value="1"
                   :false-value="0"
                   @change="changeStatus(item)"
                 />
-                <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key"
-                  >上架</label
-                >
+                <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key">
+                  上架
+                </label>
                 <label v-else class="form-check-label" :for="'enabled' + key">未上架</label>
               </div>
             </td>
@@ -50,26 +50,22 @@
               <button
                 type="button"
                 class="btn btn-sm btn-secondary text-white"
-                @click="openModal('edit', item)"
-              >
+                @click="openModal('edit', item)">
                 編輯
               </button>
               <button
                 type="button"
                 class="btn btn-sm btn-outline-secondary white-hover ms-2"
-                @click="openModal('delete', item)"
-              >
+                @click="openModal('delete', item)">
                 刪除
               </button>
               <button
                 type="button"
                 class="btn btn-outline-secondary white-hover float-end p-0 lh-1 mt-2 me-4"
-                @click="openCollapse(key)"
-              >
+                @click="openCollapse(key)">
                 <span
                   class="material-icons text-lg align-bottom"
-                  :class="{ 'arrow-rotate': key == isOpen.id && isOpen.open }"
-                >
+                  :class="{ 'arrow-rotate': key == isOpen.id && isOpen.open }">
                   arrow_drop_down
                 </span>
               </button>
@@ -200,13 +196,11 @@ export default {
             });
             this.$refs.updateModal.hideModal();
             this.getData(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);
@@ -231,13 +225,11 @@ export default {
             });
             this.$refs.delModal.hideModal();
             this.getData(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);

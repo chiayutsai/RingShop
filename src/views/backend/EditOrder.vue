@@ -2,9 +2,9 @@
   <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">編輯訂單</h2>
-    <router-link :to="`/dashboard/order`" class="btn btn-secondary text-white shadow-none "
-      >返回訂單列表</router-link
-    >
+    <router-link :to="`/dashboard/order`" class="btn btn-secondary text-white shadow-none">
+      返回訂單列表
+    </router-link>
   </div>
   <div class="bg-white rounded overflow-hidden border border-secondary ">
     <div class="container-fluid py-6">
@@ -118,7 +118,7 @@
         </div>
       </Form>
       <div class="d-flex justify-content-end border-top pt-6">
-        <button type="submit" class="btn btn-secondary text-white px-12" @click.prevent="editOrder">
+        <button type="button" class="btn btn-secondary text-white px-12" @click.prevent="editOrder">
           確定編輯
         </button>
       </div>
@@ -153,10 +153,9 @@ export default {
               [this.orderDate] = new Date(res.data.order.create_at * 1000).toISOString().split('T');
               if (res.data.order.status) {
                 this.status = res.data.order.status;
+              } else if (res.data.order.is_paid) {
+                this.status = 'handle';
               } else {
-                if (res.data.order.is_paid) {
-                  this.status = 'handle';
-                }
                 this.status = 'wait';
               }
             } else {
@@ -164,6 +163,7 @@ export default {
                 type: 'error',
                 message: '找不到這筆訂單',
               });
+              this.isLoading = false;
               this.$router.push('/dashboard/order');
             }
           }

@@ -2,7 +2,7 @@
 <Loading :isLoading="isLoading" />
 <Noty />
 <div class="position-relative bg-login w-100 min-vh-100">
-    <div class="bg-overlay opacity-5 z-0"></div>
+  <div class="bg-overlay opacity-5 z-0"></div>
   <div class="position-relative d-flex justify-content-center align-items-center vh-100">
     <div class="w-40 bg-login-form rounded-3 px-12 py-8">
       <h2 class="text-white text-center mb-6">登入</h2>
@@ -17,7 +17,7 @@
             placeholder="name@example.com"
             rules="email|required"
             v-model="user.username"
-          ></Field>Î
+          ></Field>
           <label for="account">帳號：</label>
           <error-message name="email" class="invalid-feedback"></error-message>
         </div>
@@ -30,6 +30,7 @@
             :class="{ 'is-invalid': errors['密碼'] }"
             placeholder="請輸入姓名"
             rules="required"
+            autocomplete
             v-model="user.password"
           ></Field>
           <label for="password"> 密碼：</label>
@@ -38,8 +39,7 @@
         <button
           type="submit"
           class="btn btn-lg text-white btn-secondary secondary-hover w-100 mt-3"
-          id="login"
-        >
+          id="login">
           登入
         </button>
       </Form>

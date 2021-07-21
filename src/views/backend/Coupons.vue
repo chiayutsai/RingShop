@@ -2,9 +2,9 @@
   <Loading :isLoading="isLoading" />
   <div class="d-flex align-items-center justify-content-between mb-5 ">
     <h2 class="text-dark">優惠券列表</h2>
-    <router-link :to="`/dashboard/newCoupon`" class="btn btn-secondary text-white shadow-none "
-      >新增優惠券</router-link
-    >
+    <router-link :to="`/dashboard/newCoupon`" class="btn btn-secondary text-white shadow-none">
+      新增優惠券
+    </router-link>
   </div>
   <div class="bg-white rounded overflow-hidden border border-secondary">
     <p v-if="this.coupons.length == 0" class="bg-secondary text-center py-8">目前沒有優惠券</p>
@@ -41,9 +41,9 @@
                     :false-value="0"
                     @change="changeStatus(item)"
                   />
-                  <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key"
-                    >啟用</label
-                  >
+                  <label v-if="item.is_enabled" class="form-check-label" :for="'enabled' + key">
+                    啟用
+                  </label>
                   <label v-else class="form-check-label" :for="'enabled' + key">未啟用</label>
                 </div>
               </td>
@@ -51,15 +51,13 @@
                 <button
                   type="button"
                   class="btn btn-sm btn-secondary text-white"
-                  @click="openModal('edit', item)"
-                >
+                  @click="openModal('edit', item)">
                   編輯
                 </button>
                 <button
                   type="button"
                   class="btn btn-sm btn-outline-secondary white-hover ms-2"
-                  @click="openModal('delete', item)"
-                >
+                  @click="openModal('delete', item)">
                   刪除
                 </button>
               </td>
@@ -138,13 +136,11 @@ export default {
             });
             this.$refs.updateModal.hideModal();
             this.getCoupon(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);
@@ -169,13 +165,11 @@ export default {
             });
             this.$refs.delModal.hideModal();
             this.getCoupon(this.pagination.current_page);
-            this.isLoading = false;
           } else {
             this.emitter.emit('push-message', {
               type: 'error',
               message: res.data.message,
             });
-            this.isLoading = false;
           }
         })
         .catch((err) => err);

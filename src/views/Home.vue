@@ -24,15 +24,12 @@
             class="wow animate__animated animate__zoomIn position-relative z-1 w-80 w-lg-100
              -ms-lg-offset-4 rounded-3 shadow translate-left-hover top-3"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625319903781.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=mzk1w6ZKrwnsx%2BLQrmWZX1sD4F8UjExVKwE4%2B2gF8wgsMxWrOlfHp4NP85hnXJTBXB8Nb6uiINoNiSyFMz%2Fdmh2MSY9lU5NnES5rpaPKwHfK8jCiJYb8jMQDjrjPHEMkCl7ZuNxb5VwWK%2Bsh5zKKBkuozzZHdaczYTl1LL6dhROv6%2FOpOpJkO%2Bo%2FwMjHbNY6CGR0D5KkxhvVBCHZww7WUcmrxGoqclQ2zHIkhnn4IExRoG9iM3zK%2BYhg6d0H3kkHj9kSu2HWuogEK9JJ71zSsbxoaukNS3brjn%2F4Tr9LusX9laVE8Dy434Aq38%2FKsYY4flZk6m650G4ZkKA45eZ0cA%3D%3D"
-            alt=""
-          />
+            alt="珍珠系列"/>
         </div>
       </div>
     </div>
     <div
-      class="
-      row align-items-center flex-column flex-lg-row pb-15"
-    >
+      class="row align-items-center flex-column flex-lg-row pb-15">
       <div class="col-12 col-lg-5 ">
         <div class="position-relative bg-crystal py-lg-11 mb-15 mb-lg-0">
           <div class="bg-mask "></div>
@@ -40,8 +37,7 @@
             class=" wow animate__animated animate__zoomIn position-relative z-1
             ms-lg-offset-4 shadow rounded-3 translate-right-hover w-80 w-lg-100 top-3"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625321205605.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=X4vC%2BGwGh%2Bfd8dbY9PdsyxK4RBbZVnbo9EXUTZ%2FH2es0WjjRHZGFEtHCdpZzoLinp81DE3iNFw7os6Vy8I0KOu%2Fq1G4iB%2FfgFIX4B2WEq%2FDgedT442BaZ8iWMwMYs06dRbRgMgwVBljuiS6rKablTc63amsb8wzFPkYrKZzg5OXr2lYaYCWQZ50padM4fNoNiwn8czJDzSiRIGZCmd2rEV4eFf7sPMiMnFoGVgML4HHJNDLyuXh%2FqdrENwgQWg4oyPh1QKmgi%2Fz%2B52x%2FwM3qW7LOX8N4UTokYuFIweOjhd2FQ9zhCYMhS8f5itBtGzkz7fHSiJujzGF7M0QFMQC2aQ%3D%3D"
-            alt=""
-          />
+            alt="水晶系列"/>
         </div>
       </div>
       <div class=" wow animate__animated animate__fadeInRight col-12 col-lg-4 offset-lg-3">
@@ -79,8 +75,7 @@
             class="wow animate__animated animate__zoomIn position-relative z-1
             -ms-lg-offset-4 rounded-3 shadow translate-left-hover w-80 w-lg-100 top-3"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625322060288.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=fNvEeVRsBZ56b5cJvK5l16IPjpVK1H7G0UcVKqureR10yDoFMyHrBecxNtgLhCKIwq48Y4WdJTkrIlGrgFqFyGvOO%2FV%2BtR7YhP4cq4jYKJw9%2B5CVnQimk6ULbF5Y5U2g0oeghCY7gMlBnPeIr9xXWqRcJgmPfaWLc2ruZsBdyDgyo8tuTjKW%2FDXozC4qft6b%2FqGcAOV3l5l5jyodO66QJecyU%2BF55m8B4Ltolv89LETE2MXJB1EuftTAa0yUkU1iZGX8SBIN1T5HcJ4Epan%2Fe33FZnetnfUTTuOVC1bxG8frqtAJ%2BI7YxmvRqhXGbd5Tm94%2B67yyIZleCz1IIy1NAg%3D%3D"
-            alt=""
-          />
+            alt="鎖骨鏈系列"/>
         </div>
       </div>
     </div>
@@ -101,28 +96,25 @@
       :pagination="{ clickable: true }"
       :slidesPerView="1"
       data-wow-delay="0.5s"
-      class=" sale-container wow animate__animated animate__zoomIn"
-    >
+      class=" sale-container wow animate__animated animate__zoomIn">
       <swiper-slide v-for="item in saleProduct" :key="item.id">
         <div class="sale-item">
           <div class="sale-tag">Hot Issue</div>
           <router-link class="home-swiper-img" :to="`/product/${item.id}`">
-            <img :src="item.imageUrl" alt="" />
+            <img :src="item.imageUrl" :alt="item.title" />
           </router-link>
           <div
-            class="d-flex align-items-center
-              justify-content-between border-top
-              border-light mt-5 pt-5"
-          >
+            class="d-flex align-items-center justify-content-between border-top
+            border-light mt-5 pt-5">
             <div>
               <router-link :to="`/product/${item.id}`">
                 <p class=" fw-normal mb-2">{{ item.title }}</p>
               </router-link>
               <p>
                 NT${{ item.price }}
-                <span class="text-light text-decoration-line-through ms-2"
-                  >NT${{ item.origin_price }}</span
-                >
+                <span class="text-light text-decoration-line-through ms-2">
+                  NT${{ item.origin_price }}
+                </span>
               </p>
             </div>
             <div class="d-flex align-items-center ">
@@ -130,18 +122,16 @@
                 v-if="myFavorite.includes(item.id)"
                 href="#"
                 class="border bg-white text-secondary rounded-circle p-2 me-4 icon-active-hover"
-                @click.prevent="addMyFavorite(item.id)"
-              >
-                <span class="material-icons"> favorite </span></a
-              >
+                @click.prevent="addMyFavorite(item.id)">
+                <span class="material-icons"> favorite </span>
+              </a>
               <a
                 v-else
                 href="#"
                 class="border rounded-circle p-2 me-4 icon-hover"
-                @click.prevent="addMyFavorite(item.id)"
-              >
-                <span class="material-icons"> favorite_border </span></a
-              >
+                @click.prevent="addMyFavorite(item.id)">
+                <span class="material-icons"> favorite_border </span>
+              </a>
               <div v-if="addLoading" class="add-loading border rounded-circle p-2 ">
                 <div class="spinner-border spinner-border-sm text-dark" role="status">
                   <span class="visually-hidden">Loading...</span>
@@ -152,15 +142,14 @@
                   v-if="!addLoading"
                   href="#"
                   class=" border rounded-circle p-2 icon-hover"
-                  @click.prevent="addCart(item.id)"
-                >
+                  @click.prevent="addCart(item.id)">
                   <span class="material-icons"> shopping_cart </span>
                 </a>
               </div>
             </div>
           </div>
-        </div></swiper-slide
-      >
+        </div>
+      </swiper-slide>
     </swiper>
   </div>
   <div class="container pb-15 py-lg-15">
@@ -174,27 +163,22 @@
           href="#"
           @click.prevent="goToCategory('戒指')"
           class="bg-topic
-          mb-7 "
-        >
+          mb-7">
           <img
             class="position-absolute w-100 top-0 rounded-3"
             src="@/assets/images/topic-ring.jpg"
-            alt=""
-          />
+            alt="戒指"/>
           <div class=" bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">戒指</p>
         </a>
         <a
           href="#"
           @click.prevent="goToCategory('手錶')"
-          class="bg-topic rounded-3 mb-7 mb-lg-0
-         "
-        >
+          class="bg-topic rounded-3 mb-7 mb-lg-0">
           <img
             class="position-absolute w-100 top-0 rounded-3"
             src="@/assets/images/topic-watch.jpg"
-            alt=""
-          />
+            alt="手錶"/>
           <div class=" bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">手錶</p>
         </a>
@@ -203,14 +187,11 @@
         <a
           href="#"
           @click.prevent="goToCategory('項鍊')"
-          class="bg-topic bg-topic-necklace mb-7 mb-lg-0 rounded-3
-          "
-        >
+          class="bg-topic bg-topic-necklace mb-7 mb-lg-0 rounded-3">
           <img
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-necklace.jpg"
-            alt=""
-          />
+            alt="項鍊"/>
           <div class=" bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">項鍊</p>
         </a>
@@ -219,28 +200,22 @@
         <a
           href="#"
           @click.prevent="goToCategory('耳環')"
-          class="bg-topic rounded-3 mb-7
-        "
-        >
+          class="bg-topic rounded-3 mb-7">
           <img
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-earring.jpg"
-            alt=""
-          />
+            alt="耳環"/>
           <div class=" bg-topic-mask rounded-3 "></div>
           <p class="text-2xl position-absolute">耳環</p>
         </a>
         <a
           href="#"
           @click.prevent="goToCategory('手鍊')"
-          class="bg-topic rounded-3
-       "
-        >
+          class="bg-topic rounded-3">
           <img
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-bracelet.jpg"
-            alt=""
-          />
+            alt="手鍊"/>
           <div class=" bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">手鍊</p>
         </a>
@@ -254,12 +229,10 @@
     </div>
     <div
       class="row row-cols-2 align-items-center flex-column-reverse flex-lg-row
-       pb-10 mb-10 border-bottom border-light"
-    >
+      pb-10 mb-10 border-bottom border-light">
       <div
         class="col-12 col-lg position-relative d-flex flex-column
-      flex-md-row d-lg-block wow animate__animated animate__fadeInLeft "
-      >
+        flex-md-row d-lg-block wow animate__animated animate__fadeInLeft">
         <h2 class="about-title font-design mb-10 w-50">RingRing</h2>
         <p class="lh-lg letter-spacing-1">
           我們的目標是提供平價但不平凡的飾品，<br />
@@ -286,15 +259,13 @@
         <img
           class="rounded-3 about-img"
           src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625342978859.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=DdnzFv7qNR1mc288VJSaHBzzcPSAHPygNkPgzgtcHizFyWYvHIjdClYNz9ihNEyRf7PHOoCgTVc%2FzxZ4wi9IK7T%2BfwULMeEJUfEp5yBWY%2FTqiPNnKZOBYFHhWGDWS8RAEDeb%2FD%2FcB4OW9FVpdH4Bjn7s58B222eCVmB7ZbFD6sNUA6b6CXcq5%2FXV1sSpy4%2FuHY22MFvZmWvUx0PZI60LcOMOnqOEvfm1dlNTrncsEbznLNzGuU7XT2Z0EPoTdGfw%2FgJYypKhCpVgBSoUMlW0rdpuJH3u7wSYd96ryzw8AnU%2BuaylW115DFXNdFMArhvJLXVbT68Fz0NOic3cvKQQHw%3D%3D"
-          alt=""
-        />
+          alt="RingRing"/>
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
       <div
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-      wow animate__animated animate__zoomIn"
-      >
+        wow animate__animated animate__zoomIn" >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
@@ -306,8 +277,7 @@
       <div
         data-wow-delay="0.5s"
         class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn"
-      >
+        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
@@ -317,8 +287,7 @@
       <div
         data-wow-delay="1s"
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-       wow animate__animated animate__zoomIn"
-      >
+        wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>
@@ -369,7 +338,7 @@ export default {
           slidesPerView: 2,
         },
       },
-      myFavorite: this.get() || [],
+      myFavorite: this.getLocalStorage() || [],
     };
   },
   methods: {

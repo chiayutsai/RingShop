@@ -28,8 +28,8 @@
               <a
                 href="#"
                 @click.prevent="changeCategory('')"
-                :class="{ 'cate-active': selectCategory === '' || !selectCategory }"
-                >全部商品
+                :class="{ 'cate-active': selectCategory === '' || !selectCategory }">
+                全部商品
                 <span class="text-base material-icons">
                   double_arrow
                 </span>
@@ -54,8 +54,8 @@
               <a
                 href="#"
                 @click.prevent="changeCategory('')"
-                :class="{ 'cate-active': selectCategory === '' || !selectCategory }"
-                >全部商品
+                :class="{ 'cate-active': selectCategory === '' || !selectCategory }">
+                全部商品
                 <span class="text-base material-icons">
                   double_arrow
                 </span>
@@ -65,12 +65,12 @@
               <a
                 href="#"
                 @click.prevent="changeCategory(category)"
-                :class="{ 'cate-active': selectCategory === category }"
-                >{{ category }}
+                :class="{ 'cate-active': selectCategory === category }">
+                {{ category }}
                 <span class="text-base material-icons">
                   double_arrow
-                </span></a
-              >
+                </span>
+              </a>
             </li>
           </ul>
         </div>
@@ -103,7 +103,7 @@ export default {
       selectCategory: '',
       isLoading: false,
       productByCategory: [],
-      myFavorite: this.get() || [],
+      myFavorite: this.getLocalStorage() || [],
       pagination: {
         current_page: 1,
         has_next: true,

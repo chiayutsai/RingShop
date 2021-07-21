@@ -10,7 +10,7 @@
         <button type="button" class="btn btn-outline-secondary white-hover me-4" @click="clean">
           重填文章資訊
         </button>
-        <button type="submit" class="btn btn-secondary text-white px-12" @click.prevent="add">
+        <button type="button" class="btn btn-secondary text-white px-12" @click.prevent="add">
           新增文章
         </button>
       </div>
