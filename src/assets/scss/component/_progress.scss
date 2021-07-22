@@ -1,8 +1,21 @@
 .circle{
   width: 40px;
   height: 40px;
+  position: relative;
+
 }
 .progress-active{
   background-color: #fff;
-  color:$dark
+  color:$dark;
+  position: relative;
+  &::before{
+    content:'';
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    border:1px dashed #fff;
+    border-radius: 50%;
+    animation: rotate linear 10s infinite ;
+  }
+  
 }

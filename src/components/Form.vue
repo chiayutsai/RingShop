@@ -1,6 +1,6 @@
 <template>
   <Loading :isLoading="isLoading" />
-  <p class="text-xl rounded-top bg-secondary p-4">顧客資訊</p>
+  <p class="text-xl rounded-top bg-title p-4">顧客資訊</p>
   <Form v-slot="{ errors }" ref="form" @submit="onSubmit" class="bg-table rounded-bottom py-6 px-8">
     <div class="form-floating form-downline mb-3">
       <Field
@@ -84,7 +84,7 @@
     </div>
     <button
       type="submit"
-      class="w-100 btn-lg btn btn-secondary secondary-hover text-white shadow mb-6"
+      class="w-100 btn-lg btn btn-secondary secondary-hover text-white shadow-sm mb-6"
     >
       送出訂單
     </button>

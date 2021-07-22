@@ -3,7 +3,7 @@
   <div class="container pt-15">
     <Progress step="1" />
     <h3 class="d-flex rounded-top align-items-center
-        bg-secondary text-2xl p-4">
+        bg-title text-xl p-4 mt-10 mt-sm-12">
       <span class="material-icons me-3"> shopping_cart </span>購物車
     </h3>
     <div v-if="cart.length <= 0" class="p-4 border border-white border-bottom-0 bg-table text-dark">
@@ -108,7 +108,7 @@
   <div class="container border-bottom border-light mt-9 mt-lg-15 pb-15 mb-15">
     <div class="row g-5">
       <div class="col-12 col-lg-8">
-        <p class="text-xl rounded-top bg-secondary p-4">不要錯過～</p>
+        <p class="text-xl rounded-top bg-title p-4">不要錯過</p>
         <div class="p-4 rounded-bottom border border-white bg-table text-dark">
           <ul class="row row-cols-2 row-cols-sm-3">
             <li class="col mb-5 mb-sm-0" v-for="item in randomProduct" :key="item.id">
@@ -123,7 +123,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-4">
-        <p class="text-xl rounded-top bg-secondary p-4">訂單資訊</p>
+        <p class="text-xl rounded-top bg-title p-4">訂單資訊</p>
         <div class="row g-0 p-6 rounded-bottom border border-white bg-table text-dark">
           <div class="col-4 mb-4">
             <p>商品數量：</p>
@@ -193,7 +193,7 @@
           <div class="col-12">
             <div
               @click="goToPay"
-              class="btn btn-secondary w-100 fw-bold text-white shadow secondary-hover">
+              class="btn btn-secondary w-100 fw-bold text-white shadow-sm secondary-hover">
               前往結帳
             </div>
           </div>

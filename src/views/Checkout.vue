@@ -3,14 +3,14 @@
   <div class="container pt-15">
     <Progress step="2" />
   </div>
-  <div class="container mt-10 mt-sm-15 border-bottom border-light pb-15 mb-15">
+  <div class="container mt-10 mt-sm-12 border-bottom border-light pb-15 mb-15">
     <router-link class="d-inline-flex align-items-center mb-4" :to="`/cart`">
       <span class="material-icons me-3"> reply </span>
       返回購物車
     </router-link >
     <div class="row row-cols-1 row-cols-lg-2 flex-column-reverse flex-lg-row gx-5">
       <div class="col">
-        <p class="text-xl rounded-top bg-secondary p-4">訂單資訊</p>
+        <p class="text-xl rounded-top bg-title p-4">訂單資訊</p>
         <div class="bg-table px-8 rounded-bottom mb-8">
           <div class="row py-4 align-items-center text-dark border-bottom">
             <div class="col-6">
@@ -26,7 +26,7 @@
           <div
             v-for="item in cart"
             :key="item.id"
-            class="row py-4 align-items-center text-dark border-bottom">
+            class="row py-4 align-items-center text-dark border-bottom ">
             <div class="col-6">
               <div class="d-flex align-items-center">
                 <img class="w-40 me-4" :src="item.product.imageUrl" :alt="item.product.title" />
@@ -40,8 +40,7 @@
               <p>NT${{ toCurrency(item.total) }}</p>
             </div>
           </div>
-          <div class="border-bottom border-2 border-white"></div>
-          <div class="row text-dark px-4 py-6">
+          <div class="row text-dark px-4 py-6 border-top border-white border-2">
              <div class="col-9 mb-4">
               <p class="ftext-lg">小計：</p>
             </div>
@@ -64,7 +63,7 @@
             </div>
           </div>
         </div>
-        <p class="text-xl rounded-top bg-secondary p-4">購物須知</p>
+        <p class="text-xl rounded-top bg-title p-4">購物須知</p>
         <div class="bg-table p-8 rounded-bottom text-dark">
           <p class="fw-bold">商品購買須知</p>
           <p class="mb-6">

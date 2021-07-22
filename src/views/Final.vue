@@ -3,7 +3,7 @@
   <div class="container pt-15">
     <Progress step="4" />
   </div>
-  <div class="container mt-10 mt-sm-15">
+  <div class="container mt-10 mt-sm-12">
     <div class="row bg-linear rounded mx-5 p-8">
       <p class="text-center text-2xl mb-6">感謝您的購買</p>
       <p class="text-center mb-6">下列為您的訂單資訊</p>
@@ -22,7 +22,7 @@
   <div class="container mt-9 mt-lg-12 border-bottom border-light pb-15 mb-15">
     <div class="row row-cols-1 row-cols-lg-2 flex-column-reverse flex-lg-row gx-5">
       <div class="col mt-9 mt-lg-0">
-        <p class="text-xl rounded-top bg-secondary p-4">訂單資訊</p>
+        <p class="text-xl rounded-top bg-title p-4">訂單資訊</p>
         <div class="bg-table px-8 rounded-bottom">
           <div class="row py-4 align-items-center text-dark border-bottom">
             <div class="col-6">
@@ -52,8 +52,8 @@
               <p>NT${{ toCurrency(item.final_total) }}</p>
             </div>
           </div>
-          <div class="border-bottom border-2 border-white"></div>
-          <div class="row text-dark px-4 py-6">
+
+          <div class="row text-dark px-4 py-6 border-top border-2 border-white">
             <div class="col-9">
               <p class="fw-bold text-lg">總計：</p>
             </div>
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="col">
-        <p class="text-xl rounded-top bg-secondary p-4">顧客資訊</p>
+        <p class="text-xl rounded-top bg-title p-4">顧客資訊</p>
         <div class="bg-table px-8 rounded-bottom text-dark">
           <div class="row row-cols-2 py-4 border-bottom">
             <p class="col">下單日期</p>

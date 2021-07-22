@@ -42,7 +42,10 @@ a {
     text-decoration: none;
   }
 }
-
+button:disabled,
+button[disabled]{
+  cursor: not-allowed;
+}
 p {
   margin-bottom: 0;
 }

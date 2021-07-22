@@ -183,6 +183,7 @@ export default {
       this.updateCart(item, this.cart[item].id, this.cart[item].qty);
     },
     getcart() {
+      this.offcanvasLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
         .get(url)
@@ -190,6 +191,7 @@ export default {
           if (res.data.success) {
             this.cart = res.data.data.carts;
             this.final_total = res.data.data.final_total;
+            this.offcanvasLoading = false;
           }
         })
         .catch((err) => err);
@@ -212,7 +214,6 @@ export default {
         .put(url, data)
         .then((res) => {
           if (res.data.success) {
-            this.offcanvasLoading = false;
             emitter.emit('update-cart');
             this.getcart();
           } else {
@@ -228,7 +229,6 @@ export default {
         .delete(url)
         .then((res) => {
           if (res.data.success) {
-            this.offcanvasLoading = false;
             this.getcart();
             emitter.emit('update-cart');
           } else {

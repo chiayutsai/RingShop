@@ -7,7 +7,7 @@
     </ol>
     <h3
       class="d-flex rounded-top align-items-center
-      bg-secondary text-2xl p-4">
+      bg-title text-xl p-4">
       <span class="material-icons me-3"> favorite </span>收藏清單
     </h3>
     <div
