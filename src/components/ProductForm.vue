@@ -13,10 +13,12 @@
           :class="{ 'is-backend-invalid': errors['產品名稱'] }"
           v-model.lazy.trim="tempProduct.title"
         ></Field>
-        <error-message name="產品名稱" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="產品名稱" class="backend-invalid-feedback" />
       </div>
       <div class="col-6 mb-8">
-        <label for="productOriginPrice" class="form-label">產品原價<span v-if="isAdd">必填</span></label>
+        <label for="productOriginPrice" class="form-label"
+          >產品原價<span v-if="isAdd">必填</span></label
+        >
         <Field
           type="number"
           class="form-control"
@@ -28,7 +30,7 @@
           :class="{ 'is-backend-invalid': errors['產品原價'] }"
           v-model.number="tempProduct.origin_price"
         ></Field>
-        <error-message name="產品原價" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="產品原價" class="backend-invalid-feedback" />
       </div>
       <div class="col-6 mb-8">
         <label for="productPrice" class="form-label">產品售價<span v-if="isAdd">必填</span></label>
@@ -43,7 +45,7 @@
           :class="{ 'is-backend-invalid': errors['產品售價'] }"
           v-model.number="tempProduct.price"
         ></Field>
-        <error-message name="產品售價" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="產品售價" class="backend-invalid-feedback" />
       </div>
     </div>
     <div class="row row-cols-2 align-items-end">
@@ -63,7 +65,7 @@
             {{ category }}
           </option>
         </Field>
-        <error-message name="產品分類" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="產品分類" class="backend-invalid-feedback" />
       </div>
       <div class="col mb-8">
         <div v-if="isAddCategory" class="d-flex">
@@ -113,6 +115,22 @@
         </div>
       </div>
     </div>
+    <div class="row row-cols-2 align-items-end">
+      <div class="col mb-8">
+        <label class="form-label">系列產品</label>
+        <select
+          name="系列產品"
+          class="form-select"
+          placeholder="系列產品"
+          v-model="tempProduct.series"
+        >
+          <option selected disabled value="">請選擇</option>
+          <option value="珍珠系列">珍珠系列</option>
+          <option value="水晶系列">水晶系列</option>
+          <option value="鎖骨鏈系列">鎖骨鏈系列</option>
+        </select>
+      </div>
+    </div>
     <div class="row">
       <div class="col-6 mb-8">
         <label for="productUnit" class="form-label">產品單位<span v-if="isAdd">必填</span></label>
@@ -126,7 +144,7 @@
           :class="{ 'is-backend-invalid': errors['產品單位'] }"
           v-model.trim="tempProduct.unit"
         ></Field>
-        <error-message name="產品單位" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="產品單位" class="backend-invalid-feedback" />
       </div>
       <div class="col-6 mb-8">
         <p class="mb-3">是否上架產品</p>
@@ -313,7 +331,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     addFormat() {
       const formatObj = {
@@ -323,6 +346,13 @@ export default {
       this.tempProduct.formats.push(formatObj);
     },
     addCategory() {
+      if (this.tempCategory === '') {
+        this.emitter.emit('push-message', {
+          type: 'error',
+          message: '請輸入分類名稱',
+        });
+        return;
+      }
       this.productsCategory.push(this.tempCategory);
       this.emitter.emit('push-message', {
         type: 'success',
@@ -372,6 +402,7 @@ export default {
       this.$refs.addForm.resetForm();
       this.tempProduct.description = '';
       this.tempProduct.content = '';
+      this.tempProduct.series = '';
       this.tempProduct.imageUrl = '';
       this.tempProduct.formats = [
         {

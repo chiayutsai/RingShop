@@ -52,6 +52,7 @@ export default {
       type: String,
     },
   },
+  emits: ['delete'],
   mixins: [modalMixin],
 };
 </script>

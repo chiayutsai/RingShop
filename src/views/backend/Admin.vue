@@ -1,6 +1,6 @@
 <template>
   <Loading :isLoading="isLoading" />
-  <div class="d-flex align-items-center justify-content-between mb-5 ">
+  <div class="d-flex align-items-center justify-content-between mb-5">
     <h2 class="text-dark">產品列表</h2>
     <router-link :to="`/dashboard/newProduct`" class="btn btn-secondary text-white shadow-none">
       新增產品
@@ -11,7 +11,7 @@
       <thead class="bg-secondary text-white">
         <tr>
           <th class="w-15">產品圖片</th>
-          <th class="">產品名稱</th>
+          <th>產品名稱</th>
           <th>分類</th>
           <th>原價</th>
           <th>售價</th>
@@ -79,7 +79,7 @@
         </template>
       </tbody>
     </table>
-    <div class="d-flex justify-content-between align-items-center py-4 px-6 bg-secondary ">
+    <div class="d-flex justify-content-between align-items-center py-4 px-6 bg-secondary">
       <p class="text-white">目前有 {{ totalAmount }} 樣產品</p>
       <Pagination :pagination="pagination" @emit-page="getData" />
     </div>
@@ -132,8 +132,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
-      this.$http
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        }); this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/all`)
         .then((res) => {
           if (res.data.success) {
@@ -146,7 +150,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     openCollapse(id) {
       if (this.isOpen.id === id) {
@@ -203,7 +212,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     changeStatus(item) {
       this.tempProduct = {
@@ -232,7 +246,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   mounted() {

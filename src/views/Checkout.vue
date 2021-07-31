@@ -65,13 +65,13 @@
         </div>
         <p class="text-xl rounded-top bg-title p-4">購物須知</p>
         <div class="bg-table p-8 rounded-bottom text-dark">
-          <p class="fw-bold">商品購買須知</p>
+          <h4 class="fw-bold text-base mb-2">商品購買須知</h4>
           <p class="mb-6">
             產品因拍攝關係顏色可能略有差異，實際以廠商出貨為主。
             商品情境照為示意用，僅商品主體不包含其他配件，請以規格內容物為主。 <br />
             RingRing盡可能確保所列商品備貨充足，但偶爾仍會有產品售罄的情況。如您所訂購的商品庫存不足，我們將盡快以電子郵件通知您。任何訂單變動均會在訂單總額與出貨訊息內更新。
           </p>
-          <p class="fw-bold">退換貨須知</p>
+          <h4 class="fw-bold text-base mb-2">退換貨須知</h4>
           <p>
             依《消費者保護法》的規定，於全站購物皆享有商品到貨【七日猶豫期】（含例假日）之權益。若收到的商品有任何問題，可於猶豫期內申請退貨。
           </p>
@@ -104,7 +104,7 @@ export default {
   },
   inject: ['emitter'],
   methods: {
-    getcart() {
+    getCart() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
@@ -131,11 +131,16 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   mounted() {
-    this.getcart();
+    this.getCart();
   },
 };
 </script>

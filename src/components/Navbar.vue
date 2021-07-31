@@ -6,9 +6,9 @@
         <router-link class="me-7 scale-hover" :to="`/shop`">
           <span class="material-icons text-3xl"> storefront </span>
         </router-link>
-        <div class="popUp" @click="stopPropagation">
+        <div class="popUp">
           <a
-            @click.prevent="openNavList('favorite')"
+            @click.stop.prevent="openNavList('favorite')"
             href="#"
             v-if="page !== 'favorite'"
             class="position-relative me-7 scale-hover"
@@ -16,9 +16,9 @@
             <span v-if="myFavorite.length" class="nav-num">
               {{ myFavorite.length }}
             </span>
-            <span class="material-icons text-base text-3xl "> favorite </span>
+            <span class="material-icons text-base text-3xl"> favorite </span>
           </a>
-          <div class="nav-dropdown" ref="navFavoriteDropdown" @click="stopPropagation">
+          <div class="nav-dropdown" ref="navFavoriteDropdown" @click.stop>
             <div v-if="favoriteProduct.length <= 0">
               <p class="text-dark text-center p-5">
                 收藏清單目前沒有商品喔
@@ -31,23 +31,23 @@
                 </a>
               </div>
             </div>
-            <div v-else>
-              <div class="nav-dropdown-body">
-                <div
+            <template v-else>
+              <ul class="nav-dropdown-body">
+                <li
                   v-for="item in favoriteProduct"
-                  class=" d-flex text-dark align-items-center justify-content-between
-                  border-bottom p-5 "
+                  class="d-flex text-dark align-items-center justify-content-between
+                  border-bottom p-5"
                   :key="item.id"
                 >
                   <div class="d-flex">
                     <img class="w-20 me-4" :src="item.imageUrl" :alt="item.title" />
-                    <div class=" flex-shrink-0 me-4">
+                    <div class="flex-shrink-0 me-4">
                       <p>{{ item.title }}</p>
                       <p class="text-sm opacity-6">NT${{ toCurrency(item.price) }}</p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </li>
+              </ul>
               <div class="p-5">
                 <a
                   @click.prevent="goToTarget('favorite')"
@@ -55,12 +55,12 @@
                   >前往收藏清單</a
                 >
               </div>
-            </div>
+            </template>
           </div>
         </div>
-        <div class="popUp" @click="stopPropagation">
+        <div class="popUp">
           <a
-            @click.prevent="openNavList('cart')"
+            @click.stop.prevent="openNavList('cart')"
             v-if="showCart"
             href="#"
             class="position-relative scale-hover me-7"
@@ -68,9 +68,9 @@
             <span v-if="carts.length" class="nav-num">
               {{ carts.length }}
             </span>
-            <span class="material-icons text-3xl "> shopping_cart </span>
+            <span class="material-icons text-3xl"> shopping_cart </span>
           </a>
-          <div class="nav-dropdown" ref="navCartDropdown">
+          <div class="nav-dropdown" ref="navCartDropdown" @click.stop>
             <div
               v-if="dropDownLoading"
               class="d-flex justify-content-center align-items-center position-absolute
@@ -93,12 +93,12 @@
                 </a>
               </div>
             </div>
-            <div v-else>
-              <div class="nav-dropdown-body">
-                <div
+            <template v-else>
+              <ul class="nav-dropdown-body">
+                <li
                   v-for="item in carts"
                   class="d-flex text-dark align-items-center justify-content-between
-                  border-bottom p-5 "
+                  border-bottom p-5"
                   :key="item.id"
                 >
                   <div class="d-flex">
@@ -115,8 +115,8 @@
                   <a @click.prevent="deleteCart(item.id)" href="" class="text-dark">
                     <span class="material-icons scale-hover"> delete_forever </span>
                   </a>
-                </div>
-              </div>
+                </li>
+              </ul>
               <div class="p-5">
                 <a
                   @click.prevent="goToTarget('cart')"
@@ -124,7 +124,7 @@
                   >前往購物車
                 </a>
               </div>
-            </div>
+            </template>
           </div>
         </div>
       </div>
@@ -132,11 +132,11 @@
         <span></span><span></span><span></span>
       </div>
     </div>
-    <div class="navbar-collapse " ref="navbar">
+    <div class="navbar-collapse" ref="navbar">
       <div class="d-flex flex-column-reverse flex-ipad-row align-items-center w-100">
         <div
           class="d-flex justify-content-start justify-content-sm-center
-          justify-content-md-start w-100 w-md-50 "
+          justify-content-md-start w-100 w-md-50"
         >
           <ul class="float-start">
             <li class="nav-item">
@@ -297,7 +297,7 @@ export default {
         this.scrollDown = false;
       }
     },
-    getcart() {
+    getCart() {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
         .get(url)
@@ -306,7 +306,12 @@ export default {
             this.carts = res.data.data.carts;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     getFavorite() {
       this.myFavorite = this.getLocalStorage() || [];
@@ -321,7 +326,12 @@ export default {
                 this.favoriteProduct.push(res.data.product);
               }
             })
-            .catch((err) => err);
+            .catch(() => {
+              this.emitter.emit('push-message', {
+                type: 'error',
+                message: '發生錯誤，請重新整理頁面',
+              });
+            });
         });
       }
     },
@@ -338,9 +348,7 @@ export default {
         this.$refs.navFavoriteDropdown.classList.remove('show');
       }
     },
-    stopPropagation(e) {
-      e.stopPropagation();
-    },
+
     deleteCart(id) {
       this.dropDownLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
@@ -354,7 +362,7 @@ export default {
               message: res.data.message,
             });
             this.dropDownLoading = false;
-            this.getcart();
+            this.getCart();
           } else {
             this.dropDownLoading = false;
             emitter.emit('push-message', {
@@ -363,12 +371,25 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     goToTarget(page) {
       this.$refs.navCartDropdown.classList.remove('show');
       this.$refs.navFavoriteDropdown.classList.remove('show');
       this.$router.push(`/${page}`);
+    },
+    closeDropDown() {
+      if (this.$refs.navCartDropdown) {
+        this.$refs.navCartDropdown.classList.remove('show');
+      }
+      if (this.$refs.navFavoriteDropdown) {
+        this.$refs.navFavoriteDropdown.classList.remove('show');
+      }
     },
   },
   watch: {
@@ -379,32 +400,27 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
-    this.getcart();
+    this.getCart();
     this.getFavorite();
     emitter.on('update-cart', () => {
-      this.getcart();
+      this.getCart();
     });
     emitter.on('update-favorite', () => {
       this.myFavorite = this.getLocalStorage();
       this.getFavorite();
     });
-    document.body.addEventListener('click', () => {
-      if (this.$refs.navCartDropdown) {
-        this.$refs.navCartDropdown.classList.remove('show');
-      }
-      if (this.$refs.navFavoriteDropdown) {
-        this.$refs.navFavoriteDropdown.classList.remove('show');
-      }
-    });
+    document.body.addEventListener('click', this.closeDropDown);
   },
   unmounted() {
     emitter.off('update-cart', () => {
-      this.getcart();
+      this.getCart();
     });
     emitter.off('update-favorite', () => {
       this.myFavorite = this.getLocalStorage();
       this.getFavorite();
     });
+    window.removeEventListener('scroll', this.handleScroll);
+    document.body.removeEventListener('click', this.closeDropDown);
   },
 };
 </script>

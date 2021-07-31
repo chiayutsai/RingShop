@@ -108,7 +108,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     openModal(type, item) {
       this.tempCoupon = { ...item };
@@ -143,7 +148,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     changeStatus(item) {
       this.tempCoupon = {
@@ -172,7 +182,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   created() {

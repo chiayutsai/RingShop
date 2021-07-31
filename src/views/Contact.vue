@@ -57,45 +57,45 @@
         </div>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div
+    <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
+      <li
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
         wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
-        <p class="text-xl mb-4">交貨快速</p>
+        <h3 class="text-xl mb-4">交貨快速</h3>
         <p>
           在商品庫存充足下，我們允諾下單三天內會出貨，如您所訂購的商品庫存不足，我們將盡快以電子郵件通知您。
         </p>
-      </div>
-      <div
+      </li>
+      <li
         data-wow-delay="0.5s"
         class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
         wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
-        <p class="text-xl mb-4">售後服務</p>
+        <h3 class="text-xl mb-4">售後服務</h3>
         <p>為保障買家權益， 所有商品皆享有30日的售後服務。</p>
-      </div>
-      <div
+      </li>
+      <li
         data-wow-delay="1s"
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
         wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>
-        <p class="text-xl mb-4">客服服務</p>
+        <h3 class="text-xl mb-4">客服服務</h3>
         <p>如購買過程及收到商品有任何問題，歡迎聯繫我們， 我們會盡快回覆您。</p>
-      </div>
-      <div data-wow-delay="1.5s" class="col wow animate__animated animate__zoomIn">
+      </li>
+      <li data-wow-delay="1.5s" class="col wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           card_giftcard
         </span>
-        <p class="text-xl mb-4">包裝服務</p>
+        <h3 class="text-xl mb-4">包裝服務</h3>
         <p>如需額外包裝，可再下訂後通知我們，會有專人協助處理相關事宜。</p>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>

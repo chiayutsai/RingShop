@@ -76,8 +76,8 @@ const routes = [
         component: () => import('../views/backend/NewProduct.vue'),
       },
       {
-        path: 'admin',
-        name: 'admin',
+        path: '',
+        name: '',
         component: () => import('../views/backend/Admin.vue'),
       },
       {

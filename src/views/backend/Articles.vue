@@ -137,7 +137,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     getSingle(item, type) {
       this.isLoading = true;
@@ -162,7 +167,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     openModal(type, item) {
       if (type === 'edit') {
@@ -199,7 +209,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     deleteArticle() {
       this.isLoading = true;
@@ -222,7 +237,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     editArticle() {
       this.$refs.updateModal.openModal();

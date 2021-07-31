@@ -19,7 +19,7 @@
             v-model="user.username"
           ></Field>
           <label for="account">帳號：</label>
-          <error-message name="email" class="invalid-feedback"></error-message>
+          <ErrorMessage name="email" class="invalid-feedback" />
         </div>
         <div class="form-floating form-downline form-login mb-6">
           <Field
@@ -34,7 +34,7 @@
             v-model="user.password"
           ></Field>
           <label for="password"> 密碼：</label>
-          <error-message name="密碼" class="invalid-feedback"></error-message>
+          <ErrorMessage name="密碼" class="invalid-feedback" />
         </div>
         <button
           type="submit"
@@ -80,7 +80,7 @@ export default {
             const { token, expired } = res.data;
             document.cookie = `chiayuToken=${token}; expires=${new Date(expired)}`;
             this.$refs.form.resetForm();
-            this.$router.push('/dashboard/admin');
+            this.$router.push('/dashboard');
             emitter.emit('push-message', {
               type: 'success',
               message: '登入成功 ',
@@ -93,7 +93,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
 };

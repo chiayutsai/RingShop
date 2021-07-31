@@ -1,6 +1,6 @@
 <template>
   <Form v-slot="{ errors }" ref="addForm" class="text-dark">
-    <div class=" mb-8">
+    <div class="mb-8">
       <label for="couponTitle" class="form-label">優惠券名稱<span v-if="isAdd">必填</span></label>
       <Field
         type="text"
@@ -12,9 +12,9 @@
         :class="{ 'is-backend-invalid': errors['優惠券名稱'] }"
         v-model.trim="tempCoupon.title"
       ></Field>
-      <error-message name="優惠券名稱" class="backend-invalid-feedback"></error-message>
+      <ErrorMessage name="優惠券名稱" class="backend-invalid-feedback" />
     </div>
-    <div class=" mb-8">
+    <div class="mb-8">
       <label for="couponCode" class="form-label">優惠碼<span v-if="isAdd">必填</span></label>
       <Field
         type="text"
@@ -26,7 +26,7 @@
         :class="{ 'is-backend-invalid': errors['優惠碼'] }"
         v-model.stringify="tempCoupon.code"
       ></Field>
-      <error-message name="優惠碼" class="backend-invalid-feedback"></error-message>
+      <ErrorMessage name="優惠碼" class="backend-invalid-feedback" />
     </div>
     <div class="mb-8">
       <label for="productPrice" class="form-label">折扣百分比<span v-if="isAdd">必填</span></label>
@@ -41,7 +41,7 @@
         :class="{ 'is-backend-invalid': errors['折扣百分比'] }"
         v-model.number="tempCoupon.percent"
       ></Field>
-      <error-message name="折扣百分比" class="backend-invalid-feedback"></error-message>
+      <ErrorMessage name="折扣百分比" class="backend-invalid-feedback" />
     </div>
     <div class="mb-8">
       <div class="mb-3">

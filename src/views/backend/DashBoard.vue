@@ -30,13 +30,13 @@
       <a
         href="#"
         class="p-4 dropdown"
-        :class="{ 'page-active': nowPage === 'admin' }"
-        @click.prevent="changeDropdown('admin')"
+        :class="{ 'page-active': nowPage === '' }"
+        @click.prevent="changeDropdown('')"
         >
         產品
       </a>
-      <ul class="dropdown-menu" :class="{ show: nowPage == 'admin' }" ref="admin">
-        <router-link :to="`/dashboard/admin`" class="p-4 border-bottom border-secondary">
+      <ul class="dropdown-menu" :class="{ show: nowPage == '' }" ref="admin">
+        <router-link :to="`/dashboard`" class="p-4 border-bottom border-secondary">
           產品列表
         </router-link>
         <router-link :to="`/dashboard/newProduct`" class="p-4 ">新增產品</router-link>
@@ -124,7 +124,12 @@ export default {
             this.$router.push('/login');
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     logOut() {
       this.isLoading = true;
@@ -143,7 +148,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     changeDropdown(page) {
       this.nowPage = page;
@@ -152,9 +162,9 @@ export default {
           this.$refs.admin.classList.remove('show');
         }
       });
-      if (page === 'admin') {
+      if (page === '') {
         this.$refs.admin.classList.add('show');
-        this.$router.push('/dashboard/admin');
+        this.$router.push('/dashboard');
       } else if (page === 'order') {
         this.$refs.order.classList.add('show');
         this.$router.push('/dashboard/order');
@@ -167,8 +177,8 @@ export default {
       }
     },
     pageCheck() {
-      if (this.$route.name === 'admin' || this.$route.name === 'newProduct') {
-        this.nowPage = 'admin';
+      if (this.$route.name === '' || this.$route.name === 'newProduct') {
+        this.nowPage = '';
       } else if (this.$route.name === 'order' || this.$route.name === 'editOrder') {
         this.nowPage = 'order';
       } else if (this.$route.name === 'coupons' || this.$route.name === 'newCoupon') {

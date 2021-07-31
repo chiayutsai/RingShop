@@ -40,6 +40,7 @@
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
+  emits: ['delete'],
   mixins: [modalMixin],
 };
 </script>

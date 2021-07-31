@@ -2,7 +2,7 @@
   <div class="container mb-15">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
       <div class="col mb-10 mb-md-0">
-        <p class="text-lg mb-4">品牌故事</p>
+        <h4 class="text-lg mb-4">品牌故事</h4>
         <ul class="footer-link">
           <li class="mb-2">
             <router-link :to="`/about`">
@@ -19,7 +19,7 @@
         </ul>
       </div>
       <div class="col mb-10 mb-md-0">
-        <p class="text-lg mb-4">商品專區</p>
+        <h4 class="text-lg mb-4">商品專區</h4>
         <ul class="footer-link">
           <li class="mb-2">
             <router-link
@@ -75,7 +75,7 @@
         </ul>
       </div>
       <div class="col">
-        <p class="text-lg mb-4">聯絡我們</p>
+        <h4 class="text-lg mb-4">聯絡我們</h4>
         <ul class="mb-5">
           <li class="mb-2">電話 : 02 213 1234</li>
           <li class="mb-2">E-mail : ringring@gmail.com</li>

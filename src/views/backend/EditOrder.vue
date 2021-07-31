@@ -23,7 +23,7 @@
                 :class="{ 'is-backend-invalid': errors['顧客姓名'] }"
                 v-model.lazy.trim="user.name"
               ></Field>
-              <error-message name="顧客姓名" class="backend-invalid-feedback"></error-message>
+              <ErrorMessage name="顧客姓名" class="backend-invalid-feedback" />
             </div>
             <div class="mb-6">
               <label for="tel" class="form-label">顧客電話<span>必填</span></label>
@@ -36,7 +36,7 @@
                 :class="{ 'is-backend-invalid': errors['顧客電話'] }"
                 v-model="user.tel"
               ></Field>
-              <error-message name="顧客電話" class="backend-invalid-feedback"></error-message>
+              <ErrorMessage name="顧客電話" class="backend-invalid-feedback" />
             </div>
             <div class="mb-6">
               <label for="email" class="form-label">顧客電子信箱<span>必填</span></label>
@@ -49,7 +49,7 @@
                 :class="{ 'is-backend-invalid': errors['顧客電子信箱'] }"
                 v-model="user.email"
               ></Field>
-              <error-message name="顧客電子信箱" class="backend-invalid-feedback"></error-message>
+              <ErrorMessage name="顧客電子信箱" class="backend-invalid-feedback" />
             </div>
             <div class="mb-6">
               <label for="address" class="form-label">顧客地址<span>必填</span></label>
@@ -62,7 +62,7 @@
                 :class="{ 'is-backend-invalid': errors['顧客地址'] }"
                 v-model="user.address"
               ></Field>
-              <error-message name="顧客地址" class="backend-invalid-feedback"></error-message>
+              <ErrorMessage name="顧客地址" class="backend-invalid-feedback" />
             </div>
             <div v-if="order.message" class="mb-6">
               <label for="note" class="form-label">備註</label>
@@ -168,7 +168,12 @@ export default {
             }
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     updateStatus(status) {
       if (status === 'handle' || status === 'finish') {
@@ -210,7 +215,12 @@ export default {
                 this.isLoading = false;
               }
             })
-            .catch((err) => err);
+            .catch(() => {
+              this.emitter.emit('push-message', {
+                type: 'error',
+                message: '發生錯誤，請重新整理頁面',
+              });
+            });
         }
       });
     },

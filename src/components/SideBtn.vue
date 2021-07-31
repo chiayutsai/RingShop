@@ -5,14 +5,14 @@
         <span v-if="cart.length" class="cart-num">
           {{ cart.length }}
         </span>
-        <span class="material-icons ">
+        <span class="material-icons">
           shopping_cart
         </span>
       </a>
     </li>
     <li v-if="scrollDown" class="sideBtn-item">
       <a href="#" @click.prevent="goToTop">
-        <span class="material-icons ">
+        <span class="material-icons">
           vertical_align_top
         </span>
       </a>
@@ -182,7 +182,7 @@ export default {
       this.cart[item].qty -= 1;
       this.updateCart(item, this.cart[item].id, this.cart[item].qty);
     },
-    getcart() {
+    getCart() {
       this.offcanvasLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
@@ -194,7 +194,12 @@ export default {
             this.offcanvasLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     updateCart(item, id, qty) {
       this.offcanvasLoading = true;
@@ -215,12 +220,17 @@ export default {
         .then((res) => {
           if (res.data.success) {
             emitter.emit('update-cart');
-            this.getcart();
+            this.getCart();
           } else {
             this.offcanvasLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     deleteCart(id) {
       this.offcanvasLoading = true;
@@ -229,30 +239,38 @@ export default {
         .delete(url)
         .then((res) => {
           if (res.data.success) {
-            this.getcart();
+            this.getCart();
             emitter.emit('update-cart');
           } else {
             this.offcanvasLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
+    },
+    canScroll() {
+      document.querySelector(':root').style.overflowY = 'auto';
     },
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     this.offcanvas = new Offcanvas(this.$refs.offcanvas, { scroll: false });
-    this.getcart();
+    this.getCart();
     emitter.on('update-cart', () => {
-      this.getcart();
+      this.getCart();
     });
-    this.$refs.offcanvas.addEventListener('hidden.bs.offcanvas', () => {
-      document.querySelector(':root').style.overflowY = 'auto';
-    });
+    this.$refs.offcanvas.addEventListener('hidden.bs.offcanvas', this.canScroll);
   },
   unmounted() {
     emitter.off('update-cart', () => {
-      this.getcart();
+      this.getCart();
     });
+    window.removeEventListener('scroll', this.handleScroll);
+    this.$refs.offcanvas.removeEventListener('hidden.bs.offcanvas', this.canScroll);
   },
 };
 </script>

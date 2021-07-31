@@ -38,6 +38,7 @@ export default {
   props: {
     pagination: Object,
   },
+  emits: ['emit-page'],
   methods: {
     emitPage(page) {
       this.$emit('emit-page', page);

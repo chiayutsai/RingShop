@@ -130,6 +130,7 @@ export default {
       type: Object,
     },
   },
+  emits: ['edit'],
   data() {
     return {
       tempOrder: {},

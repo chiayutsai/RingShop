@@ -13,7 +13,7 @@
           :class="{ 'is-backend-invalid': errors['文章標題'] }"
           v-model.lazy.trim="tempArticle.title"
         ></Field>
-        <error-message name="產品名稱" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="產品名稱" class="backend-invalid-feedback" />
       </div>
       <div class="col-6 mb-8">
         <label for="author" class="form-label">作者<span v-if="isAdd">必填</span></label>
@@ -27,7 +27,7 @@
           :class="{ 'is-backend-invalid': errors['作者'] }"
           v-model.string="tempArticle.author"
         ></Field>
-        <error-message name="作者" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="作者" class="backend-invalid-feedback" />
       </div>
       <div class="col-6 mb-8">
         <p class="mb-3">是否公開文章</p>
@@ -113,7 +113,7 @@
           rules="max:50"
           v-model="tempArticle.description"
         ></Field>
-        <error-message name="文章描述" class="backend-invalid-feedback"></error-message>
+        <ErrorMessage name="文章描述" class="backend-invalid-feedback" />
       </div>
     </div>
     <div class="row">

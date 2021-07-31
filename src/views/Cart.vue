@@ -12,29 +12,29 @@
         <router-link class="white-hover" :to="`/shop`"> 前往商店</router-link>
       </div>
     </div>
-    <div v-else>
-      <div
+    <table v-else>
+      <tr
         class="d-none d-md-flex row g-0 p-4 border border-white
        border-bottom-0 bg-table text-dark">
-        <div class="col-4">商品資料</div>
-        <div class="col-2">單件價格</div>
-        <div class="col-3">數量</div>
-        <div class="col-2">小計</div>
-        <div class="col-1"></div>
-      </div>
-      <div class="cart_list">
-        <div
+        <td class="col-4">商品資料</td>
+        <td class="col-2">單件價格</td>
+        <td class="col-3">數量</td>
+        <td class="col-2">小計</td>
+        <td class="col-1"></td>
+      </tr>
+
+        <tr
           v-for="(item, index) in cart"
           :key="item.id"
           class="row g-0 p-4 border border-white align-items-center
           bg-table text-dark border-bottom-0">
-          <div class="col-11 col-md-4 mb-5 mb-md-0">
+          <td class="col-11 col-md-4 mb-5 mb-md-0">
             <div class="d-flex align-items-center">
               <img class="w-40 me-4" :src="item.product.imageUrl" :alt="item.product.title" />
               <h3 class="text-base">{{ item.product.title }}</h3>
             </div>
-          </div>
-          <div class="col-6 col-md-2 order-4 order-md-0">
+          </td>
+          <td class="col-6 col-md-2 order-4 order-md-0">
             <div class="d-flex d-md-block align-items-end">
               <p class="me-3 me-md-0">NT${{ toCurrency(item.product.price) }}</p>
               <p
@@ -43,8 +43,8 @@
                 NT${{ toCurrency(item.product.origin_price) }}
               </p>
             </div>
-          </div>
-          <div class="col-12 col-md-3 order-3 order-md-0 mb-5 mb-md-0">
+          </td>
+          <td class="col-12 col-md-3 order-3 order-md-0 mb-5 mb-md-0">
             <div class="d-flex w-100 w-md-75 position-relative">
               <button
                 :disabled="item.qty <= 1"
@@ -77,33 +77,33 @@
                 </div>
               </button>
             </div>
-          </div>
-          <div class="col-6 col-md-2 order-4 order-md-0 text-end text-md-start">
+          </td>
+          <td class="col-6 col-md-2 order-4 order-md-0 text-end text-md-start">
             <span class="d-inline d-md-none">小計：</span>
             NT${{ toCurrency(item.total) }}
-          </div>
-          <div class="col-1 order-2 order-md-0">
+          </td>
+          <td class="col-1 order-2 order-md-0">
             <a @click.prevent="openModal(item.id)" href="#" class="text-dark scale-hover">
               <span class="material-icons"> delete_forever </span>
             </a>
-          </div>
-        </div>
-      </div>
-      <div
+          </td>
+        </tr>
+
+      <tr
         class="d-flex
          justify-content-between align-items-end align-items-sm-center
          rounded-bottom bg-table border border-white p-6">
-        <a @click.prevent="openModal()" class="btn btn-outline-dark">清空購物車</a>
-        <div class="d-flex flex-column flex-sm-row align-items-center">
+        <td><a @click.prevent="openModal()" class="btn btn-outline-dark">清空購物車</a></td>
+        <td class="d-flex flex-column flex-sm-row align-items-center">
           <p class="text-dark text-base text-md-xl mb-5 mb-sm-0 me-sm-5 ">
             總計：NT${{ toCurrency(total) }}
           </p>
           <router-link :to="`/shop`" class="btn btn-dark btn-hover px-7">
             <span>繼續購物</span>
           </router-link>
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
+    </table>
   </div>
   <div class="container border-bottom border-light mt-9 mt-lg-15 pb-15 mb-15">
     <div class="row g-5">
@@ -249,7 +249,12 @@ export default {
             this.getRandom();
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     addCartQty(item) {
       this.cart[item].qty += 1;
@@ -259,7 +264,7 @@ export default {
       this.cart[item].qty -= 1;
       this.updateCart(item, this.cart[item].id, this.cart[item].qty);
     },
-    getcart() {
+    getCart() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http
@@ -283,7 +288,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     updateCart(item, id, qty) {
       if (this.cart[item].qty < 1) {
@@ -308,7 +318,7 @@ export default {
               type: 'success',
               message: res.data.message,
             });
-            this.getcart();
+            this.getCart();
           } else {
             this.updateLoading = false;
             this.emitter.emit('push-message', {
@@ -317,7 +327,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     deleteCart() {
       let url = '';
@@ -338,7 +353,7 @@ export default {
               message: res.data.message,
             });
             this.isLoading = false;
-            this.getcart();
+            this.getCart();
           } else {
             this.isLoading = false;
             this.emitter.emit('push-message', {
@@ -347,7 +362,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     goToPay() {
       if (this.cart.length === 0) {
@@ -406,19 +426,24 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   mounted() {
-    this.getcart();
+    this.getCart();
     this.getAllData();
     this.emitter.on('update-cart', () => {
-      this.getcart();
+      this.getCart();
     });
   },
   unmounted() {
     this.emitter.off('update-cart', () => {
-      this.getcart();
+      this.getCart();
     });
   },
 };

@@ -48,6 +48,7 @@ export default {
       type: Object,
     },
   },
+  emits: ['update'],
   components: {
     ArticleForm,
   },

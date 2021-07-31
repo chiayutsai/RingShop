@@ -12,8 +12,9 @@
           :to="{
             name: 'shop',
             query: { category: product.category }
-          }">
-            {{ product.category }}
+          }"
+        >
+          {{ product.category }}
         </router-link>
       </li>
       <li class="breadcrumb-item active">{{ product.title }}</li>
@@ -24,7 +25,8 @@
           v-if="!product.imagesUrl"
           class="rounded shadow product-img"
           :src="product.imageUrl"
-          :alt="product.title" />
+          :alt="product.title"
+        />
         <SwiperComponent v-else :product="product" />
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
@@ -39,7 +41,8 @@
           NT${{ toCurrency(product.price) }}
           <span
             v-if="product.price !== product.origin_price"
-            class="text-light text-lg fw-normal text-decoration-line-through ms-4">
+            class="text-light text-lg fw-normal text-decoration-line-through ms-4"
+          >
             NT${{ toCurrency(product.origin_price) }}
           </span>
         </p>
@@ -48,7 +51,8 @@
             class="quantity-btn remove text-xl"
             type="button"
             @click="minusQty"
-            :disabled="qty <= 1">
+            :disabled="qty <= 1"
+          >
             -
           </button>
           <input
@@ -56,7 +60,8 @@
             type="number"
             min="1"
             v-model="qty"
-            @change="checkQty" />
+            @change="checkQty"
+          />
           <button type="button" class="quantity-btn plus text-xl" @click="addQty">+</button>
         </div>
         <p v-if="failQty" class="text-sm text-primary opacity-5 mb-7">商品數量最少為一件!</p>
@@ -65,14 +70,16 @@
             type="button"
             class="w-100 d-flex justify-content-center white-hover
             btn btn-secondary text-white shadow secondary-hover"
-            @click="addCart(product.id, qty, $event)">
+            @click="addCart(product.id, qty, $event)"
+          >
             <span class="material-icons"> shopping_cart </span>加入購物車
           </button>
           <button
             type="button"
             v-if="addLoading"
             class=" btn d-flex justify-content-center align-items-center position-absolute no-allow
-            w-100 h-100 top-0 start-0 bg-light" >
+            w-100 h-100 top-0 start-0 bg-light"
+          >
             <div class="spinner-border spinner-border-sm" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -82,7 +89,8 @@
           v-if="myFavorite.includes(product.id)"
           href="#"
           class="d-flex my-7"
-          @click.prevent="addMyFavorite(product.id)">
+          @click.prevent="addMyFavorite(product.id)"
+        >
           <span class="material-icons me-3"> favorite </span>已加入收藏清單
         </a>
         <a v-else href="#" class="d-flex my-7" @click.prevent="addMyFavorite(product.id)">
@@ -101,12 +109,9 @@
     <div v-if="relativeProduct.length > 0" class="container mb-15">
       <p class="text-3xl text-center border-bottom border-light pb-4 mb-8">相關產品</p>
       <ul class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5">
-        <Card
-          v-for="item in relativeProduct"
-          :key="item.id"
-          :product="item"
-          :myFavorite="myFavorite"
-          @emit-add-favorite="addMyFavorite" />
+        <li v-for="item in relativeProduct" :key="item.id">
+          <Card :product="item" :myFavorite="myFavorite" @emit-add-favorite="addMyFavorite" />
+        </li>
       </ul>
     </div>
   </div>
@@ -171,7 +176,12 @@ export default {
             this.getRelativeProduct();
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     getProduct(id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
@@ -188,7 +198,12 @@ export default {
             this.$router.push('/shop');
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     getRelativeProduct() {
       this.relativeProduct = [];
@@ -231,7 +246,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   computed: {

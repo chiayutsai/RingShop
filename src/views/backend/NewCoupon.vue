@@ -60,7 +60,12 @@ export default {
                 this.isLoading = false;
               }
             })
-            .catch((err) => err);
+            .catch(() => {
+              this.emitter.emit('push-message', {
+                type: 'error',
+                message: '發生錯誤，請重新整理頁面',
+              });
+            });
         }
       });
     },

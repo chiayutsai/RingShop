@@ -65,7 +65,7 @@
             <router-link :to="`/product/-MdzislBPdzePO6Wqbdp`" class="h-100">
               <img
                 class="banner-swiper-img "
-                src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490279478.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=AQtB2Wc6M08kO%2F%2FMN4wM9NUuX7LOFLHa7IWsI%2BKvxvBgd2TGqpkyC5CyBVINxluGVJcd7hOYySFLQNR%2FGknbriEGk6ibFKv1EyNzYVTnBhiUip3r86xJ%2BY9GU8CvueaPIYu2zYMoyIX0dfS4g2gWc0hzfInFvL4eYSRsyV%2BKWKPijdIUn2HsJ5xCVg7yISADLjwpgx9nGl7KfEgcIb8wouvxcCqB4DYIFeHNoN4fy8R6gQPCEmGg52MMLHhopufz90KX0DtvUksfU5pKzk7JBEn4H%2FiN3GLU1XKnmvVOqoLyOKxIv2RZLawbpqDoZ%2FGSNhhdfMsSa1U8HCEsw9rCeg%3D%3D"
                 alt="心之所向耳環"
               />
             </router-link>
@@ -74,7 +74,7 @@
             <router-link :to="`/product/-MdzhX5kvyXgP4xVEsE5`" class="h-100">
               <img
                 class="banner-swiper-img "
-                src="https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
+                src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490088639.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=OpnasDLxtp2ut6vAqzVnqogqjaNpOaB1agjufnQyZyOTiwoptC%2Fd49Dtz9OqP%2FHmqw41uUw0lWwxyOwKFkXRvd4XeiO2Rp8N05T3BvyajBPUqB1U7%2B42lIDnthnL8ind8PQBxfijpreEl0h73kPf2cd7J%2F76nlg7XpbMRp%2F2Zo9e2q0J1fmXQvI5b8QhBmEGewRZqGwtCv7SJJCJQKTaZwOkHbKXoQLLHut9LDqzZvQeI%2B5s00pR%2Fze6IEw7NVYFO61JxwpoAlNlLRh9q63qi%2BjIVsbhazG9FVnaYtmz3vFgpnVwlInTq9ZD1w3qrUja8hdK3savDNPmk%2FLhWlMJaw%3D%3D"
                 alt="緊緊相連戒指"
               />
             </router-link>
@@ -83,7 +83,7 @@
             <router-link :to="`/product/-MdzgVs6D-zpxYwm4Eaa`" class="h-100">
               <img
                 class="banner-swiper-img"
-                src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490157498.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=QaWchMzP4uDC41NX%2BbByUzOefuA1f1podbIdVmN9RQgo0drCIeQ4f819OPUMeIA%2B2mD%2B8JkeO9yS4jdFtDPdxCqchUhIiGWNNUZbisBT6G%2FcoNAPqwrWuUQm2tz5t%2FfbjD3X%2F%2BwixsmbrhYx6Gzw3J5A9AB0KslsQjjbuAKtg54np3MDTFwEBCbjLIykoBMPUjMkyJ61IqvNyrlJdOGcLxWYSDoFCcDIlcctXN6HgbXGLjQiKi0LRP24fGevFfTnEaTJ17peBnseHL2L3JqRikDeHX7G7oQiahWHBphZHhNf%2BjitvdyQXELVhnjLmOgueIpM5axPPMYZ8BqWRrRfkA%3D%3D"
                 alt="月光星辰項鍊"
               />
             </router-link>
@@ -92,7 +92,7 @@
             <router-link :to="`/product/-Me-0e65M2XmteADsRl4`" class="h-100">
               <img
                 class="banner-swiper-img "
-                src="https://images.unsplash.com/photo-1590820233493-ffc0efee2dc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490206013.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LK5pUaezFgt0glyumN4RNCQyyPNgNQP%2F36cGfBfpsOxnhMBwId%2BcUkVqv2V8FtbV%2BfaCALMkLo3aEo4bUfY6OIxD9WpnjEamYSxFJ7IW1AM5gunvTORYIRMRwk0VGGEo3N7qe71M%2BVlRmcgPFmCviVXYhfDhAb40UX64IpECkC3mmPYNVoaR7HWbpclz01Dptb%2BNHxBp0PxhOoGfW2R3ztTIIJkX1yQmp%2B7OWtTmI09Y7H5fSH2y%2FSQ%2BAuuC0NF4aMMDeamLEyLRH46QF6OPSWA1YxaPSsirp4tjXgmcE86JZ5KYjKdCShmvitv8pXkm2Tz0xIH1kZ5uDfej91eAng%3D%3D"
                 alt="流動時光耳環"
               />
             </router-link>
@@ -107,28 +107,28 @@
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
-              src="https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
+              src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490088639.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=OpnasDLxtp2ut6vAqzVnqogqjaNpOaB1agjufnQyZyOTiwoptC%2Fd49Dtz9OqP%2FHmqw41uUw0lWwxyOwKFkXRvd4XeiO2Rp8N05T3BvyajBPUqB1U7%2B42lIDnthnL8ind8PQBxfijpreEl0h73kPf2cd7J%2F76nlg7XpbMRp%2F2Zo9e2q0J1fmXQvI5b8QhBmEGewRZqGwtCv7SJJCJQKTaZwOkHbKXoQLLHut9LDqzZvQeI%2B5s00pR%2Fze6IEw7NVYFO61JxwpoAlNlLRh9q63qi%2BjIVsbhazG9FVnaYtmz3vFgpnVwlInTq9ZD1w3qrUja8hdK3savDNPmk%2FLhWlMJaw%3D%3D"
               alt="緊緊相連戒指"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
-              src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+              src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490157498.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=QaWchMzP4uDC41NX%2BbByUzOefuA1f1podbIdVmN9RQgo0drCIeQ4f819OPUMeIA%2B2mD%2B8JkeO9yS4jdFtDPdxCqchUhIiGWNNUZbisBT6G%2FcoNAPqwrWuUQm2tz5t%2FfbjD3X%2F%2BwixsmbrhYx6Gzw3J5A9AB0KslsQjjbuAKtg54np3MDTFwEBCbjLIykoBMPUjMkyJ61IqvNyrlJdOGcLxWYSDoFCcDIlcctXN6HgbXGLjQiKi0LRP24fGevFfTnEaTJ17peBnseHL2L3JqRikDeHX7G7oQiahWHBphZHhNf%2BjitvdyQXELVhnjLmOgueIpM5axPPMYZ8BqWRrRfkA%3D%3D"
               alt="月光星辰項鍊"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
-              src="https://images.unsplash.com/photo-1590820233493-ffc0efee2dc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+              src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490206013.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LK5pUaezFgt0glyumN4RNCQyyPNgNQP%2F36cGfBfpsOxnhMBwId%2BcUkVqv2V8FtbV%2BfaCALMkLo3aEo4bUfY6OIxD9WpnjEamYSxFJ7IW1AM5gunvTORYIRMRwk0VGGEo3N7qe71M%2BVlRmcgPFmCviVXYhfDhAb40UX64IpECkC3mmPYNVoaR7HWbpclz01Dptb%2BNHxBp0PxhOoGfW2R3ztTIIJkX1yQmp%2B7OWtTmI09Y7H5fSH2y%2FSQ%2BAuuC0NF4aMMDeamLEyLRH46QF6OPSWA1YxaPSsirp4tjXgmcE86JZ5KYjKdCShmvitv8pXkm2Tz0xIH1kZ5uDfej91eAng%3D%3D"
               alt="流動時光耳環"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="banner-swiper-img rounded-pill"
-              src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+              src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1627490279478.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=AQtB2Wc6M08kO%2F%2FMN4wM9NUuX7LOFLHa7IWsI%2BKvxvBgd2TGqpkyC5CyBVINxluGVJcd7hOYySFLQNR%2FGknbriEGk6ibFKv1EyNzYVTnBhiUip3r86xJ%2BY9GU8CvueaPIYu2zYMoyIX0dfS4g2gWc0hzfInFvL4eYSRsyV%2BKWKPijdIUn2HsJ5xCVg7yISADLjwpgx9nGl7KfEgcIb8wouvxcCqB4DYIFeHNoN4fy8R6gQPCEmGg52MMLHhopufz90KX0DtvUksfU5pKzk7JBEn4H%2FiN3GLU1XKnmvVOqoLyOKxIv2RZLawbpqDoZ%2FGSNhhdfMsSa1U8HCEsw9rCeg%3D%3D"
               alt="心之所向耳環"
             />
           </div>

@@ -2,11 +2,15 @@
   <div class="collapse text-sm p-8" :id="`collapseExample${num}`" ref="collapse">
     <div class="d-flex mb-5">
       <div class="me-2 flex-shrink-0">產品單位 :</div>
-      <div class="">{{ product.unit }}</div>
+      <div>{{ product.unit }}</div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-2 flex-shrink-0">系列產品 :</div>
+      <div>{{ product.series }}</div>
     </div>
     <div class="d-flex mb-5">
       <div class="me-2 flex-shrink-0">產品規格 :</div>
-      <div class="">
+      <div>
         <p v-for="(item, key) in product.formats" :key="key" class="mb-3">
           {{ item.format }} : {{ item.content }}
         </p>
@@ -14,15 +18,15 @@
     </div>
     <div class="d-flex mb-5">
       <div class="me-2 flex-shrink-0">產品描述 :</div>
-      <div class="">{{ product.description }}</div>
+      <div>{{ product.description }}</div>
     </div>
     <div class="d-flex mb-5">
       <div class="me-2 flex-shrink-0">說明內容 :</div>
-      <div class="">{{ product.content }}</div>
+      <div>{{ product.content }}</div>
     </div>
     <div class="d-flex mb-5">
       <div class="me-2 flex-shrink-0">輪播圖片 :</div>
-      <div class="">
+      <div>
         <div class="d-flex flex-wrap">
           <img
             class="w-15 small-size me-3"

@@ -3,7 +3,7 @@
   <div class="container pt-15">
     <Progress step="3" />
   </div>
-  <div class="container border-bottom border-light mt-10 mt-sm-12 pb-15 mb-15">
+  <div class="container border-bottom border-light mt-10 mt-sm-15 pb-15 mb-15">
     <div class="row bg-linear rounded px-3 py-8 p-sm-8 mx-5">
       <h3 class="text-center mb-10">確認訂單</h3>
       <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 ">
@@ -17,7 +17,7 @@
           <p class="col-4 fw-bold mb-4 pb-4 border-bottom">聯絡電話：</p>
           <p class="col-8 mb-4 pb-4 border-bottom">{{ user.tel }}</p>
           <p class="col-4 fw-bold mb-4 pb-4 border-bottom">電子郵件：</p>
-          <p class="col-8 mb-4 pb-4 border-bottom text-break">{{ user.email }}</p>
+          <p class="col-8 mb-4 pb-4 border-bottom ">{{ user.email }}</p>
           <p class="col-4 fw-bold mb-4 pb-4 border-bottom">地址：</p>
           <p class="col-8 mb-4 pb-4 border-bottom">{{ user.address }}</p>
           <p v-if="order.message" class="col-4 fw-bold mb-4 pb-4 border-bottom">備註：</p>
@@ -67,7 +67,7 @@
         <button
           type="button"
           @click="pay(orderID)"
-          class="w-100 text-white btn btn-lg btn-secondary secondary-hover shadow-sm">
+          class="w-100 text-white btn btn-lg btn-secondary secondary-hover shadow">
           確認結帳
         </button>
       </div>
@@ -112,11 +112,16 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     openCollapse() {
       this.collapse.toggle();
-      this.open = true;
+      this.open = !this.open;
     },
     pay(id) {
       this.isLoading = true;
@@ -135,7 +140,12 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   mounted() {
@@ -144,9 +154,7 @@ export default {
     this.collapse = new Collapse(this.$refs.collapse, {
       toggle: false,
     });
-    this.$refs.collapse.addEventListener('hidden.bs.collapse', () => {
-      this.open = false;
-    });
   },
+
 };
 </script>

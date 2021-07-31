@@ -19,14 +19,14 @@
         </div>
         <div class="modal-body">
           <div
-            v-if="status !== 'wait'"
+            v-if="status !== 'wait' || tempOrder.is_paid"
             class="status status-wait me-4"
             @click="updateStatus('wait')"
           >
             等待付款中
           </div>
           <div
-            v-if="status !== 'handle'"
+            v-if="status !== 'handle' || !tempOrder.is_paid"
             class="status status-handle me-4"
             @click="updateStatus('handle')"
           >
@@ -64,6 +64,7 @@ export default {
       type: String,
     },
   },
+  emits: ['emit-status'],
   data() {
     return {
       tempOrder: {},

@@ -1,12 +1,12 @@
 <template>
   <Loading :isLoading="isLoading" />
   <BannerSwiper />
-  <div class=" container position-relative py-15">
+  <div class="container position-relative py-15">
     <div class="d-none d-lg-block line"></div>
     <div class="row align-items-center flex-column-reverse flex-lg-row pb-15">
-      <div class=" wow animate__animated animate__fadeInLeft col-12 col-lg-4">
+      <div class="wow animate__animated animate__fadeInLeft col-12 col-lg-4">
         <div class="d-flex align-items-center mb-7">
-          <h3 class="title d-inline-block ">珍珠系列</h3>
+          <h3 class="title d-inline-block">珍珠系列</h3>
           <p class="text-lg opacity-6">Pearl</p>
         </div>
         <p class="mb-7">
@@ -15,11 +15,11 @@
           自然珍珠光澤，閃耀自然光輝，<br />
           完美襯托出時尚品味與典雅氣質。
         </p>
-        <router-link :to="`/shop`" class="btn btn-dashed"><span>前往</span></router-link>
+        <a href="#" @click.prevent="goToSeries('珍珠系列')" class="btn btn-dashed"><span>前往</span></a>
       </div>
       <div class="col-12 col-lg-5 offset-lg-3">
         <div class="position-relative bg-ring py-lg-11 mb-15 mb-lg-0">
-          <div class="bg-mask "></div>
+          <div class="bg-mask"></div>
           <img
             class="wow animate__animated animate__zoomIn position-relative z-1 w-80 w-lg-100
              -ms-lg-offset-4 rounded-3 shadow translate-left-hover top-3"
@@ -30,19 +30,19 @@
     </div>
     <div
       class="row align-items-center flex-column flex-lg-row pb-15">
-      <div class="col-12 col-lg-5 ">
+      <div class="col-12 col-lg-5">
         <div class="position-relative bg-crystal py-lg-11 mb-15 mb-lg-0">
-          <div class="bg-mask "></div>
+          <div class="bg-mask"></div>
           <img
-            class=" wow animate__animated animate__zoomIn position-relative z-1
+            class="wow animate__animated animate__zoomIn position-relative z-1
             ms-lg-offset-4 shadow rounded-3 translate-right-hover w-80 w-lg-100 top-3"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625321205605.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=X4vC%2BGwGh%2Bfd8dbY9PdsyxK4RBbZVnbo9EXUTZ%2FH2es0WjjRHZGFEtHCdpZzoLinp81DE3iNFw7os6Vy8I0KOu%2Fq1G4iB%2FfgFIX4B2WEq%2FDgedT442BaZ8iWMwMYs06dRbRgMgwVBljuiS6rKablTc63amsb8wzFPkYrKZzg5OXr2lYaYCWQZ50padM4fNoNiwn8czJDzSiRIGZCmd2rEV4eFf7sPMiMnFoGVgML4HHJNDLyuXh%2FqdrENwgQWg4oyPh1QKmgi%2Fz%2B52x%2FwM3qW7LOX8N4UTokYuFIweOjhd2FQ9zhCYMhS8f5itBtGzkz7fHSiJujzGF7M0QFMQC2aQ%3D%3D"
             alt="水晶系列"/>
         </div>
       </div>
-      <div class=" wow animate__animated animate__fadeInRight col-12 col-lg-4 offset-lg-3">
+      <div class="wow animate__animated animate__fadeInRight col-12 col-lg-4 offset-lg-3">
         <div class="d-flex align-items-center mb-7">
-          <h3 class="title d-inline-block ">水晶系列</h3>
+          <h3 class="title d-inline-block">水晶系列</h3>
           <p class="text-lg opacity-6">Crystal</p>
         </div>
         <p class="mb-7">
@@ -51,13 +51,13 @@
           選擇代表妳的能量石，<br />
           散發無與倫比的美麗。
         </p>
-        <router-link :to="`/shop`" class="btn btn-dashed"><span>前往</span></router-link>
+        <a href="#" @click.prevent="goToSeries('水晶系列')" class="btn btn-dashed"><span>前往</span></a>
       </div>
     </div>
     <div class="row align-items-center flex-column-reverse flex-lg-row">
       <div class="wow animate__animated animate__fadeInLeft col-12 col-lg-4">
         <div class="d-flex align-items-center mb-7">
-          <h3 class="title d-inline-block ">鎖骨鏈系列</h3>
+          <h3 class="title d-inline-block">鎖骨鏈系列</h3>
           <p class="text-lg opacity-6">Necklace</p>
         </div>
         <p class="mb-7">
@@ -66,11 +66,11 @@
           穿戴上對的鎖骨項鍊，為空蕩頸部畫龍點睛<br />
           氣質直接贏在起跑線。
         </p>
-        <router-link :to="`/shop`" class="btn btn-dashed"><span>前往</span></router-link>
+        <a href="#" @click.prevent="goToSeries('鎖骨鏈系列')" class="btn btn-dashed"><span>前往</span></a>
       </div>
       <div class="col-12 col-lg-5 offset-lg-3">
         <div class="position-relative bg-earring py-lg-11 mb-15 mb-lg-0">
-          <div class="bg-mask "></div>
+          <div class="bg-mask"></div>
           <img
             class="wow animate__animated animate__zoomIn position-relative z-1
             -ms-lg-offset-4 rounded-3 shadow translate-left-hover w-80 w-lg-100 top-3"
@@ -82,7 +82,7 @@
   </div>
   <div class="container pb-15 py-lg-15">
     <div class="wow animate__animated animate__lightSpeedInLeft d-flex align-items-center mb-10">
-      <h3 class="title text-3xl ">限時特價</h3>
+      <h3 class="title text-3xl">限時特價</h3>
       <p class="text-lg opacity-6">On Sale</p>
     </div>
     <swiper
@@ -96,7 +96,7 @@
       :pagination="{ clickable: true }"
       :slidesPerView="1"
       data-wow-delay="0.5s"
-      class=" sale-container wow animate__animated animate__zoomIn">
+      class="sale-container wow animate__animated animate__zoomIn">
       <swiper-slide v-for="item in saleProduct" :key="item.id">
         <div class="sale-item">
           <div class="sale-tag">Hot Issue</div>
@@ -108,7 +108,7 @@
             border-light mt-5 pt-5">
             <div>
               <router-link :to="`/product/${item.id}`">
-                <p class=" fw-normal mb-2">{{ item.title }}</p>
+                <p class="fw-normal mb-2">{{ item.title }}</p>
               </router-link>
               <p>
                 NT${{ item.price }}
@@ -117,7 +117,7 @@
                 </span>
               </p>
             </div>
-            <div class="d-flex align-items-center ">
+            <div class="d-flex align-items-center">
               <a
                 v-if="myFavorite.includes(item.id)"
                 href="#"
@@ -132,7 +132,7 @@
                 @click.prevent="addMyFavorite(item.id)">
                 <span class="material-icons"> favorite_border </span>
               </a>
-              <div v-if="addLoading" class="add-loading border rounded-circle p-2 ">
+              <div v-if="addLoading" class="add-loading border rounded-circle p-2">
                 <div class="spinner-border spinner-border-sm text-dark" role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -141,7 +141,7 @@
                 <a
                   v-if="!addLoading"
                   href="#"
-                  class=" border rounded-circle p-2 icon-hover"
+                  class="border rounded-circle p-2 icon-hover"
                   @click.prevent="addCart(item.id)">
                   <span class="material-icons"> shopping_cart </span>
                 </a>
@@ -154,7 +154,7 @@
   </div>
   <div class="container pb-15 py-lg-15">
     <div class="wow animate__animated animate__lightSpeedInLeft d-flex align-items-center mb-10">
-      <h3 class="title text-3xl ">商品專區</h3>
+      <h3 class="title text-3xl">商品專區</h3>
       <p class="text-lg opacity-6">Products</p>
     </div>
     <div class="row row-cols-3">
@@ -162,13 +162,12 @@
         <a
           href="#"
           @click.prevent="goToCategory('戒指')"
-          class="bg-topic
-          mb-7">
+          class="bg-topic mb-7">
           <img
             class="position-absolute w-100 top-0 rounded-3"
             src="@/assets/images/topic-ring.jpg"
             alt="戒指"/>
-          <div class=" bg-topic-mask rounded-3"></div>
+          <div class="bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">戒指</p>
         </a>
         <a
@@ -179,7 +178,7 @@
             class="position-absolute w-100 top-0 rounded-3"
             src="@/assets/images/topic-watch.jpg"
             alt="手錶"/>
-          <div class=" bg-topic-mask rounded-3"></div>
+          <div class="bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">手錶</p>
         </a>
       </div>
@@ -192,7 +191,7 @@
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-necklace.jpg"
             alt="項鍊"/>
-          <div class=" bg-topic-mask rounded-3"></div>
+          <div class="bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">項鍊</p>
         </a>
       </div>
@@ -205,7 +204,7 @@
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-earring.jpg"
             alt="耳環"/>
-          <div class=" bg-topic-mask rounded-3 "></div>
+          <div class="bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">耳環</p>
         </a>
         <a
@@ -216,7 +215,7 @@
             class="position-absolute top-0 w-100 rounded-3"
             src="@/assets/images/topic-bracelet.jpg"
             alt="手鍊"/>
-          <div class=" bg-topic-mask rounded-3"></div>
+          <div class="bg-topic-mask rounded-3"></div>
           <p class="text-2xl position-absolute">手鍊</p>
         </a>
       </div>
@@ -224,7 +223,7 @@
   </div>
   <div class="container pb-15 py-lg-15">
     <div class="wow animate__animated animate__lightSpeedInLeft d-flex align-items-center mb-10">
-      <h3 class="title text-3xl ">關於品牌</h3>
+      <h3 class="title text-3xl">關於品牌</h3>
       <p class="text-lg opacity-6">About Us</p>
     </div>
     <div
@@ -233,7 +232,7 @@
       <div
         class="col-12 col-lg position-relative d-flex flex-column
         flex-md-row d-lg-block wow animate__animated animate__fadeInLeft">
-        <h2 class="about-title font-design mb-10 w-50">RingRing</h2>
+        <h1 class="about-title font-design mb-10 w-50">RingRing</h1>
         <p class="lh-lg letter-spacing-1">
           我們的目標是提供平價但不平凡的飾品，<br />
           讓女孩們追求漂亮的道路變得簡單，<br />
@@ -255,53 +254,53 @@
           </svg>
         </div>
       </div>
-      <div class="col-12 col-lg wow animate__animated animate__fadeInRight ">
+      <div class="col-12 col-lg wow animate__animated animate__fadeInRight">
         <img
           class="rounded-3 about-img"
           src="https://storage.googleapis.com/vue-course-api.appspot.com/chiayu/1625342978859.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=DdnzFv7qNR1mc288VJSaHBzzcPSAHPygNkPgzgtcHizFyWYvHIjdClYNz9ihNEyRf7PHOoCgTVc%2FzxZ4wi9IK7T%2BfwULMeEJUfEp5yBWY%2FTqiPNnKZOBYFHhWGDWS8RAEDeb%2FD%2FcB4OW9FVpdH4Bjn7s58B222eCVmB7ZbFD6sNUA6b6CXcq5%2FXV1sSpy4%2FuHY22MFvZmWvUx0PZI60LcOMOnqOEvfm1dlNTrncsEbznLNzGuU7XT2Z0EPoTdGfw%2FgJYypKhCpVgBSoUMlW0rdpuJH3u7wSYd96ryzw8AnU%2BuaylW115DFXNdFMArhvJLXVbT68Fz0NOic3cvKQQHw%3D%3D"
           alt="RingRing"/>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
-      <div
+    <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 pb-10 border-bottom border-light">
+      <li
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
         wow animate__animated animate__zoomIn" >
         <span class="material-icons text-4xl mb-4 mb-md-7">
           local_shipping
         </span>
-        <p class="text-xl mb-4">交貨快速</p>
+        <h3 class="text-xl mb-4">交貨快速</h3>
         <p>
           在商品庫存充足下，我們允諾下單三天內會出貨，如您所訂購的商品庫存不足，我們將盡快以電子郵件通知您。
         </p>
-      </div>
-      <div
+      </li>
+      <li
         data-wow-delay="0.5s"
         class="col border-bottom border-lg-end border-bottom-md-0 border-light pb-9 pb-md-0
         wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           lock
         </span>
-        <p class="text-xl mb-4">售後服務</p>
+        <h3 class="text-xl mb-4">售後服務</h3>
         <p>為保障買家權益， 所有商品皆享有30日的售後服務。</p>
-      </div>
-      <div
+      </li>
+      <li
         data-wow-delay="1s"
         class="col border-bottom border-md-end border-bottom-md-0 border-light pb-9 pb-md-0
-        wow animate__animated animate__zoomIn">
+         wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           question_answer
         </span>
-        <p class="text-xl mb-4">客服服務</p>
+        <h3 class="text-xl mb-4">客服服務</h3>
         <p>如購買過程及收到商品有任何問題，歡迎聯繫我們， 我們會盡快回覆您。</p>
-      </div>
-      <div data-wow-delay="1.5s" class="col wow animate__animated animate__zoomIn">
+      </li>
+      <li data-wow-delay="1.5s" class="col wow animate__animated animate__zoomIn">
         <span class="material-icons text-4xl mb-4 mb-md-7">
           card_giftcard
         </span>
-        <p class="text-xl mb-4">包裝服務</p>
+        <h3 class="text-xl mb-4">包裝服務</h3>
         <p>如需額外包裝，可再下訂後通知我們，會有專人協助處理相關事宜。</p>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -359,10 +358,18 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
     goToCategory(category) {
       this.$router.push({ name: 'shop', query: { category } });
+    },
+    goToSeries(series) {
+      this.$router.push({ name: 'shop', query: { series } });
     },
     addCart(id) {
       this.addLoading = true;
@@ -387,7 +394,12 @@ export default {
             this.addLoading = false;
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
   mounted() {

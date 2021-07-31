@@ -14,7 +14,7 @@
         v-model="form.user.name"
       ></Field>
       <label for="name" class="form-label">姓名 <sup>*</sup>：</label>
-      <error-message name="姓名" class="invalid-feedback"></error-message>
+      <ErrorMessage name="姓名" class="invalid-feedback" />
     </div>
     <div class="form-floating form-downline mb-3">
       <Field
@@ -28,7 +28,7 @@
         v-model="form.user.email"
       ></Field>
       <label for="email">電子郵件 <sup>*</sup>：</label>
-      <error-message name="email" class="invalid-feedback"></error-message>
+      <ErrorMessage name="email" class="invalid-feedback" />
     </div>
     <div class="form-floating form-downline mb-3">
       <Field
@@ -42,7 +42,7 @@
         v-model="form.user.tel"
       ></Field>
       <label for="tel">聯絡電話 <sup>*</sup>：</label>
-      <error-message name="聯絡電話" class="invalid-feedback"></error-message>
+      <ErrorMessage name="聯絡電話" class="invalid-feedback" />
     </div>
     <div class="form-floating form-downline mb-8">
       <Field
@@ -56,7 +56,7 @@
         v-model="form.user.address"
       ></Field>
       <label for="address">地址 <sup>*</sup>：</label>
-      <error-message name="地址" class="invalid-feedback"></error-message>
+      <ErrorMessage name="地址" class="invalid-feedback" />
     </div>
     <div class="mb-8">
       <label for="exampleFormControlTextarea1" class="form-label text-dark px-4">備註：</label>
@@ -80,7 +80,7 @@
       <label class="form-check-label text-dark" for="flexCheckChecked">
         我已閱讀並同意網站的 條款與條件 <sup>*</sup>
       </label>
-      <error-message name="check" class="invalid-feedback"></error-message>
+      <ErrorMessage name="check" class="invalid-feedback" />
     </div>
     <button
       type="submit"
@@ -144,7 +144,12 @@ export default {
             });
           }
         })
-        .catch((err) => err);
+        .catch(() => {
+          this.emitter.emit('push-message', {
+            type: 'error',
+            message: '發生錯誤，請重新整理頁面',
+          });
+        });
     },
   },
 };
